@@ -1,0 +1,17 @@
+.link-nav{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: #f08126;
+}
+
+.link-nav:hover{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: #f08126;
+    border-color: #f08126;
+    border: 1px;
+}
+
+.img-login{
+    width: 10px;
+}

@@ -1,0 +1,64 @@
+
+.img-bg {
+    position: relative;
+    float: left;
+    top: 0px;
+}
+
+.titulo {
+    position: absolute;
+    top: 325px; 
+    left: 150px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    width: 25%;
+}
+
+
+.position-btn {
+    position: absolute;
+    top: 500px; 
+    left: 150px;
+}
+
+.titulo-btn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    width: 25%;
+    color: #f08126;
+    border-color: #f08126;
+}
+
+.titulo-btn:hover {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    width: 25%;
+    color: #ffffff;
+    background-color:#f08126 ;
+    border-color: #f08126;
+}
+
+
+.img-alumna {
+    position: absolute;
+    width:150%;
+    top: 250px; 
+    left: 900px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    width: 25%;
+    border-radius: 50%;
+}
+
+
+.text-card{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500 ;
+}
+
+
+h1, h2, h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
