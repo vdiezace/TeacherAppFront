@@ -1,0 +1,12 @@
+.number-orange {
+    color: #f08126;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.arrow-button {
+    font-size: 60px;
+    color: #f08126;
+    border: none;
+    background-color: transparent;
+}
