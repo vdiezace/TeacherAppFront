@@ -25,4 +25,11 @@ export class AboutUsComponent {
     }
   }
 
+  prevStep(): void {
+    if (this.currentStep > 0) {
+      this.currentStep--;
+    }
+
+  }
+
 }
