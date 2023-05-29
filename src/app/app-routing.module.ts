@@ -5,7 +5,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { HowitworksComponent } from './components/howitworks/howitworks.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -13,7 +12,6 @@ const routes: Routes = [
   { path: "about-us", component: AboutUsComponent },
   { path: "login-signup", component: LoginComponent },
   { path: "contact", component: ContactComponent },
-  { path: "how-it-works", component: HowitworksComponent },
   { path: "**", component: C404Component }
 ];
 
