@@ -1,14 +1,19 @@
 <app-main-header></app-main-header>
+<div class="position-relative">
+    <div class="">
+        <img class="bg-image w-75 position-absolute img-bg" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684782736/BG_jkjppz.png" alt="color de fondo de about-us">
+    </div>    
+</div>
 <div class="container mt-5 pt-5">
     <div class="row col-4">
         <h1 class="pb-2 mb-2">Elevate your learning</h1>
         <p>Welcome to TeacherApp, your gateway to personalized education! We are a team of passionate and experienced teachers dedicated to empowering learners like you to reach new heights of knowledge. With our app, you have the freedom to choose from a diverse group of expert teachers, each specializing in their unique subject areas.</p>    
     </div>
 </div>
-<div class="container mt-5 pt-4 steps">
-    <h2 class="">How to get started learning</h2>
+<div class="container mt-5 pt-5 steps">
+    <h2 class="pt-5 mt-5">How to get started learning</h2>
     <ng-container *ngFor="let step of arrSteps; let i = index">
-        <div class="row g-2 mt-1 pt-3 mb-1 pb-3" *ngIf="currentStep === i">
+        <div class="row g-2 mt-5 pt-5 mb-1 pb-3" *ngIf="currentStep === i">
             <div class="col-md-6">
                 <p class="number-orange">{{step.title1}}</p>
                 <p>{{step.title2}}</p>    
