@@ -16,7 +16,6 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { HamburgerMenuComponent } from './components/hamburger-menu/hamburger-menu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { HamburgerMenuComponent } from './components/hamburger-menu/hamburger-me
     LoginComponent,
     ContactComponent,
     LoginFormComponent,
-    HamburgerMenuComponent,
   ],
   imports: [
     BrowserModule,
