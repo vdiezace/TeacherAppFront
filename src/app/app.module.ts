@@ -15,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HowitworksComponent } from './components/howitworks/howitworks.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { TheclassesComponent } from './components/theclasses/theclasses.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     LoginComponent,
     ContactComponent,
     HowitworksComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    SignupComponent,
+    TheclassesComponent
   ],
   imports: [
     BrowserModule,
