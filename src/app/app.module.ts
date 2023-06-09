@@ -16,6 +16,11 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ProfileComponent } from './components/student-dashboard/profile/profile.component';
+import { ClassesComponent } from './components/student-dashboard/classes/classes.component';
+import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
+import { ChatComponent } from './components/student-dashboard/chat/chat.component';
+import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,11 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     LoginComponent,
     ContactComponent,
     LoginFormComponent,
+    ProfileComponent,
+    ClassesComponent,
+    TeachersComponent,
+    ChatComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,
