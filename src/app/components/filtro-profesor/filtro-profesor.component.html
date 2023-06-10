@@ -1,0 +1,13 @@
+
+
+<div>
+    <label for="especialidad">Especialidad:</label>
+    <input type="text" id="especialidad" [(ngModel)]="filtroEspecialidad" (input)="filtrarProfesores()">
+  </div>
+  
+  <div *ngFor="let profesor of profesor">
+    <h3>{{ profesor.nombre }}</h3>
+    <p>Especialidad: {{ profesor.especialidad }}</p>
+    <!-- Resto de la información del profesor -->
+  </div>
+  

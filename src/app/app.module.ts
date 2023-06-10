@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +21,11 @@ import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { FiltroProfesorComponent } from './components/filtro-profesor/filtro-profesor.component';
+import { MapComponent } from './components/map/map.component';
+import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
+import { StudentslistComponent } from './components/studentslist/studentslist.component';
+import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +41,19 @@ import { RegistroComponent } from './components/registro/registro.component';
     LoginComponent,
     ContactComponent,
     LoginFormComponent,
-    RegistroComponent
+    RegistroComponent,
+    FiltroProfesorComponent,
+    MapComponent,
+    LandingTeacherComponent,
+    StudentslistComponent,
+    TeacherprofileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

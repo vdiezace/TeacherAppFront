@@ -1,6 +1,4 @@
-
 <app-main-header></app-main-header>
-
 <body>
     <section>
     <div class="d-flex justify-content-end">
@@ -10,41 +8,51 @@
         <h1 class="titulo">
             Learn anywhere, anytime with our online method.
         </h1>
-        <button class="position-btn titulo-btn btn btn-outline-primary rounded-5">Explore the classes</button>
+        <button [routerLink]="['/signup']" class="position-btn titulo-btn btn btn-outline-primary rounded-5">Explore the classes</button>
     </div>
     <div>
         <img class=" img-alumna" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684786057/foto-landing-home_tqkn8p.png" alt="imagen alumna banner">
     </div>
     </section>
 
-    <section class="d-flex justify-content-center gap-5 mt-5 mb-5">
-        <div class="col-3">
-        <div class="card" style="width: 18rem;">
-            <img class="rounded-3" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684788739/teachers-home-02_kv7huv.png" class="card-img-top" alt="imagen profesora de matemàticas">
-            <div class="card-body">
-                <p class="text-card">Lucas González</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-            <div class="card" style="width: 18rem;">
-                <img class="rounded-3" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684788739/teachers-home_Mesa_de_trabajo_1_l5wgpr.png" class="card-img-top" alt="imagen profesor de fisica">
-                <div class="card-body">
-                  <p class="text-card">María Pérez</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="rounded-3" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684788739/teachers-home-03_nlmwco.png" class="card-img-top" alt="imagen profesor latin">
+
+<!--TEACHERS-->
+<div class="container">
+    <h2 class="title mt-5 mb-5"> Our Teachers</h2>
+</div>
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <img src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684788739/teachers-home-02_kv7huv.png" class="card-img-top" alt="imagen profesora de matemàticas">
                     <div class="card-body">
-                      <p class="text-card">David García</p>
+                        <h5 class="card-title">Lucas González</h5>
                     </div>
                 </div>
             </div>
-    </section>
-    <div class="d-flex flex-column align-items-center mb-5"><button class="titulo-btn btn btn-outline-primary rounded-5">Explore the classes</button></div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <img src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684788739/teachers-home_Mesa_de_trabajo_1_l5wgpr.png" class="card-img-top" alt="imagen profesor de fisica">
+                    <div class="card-body">
+                        <h5 class="card-title">María Pérez</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <img src="src="src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684788739/teachers-home-03_nlmwco.png" class="card-img-top" alt="imagen profesor latin">
+                    <div class="card-body">
+                        <h5 class="card-title">David García</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <div class="d-flex flex-column align-items-center mt-5 mb-5"><button [routerLink]="['/signup']" class="titulo-btn btn btn-outline-primary rounded-5">Explore more teachers</button></div>
+
+<!--MAPA-->
     <section>
         <h2 class="mt-5 mb-5">Find our teachers</h2>
     </section>
