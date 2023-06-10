@@ -6,7 +6,7 @@
 
 .titulo {
     position: absolute;
-    top: 440px; 
+    top: 40%; 
     left: 150px;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
@@ -16,13 +16,13 @@
 
 .position-btn-student {
     position: absolute;
-    top: 500px; 
+    top: 52%; 
     left: 150px;
 }
 
 .position-btn-teacher {
     position: absolute;
-    top: 550px; 
+    top: 60%; 
     left: 150px;
 }
 

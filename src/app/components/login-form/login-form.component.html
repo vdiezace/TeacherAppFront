@@ -3,7 +3,7 @@
 
 
 
-<div class="d-flex justify-content-center align-items-center">
+<div class="d-flex justify-content-center align-items-center container-principal">
 <form class="w-25 ">
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
@@ -16,9 +16,14 @@
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      <label class="form-check-label" for="exampleCheck1">Remember me</label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary container-submit">Submit</button>
+
+    <div class="mensaje_registro">
+      <p class="little-text">No account? <span class="link little-text" [routerLink]="['/register']">create one</span></p>
+    </div>
+    
   </form>
 </div>
 
