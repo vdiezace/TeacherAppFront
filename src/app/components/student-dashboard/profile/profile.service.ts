@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
 
-  constructor() { }
+  private baseUrl: string;
+
+  constructor(private httpClient: HttpClient) { 
+    this.baseUrl = 'http://localhost:3000/api/students'
+  }
 }
