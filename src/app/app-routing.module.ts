@@ -10,19 +10,20 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentslistComponent } from './components/studentslist/studentslist.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { TeachersGuard } from './guards/teachers.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
   { path: "home", component: HomeComponent },
   { path: "about-us", component: AboutUsComponent },
   { path: "login", component: LoginComponent },
-  { path: "signup", component: RegistroComponent },
   { path: "contact", component: ContactComponent },
   { path: "login-form", component: LoginFormComponent },
   { path: "register", component: RegistroComponent },
-  { path: "teachers", component: LandingTeacherComponent},
-  { path: "students-list", component: StudentslistComponent},
-  { path: "myprofile", component: TeacherprofileComponent},
+  { path: "teachers", component: LandingTeacherComponent, canActivate:[TeachersGuard]},
+  { path: "teachers/students-list", component: StudentslistComponent},
+  { path: "teachers/:teacherid", component: TeacherprofileComponent},
+ 
   { path: "**", component: C404Component }
 ];
 

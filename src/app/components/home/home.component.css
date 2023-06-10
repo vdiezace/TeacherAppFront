@@ -16,10 +16,13 @@
 
 .position-btn {
     position: absolute;
-    top: 450px; 
+    top: 375px; 
     left: 150px;
 }
 
+@media (min-width: 768px) {
+
+}
 .titulo-btn {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
