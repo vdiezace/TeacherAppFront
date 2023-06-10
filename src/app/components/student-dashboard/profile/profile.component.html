@@ -3,20 +3,20 @@
 <div class="container-fluid mt-5 pt-3 mb-5 pb-3">
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card w-50 border-0 m-auto">
+            <div class="card w-50 border-0 m-auto" *ngIf="userData">
                 <div class="card-horizontal align-items-center">
                     <div class="img-square-wrapper">
-                        <img class="" src="http://via.placeholder.com/300x180" alt="Card image cap">
+                        <img class="" [src]="userData.avatar" alt="Card image cap">
                     </div>
                     <div class="vr"></div>
                     <div class="card-body">
-                        <p>Name:</p>
-                        <p>Surname:</p>
-                        <p>Phone:</p>
-                        <p>Email:</p>
-                        <p>Address:</p>
-                        <p>Province:</p>
-                        <p>City:</p>
+                        <p>Name: {{userData.first_name}}</p>
+                        <p>Surname: {{userData.last_name}}</p>
+                        <p>Phone: {{userData.phone}}</p>
+                        <p>Email: {{userData.email}}</p>
+                        <p>Address: {{userData.address}}</p>
+                        <p>Province: {{userData.province}}</p>
+                        <p>City: {{userData.city}}</p>
                         <img src="" alt="">
                         <div class="d-flex justify-content-end">       
                             <button class="btn btn-info">Edit</button>

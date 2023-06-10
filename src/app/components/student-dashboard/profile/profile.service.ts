@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,17 @@ export class ProfileService {
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) { 
-    this.baseUrl = 'http://localhost:3000/api/students'
+    this.baseUrl = 'http://localhost:3000/api/students/29'
+  }
+
+  getUserData() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(
+      this.httpClient.get<any>(this.baseUrl, httpOptions)
+    );
   }
 }
