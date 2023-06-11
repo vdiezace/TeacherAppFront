@@ -1,2 +1,18 @@
 <app-student-header></app-student-header>
 
+<div class="container teachers">
+    <div class="teacher" *ngFor="let teacher of teachers">
+        <div>
+            <img src="{{teacher.avatar}}" alt="" class="teachers-pic">
+        </div>
+        <div class="teachers-data">
+            <h4>{{teacher.first_name}} {{teacher.last_name}}</h4>
+            <p>{{teacher.avg_rating}}</p>
+        </div>
+<!--         <div class="teachers-buttons">
+            <button>Classes</button>
+            <button>Reviews</button>
+            <button>Chat</button>    
+        </div>
+ -->    </div>
+</div>

@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: "about-us", component: AboutUsComponent },
   { path: "login-signup", component: LoginComponent },
   { path: "contact", component: ContactComponent },
-  { path: "student-chat", component: ChatComponent},
-  { path: "student-classes", component: ClassesComponent},
-  { path: "student-profile", component: ProfileComponent},
-  { path: "student-reviews", component: ReviewsComponent},
-  { path: "student-teachers", component: TeachersComponent},
+  { path: "student/chat", component: ChatComponent},
+  { path: "student/classes", component: ClassesComponent},
+  { path: "student/profile", component: ProfileComponent},
+  { path: "student/reviews", component: ReviewsComponent},
+  { path: "student/teachers", component: TeachersComponent},
   { path: "**", component: C404Component }
 ];
 

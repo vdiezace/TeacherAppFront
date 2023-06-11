@@ -1,0 +1,21 @@
+.teachers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.teacher {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    width: 200px;
+}
+
+
+.teachers-pic {
+    width: 200px;
+}
+
+/* .teachers-button {
+    display: flex;
+} */
