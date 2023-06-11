@@ -21,11 +21,11 @@ import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { FiltroProfesorComponent } from './components/filtro-profesor/filtro-profesor.component';
 import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentslistComponent } from './components/studentslist/studentslist.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 
 @NgModule({
   declarations: [
@@ -42,11 +42,12 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
     ContactComponent,
     LoginFormComponent,
     RegistroComponent,
-    FiltroProfesorComponent,
     MapComponent,
     LandingTeacherComponent,
     StudentslistComponent,
-    TeacherprofileComponent
+    TeacherprofileComponent,
+    TeacherFilterComponent,
+
   ],
   imports: [
     BrowserModule,
