@@ -32,6 +32,10 @@ import { LandingTeacherComponent } from './components/landing-teacher/landing-te
 import { StudentslistComponent } from './components/studentslist/studentslist.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
+import { StudentsComponent } from './components/admin-dashboard/students/students.component';
+import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
+import { ProfileComponentAdmin } from './components/admin-dashboard/profile/profile.component';
+import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,10 @@ import { TeacherFilterComponent } from './components/teacher-filter/teacher-filt
     StudentslistComponent,
     TeacherprofileComponent,
     TeacherFilterComponent,
+    StudentsComponent,
+    HomeComponentAdmin,
+    ProfileComponentAdmin,
+    TeachersComponentAdmin
 
   ],
   imports: [

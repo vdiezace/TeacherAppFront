@@ -17,6 +17,11 @@ import { LandingTeacherComponent } from './components/landing-teacher/landing-te
 import { StudentslistComponent } from './components/studentslist/studentslist.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { TeachersGuard } from './guards/teachers.guard';
+import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
+import { ProfileComponentAdmin } from './components/admin-dashboard/profile/profile.component';
+import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
+import { StudentsComponent } from './components/admin-dashboard/students/students.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -35,6 +40,10 @@ const routes: Routes = [
   { path: "teachers", component: LandingTeacherComponent, canActivate:[TeachersGuard]},
   { path: "teachers/students-list", component: StudentslistComponent},
   { path: "teachers/:teacherid", component: TeacherprofileComponent},
+  { path: "admin", component: HomeComponentAdmin, canActivate:[AdminGuard]},
+  { path: "admin/students", component: StudentsComponent},
+  { path: "admin/teachers", component: TeachersComponentAdmin},
+  { path: "admin/:adminid", component: ProfileComponentAdmin},
  
   { path: "**", component: C404Component }
 ];
