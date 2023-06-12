@@ -26,7 +26,11 @@ export class RegistroComponent implements OnInit{
           Validators.required,
           Validators.minLength(3)
       ]),
+      Address: new FormControl("",[
+        Validators.required
+    ]),
       Email: new FormControl("",[
+          Validators.required,
           Validators.minLength(5),
           Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
           Validators.email
