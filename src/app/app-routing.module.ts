@@ -11,12 +11,18 @@ import { ProfileComponent } from './components/student-dashboard/profile/profile
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
+import { StudentslistComponent } from './components/studentslist/studentslist.component';
+import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { TeachersGuard } from './guards/teachers.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
   { path: "home", component: HomeComponent },
   { path: "about-us", component: AboutUsComponent },
-  { path: "login-signup", component: LoginComponent },
+  { path: "login", component: LoginComponent },
   { path: "contact", component: ContactComponent },
   { path: "student/chat", component: ChatComponent},
   { path: "student/classes", component: ClassesComponent},
@@ -24,6 +30,12 @@ const routes: Routes = [
   { path: "student/reviews", component: ReviewsComponent},
   { path: "student/teachers", component: TeachersComponent},
   { path: "student/teachers-details", component: TeachersDetailsComponent},
+  { path: "login-form", component: LoginFormComponent },
+  { path: "register", component: RegistroComponent },
+  { path: "teachers", component: LandingTeacherComponent, canActivate:[TeachersGuard]},
+  { path: "teachers/students-list", component: StudentslistComponent},
+  { path: "teachers/:teacherid", component: TeacherprofileComponent},
+ 
   { path: "**", component: C404Component }
 ];
 

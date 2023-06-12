@@ -1,4 +1,3 @@
-
 .img-bg {
     position: relative;
     float: left;
@@ -7,7 +6,7 @@
 
 .titulo {
     position: absolute;
-    top: 325px; 
+    top: 200px; 
     left: 150px;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
@@ -17,10 +16,13 @@
 
 .position-btn {
     position: absolute;
-    top: 500px; 
+    top: 375px; 
     left: 150px;
 }
 
+@media (min-width: 768px) {
+
+}
 .titulo-btn {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
@@ -28,6 +30,7 @@
     color: #f08126;
     border-color: #f08126;
 }
+
 
 .titulo-btn:hover {
     font-family: "Montserrat", sans-serif;
@@ -37,7 +40,6 @@
     background-color:#f08126 ;
     border-color: #f08126;
 }
-
 
 .img-alumna {
     position: absolute;

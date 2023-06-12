@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +26,12 @@ import { TeachersComponent } from './components/student-dashboard/teachers/teach
 import { ChatComponent } from './components/student-dashboard/chat/chat.component';
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { MapComponent } from './components/map/map.component';
+import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
+import { StudentslistComponent } from './components/studentslist/studentslist.component';
+import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +53,19 @@ import { TeachersDetailsComponent } from './components/student-dashboard/teacher
     ChatComponent,
     ReviewsComponent,
     TeachersDetailsComponent,
+    RegistroComponent,
+    MapComponent,
+    LandingTeacherComponent,
+    StudentslistComponent,
+    TeacherprofileComponent,
+    TeacherFilterComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
