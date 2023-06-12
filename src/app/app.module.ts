@@ -22,6 +22,7 @@ import { ClassesComponent } from './components/student-dashboard/classes/classes
 import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
 import { ChatComponent } from './components/student-dashboard/chat/chat.component';
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
+import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ReviewsComponent } from './components/student-dashboard/reviews/reviews
     TeachersComponent,
     ChatComponent,
     ReviewsComponent,
+    TeachersDetailsComponent,
   ],
   imports: [
     BrowserModule,

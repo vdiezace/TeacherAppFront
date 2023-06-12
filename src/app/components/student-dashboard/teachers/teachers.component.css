@@ -8,7 +8,8 @@
     display: flex;
     flex-direction: column;
     border: 1px solid gray;
-    width: 200px;
+    width: 300px;
+    text-align: center;
 }
 
 
@@ -16,6 +17,18 @@
     width: 200px;
 }
 
-/* .teachers-button {
+.teachers-buttons {
     display: flex;
-} */
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+
+.btn-info {
+    color: #000;
+    background-color: #f08126;
+    border-color: #f08126;
+}
+
+.btn {
+    transition: none;
+}

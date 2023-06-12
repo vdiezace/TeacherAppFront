@@ -10,6 +10,7 @@ import { ClassesComponent } from './components/student-dashboard/classes/classes
 import { ProfileComponent } from './components/student-dashboard/profile/profile.component';
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
+import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "student/profile", component: ProfileComponent},
   { path: "student/reviews", component: ReviewsComponent},
   { path: "student/teachers", component: TeachersComponent},
+  { path: "student/teachers-details", component: TeachersDetailsComponent},
   { path: "**", component: C404Component }
 ];
 
