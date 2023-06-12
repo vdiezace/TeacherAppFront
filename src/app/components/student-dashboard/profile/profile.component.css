@@ -1,0 +1,11 @@
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.vr {
+  margin-left: 10px;
+  color: #f08126;
+  height: auto;
+  width: 2px;
+}
