@@ -1,0 +1,36 @@
+.titulo-admin{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    width: 80%;
+    margin: 2rem;
+    margin-left: 10%;
+    gap: 1rem;
+}
+
+.container-card{
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    background-color: rgba(243, 177, 102, 0.856);
+    margin: 1rem;
+    border-radius: 1rem;
+    width: 33%;
+    height: 10rem;
+    
+}
+.container-card:hover{
+    cursor: pointer;
+    transform: translateY(-10px);
+    background-color: rgb(253, 178, 92);
+    
+}
+
+.card-title{
+    font-size: 1.3rem;
+    font-weight: 700;
+}
