@@ -11,7 +11,6 @@ export class ProfileComponent {
 public userData : any;
 
   constructor( private profileService: ProfileService) {
-
   }
 
   async ngOnInit() {

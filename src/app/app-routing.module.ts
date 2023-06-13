@@ -22,6 +22,7 @@ import { ProfileComponentAdmin } from './components/admin-dashboard/profile/prof
 import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { AdminGuard } from './guards/admin.guard';
+import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: "student/reviews", component: ReviewsComponent},
   { path: "student/teachers", component: TeachersComponent},
   { path: "student/teachers-details", component: TeachersDetailsComponent},
+  { path: "student/teachers-reviews", component: TeachersReviewsComponent},
   { path: "login-form", component: LoginFormComponent },
   { path: "register", component: RegistroComponent },
   { path: "teachers", component: LandingTeacherComponent, canActivate:[TeachersGuard]},
