@@ -1,0 +1,8 @@
+.encuesta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
