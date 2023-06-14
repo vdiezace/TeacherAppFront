@@ -1,0 +1,23 @@
+<app-student-header></app-student-header>
+<select (change)="onSelectProvince()" [(ngModel)]="provinceSelected">
+    <option value="">All provinces</option>
+    <option value="Madrid">Madrid</option>
+</select>
+
+<div class="container teachers mt-5 pt-4 mb-5 pb-4">
+
+    <div class="teacher" *ngFor="let teacher of filteredTeachers">
+
+        <div>
+            <img src="{{teacher.avatar}}" alt="" class="teachers-pic">
+        </div>
+        <div class="teachers-data">
+            <h4>{{teacher.first_name}} {{teacher.last_name}}</h4>
+            <p>{{teacher.avg_rating}}</p>
+        </div>
+        <div class="teachers-buttons">
+            <button class="btn btn-info" routerLink="/student/teachers-details">Book</button>
+            <button class="btn btn-info" routerLink="/student/teachers-reviews">Reviews</button>
+        </div>
+    </div>
+</div>

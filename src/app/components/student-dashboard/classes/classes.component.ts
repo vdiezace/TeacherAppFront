@@ -16,10 +16,7 @@ export class ClassesComponent {
 
   async ngOnInit() {
     const response = await this.classesService.getStudentClasses();
-    this.classes.push(response);
-    this.classes.push(response);
-    this.classes.push(response);
-
+    this.classes = response;
     console.log(response);
   }
 
