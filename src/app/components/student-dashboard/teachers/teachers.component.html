@@ -1,7 +1,7 @@
 <app-student-header></app-student-header>
 
 <div class="container teachers mt-5 pt-4 mb-5 pb-4">
-    <div class="teacher" *ngFor="let teacher of teachers">
+    <div class="teacher" *ngFor="let teacher of myTeachers">
         <div>
             <img src="{{teacher.avatar}}" alt="" class="teachers-pic">
         </div>
@@ -10,7 +10,7 @@
             <p>{{teacher.avg_rating}}</p>
         </div>
         <div class="teachers-buttons">
-            <button class="btn btn-info" routerLink="/student/teachers-details">Classes</button>
+            <button class="btn btn-info" routerLink="/student/teachers-details">Book</button>
             <button class="btn btn-info" routerLink="/student/teachers-reviews">Reviews</button>
         </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClassesService } from './classes.service';
 
 @Component({
   selector: 'app-classes',
@@ -7,6 +8,19 @@ import { Component } from '@angular/core';
 })
 export class ClassesComponent {
 
-  
+  classes: any[];
+
+  constructor( private classesService: ClassesService) {
+    this.classes = [];
+  }
+
+  async ngOnInit() {
+    const response = await this.classesService.getStudentClasses();
+    this.classes.push(response);
+    this.classes.push(response);
+    this.classes.push(response);
+
+    console.log(response);
+  }
 
 }

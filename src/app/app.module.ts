@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
+
+
+
+
 import { AppComponent } from './app.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { C404Component } from './components/c404/c404.component';
@@ -76,7 +76,8 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

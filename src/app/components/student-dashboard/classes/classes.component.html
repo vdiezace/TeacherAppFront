@@ -8,7 +8,6 @@
             <th scope="col">Teacher's name</th>
             <th scope="col">Teacher's surname</th>
             <th scope="col">Category</th>
-            <th scope="col">Module</th>
             <th scope="col">Start</th>
             <th scope="col">Finish</th>
             <th scope="col">Status</th>
@@ -16,27 +15,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td></td>
+          <tr *ngFor="let class of classes;let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{class.teacher_name}}</td>
+            <td>{{class.teacher_surname}}</td>
+            <td>{{class.category}}</td>
+            <td>{{class.creation_date}}</td>
+            <td>{{class.start_date}}</td>
+            <td>{{class.start_hour}}</td>
+            <td>{{class.end_hour}}</td>
             <td></td>
             <td></td>
           </tr>
