@@ -31,3 +31,15 @@
 .btn {
     transition: none;
 }
+
+.list-filter {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-top: 16px;
+    margin-top: 12px;
+}
+
+.option-box {
+    background-color: #D9D9D9;
+}

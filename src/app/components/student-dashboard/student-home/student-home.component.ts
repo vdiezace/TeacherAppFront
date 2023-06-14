@@ -10,42 +10,102 @@ export class StudentHomeComponent {
 
   teachers: any[];
   filteredTeachers: any[];
+  provinces = [
+    "Álava",
+    "Albacete",
+    "Alicante",
+    "Almería",
+    "Asturias",
+    "Ávila",
+    "Badajoz",
+    "Barcelona",
+    "Burgos",
+    "Cáceres",
+    "Cádiz",
+    "Cantabria",
+    "Castellón",
+    "Ciudad Real",
+    "Córdoba",
+    "Cuenca",
+    "Gerona",
+    "Granada",
+    "Guadalajara",
+    "Guipúzcoa",
+    "Huelva",
+    "Huesca",
+    "Islas Baleares",
+    "Jaén",
+    "La Coruña",
+    "La Rioja",
+    "Las Palmas",
+    "León",
+    "Lérida",
+    "Lugo",
+    "Madrid",
+    "Málaga",
+    "Murcia",
+    "Navarra",
+    "Orense",
+    "Palencia",
+    "Pontevedra",
+    "Salamanca",
+    "Santa Cruz de Tenerife",
+    "Segovia",
+    "Sevilla",
+    "Soria",
+    "Tarragona",
+    "Teruel",
+    "Toledo",
+    "Valencia",
+    "Valladolid",
+    "Vizcaya",
+    "Zamora",
+    "Zaragoza",
+    "Ceuta",
+    "Melilla"
+  ];
 
-  public provinceSelected= "";
+  categories = [
+    "mathematics",
+    "physics",
+    "literature",
+    "english",
+    "mechanics",
+    "biology",
+    "french",
+    "music",
+    "arts",
+    "programming"
+  ]; 
+
+  ratings = [
+    2,
+    3,
+    4
+  ]; 
+
+  experiences = [
+    2,
+    5,
+    10
+  ]
+
+  public provinceSelected = "";
+  public categorySelected = "";
+  public ratingSelected = "0";
+  public experienceSelected = "0";
+
 
   constructor( private teacherService: TeacherService) {
     this.teachers = [];
     this.filteredTeachers = [];
   }
 
-  filterOptions = [
-    { label: 'All', value: 'all'},
-    { label: 'Avg_rating', value: 'average rating'},
-    { label: 'Category_title', value: 'category title'},
-    { label: 'City', value: 'city'},
-    { label: 'Experience', value: 'experience'},
-    { label: 'Price_hour', value: 'price_hour'}
-
-  ]
-
-  onSelectProvince() {
-    console.log(this.provinceSelected);
-    this.filterTeachers();  
-  }
-
-/*   filterTeachers(filterValue: string) {
-    if(filterValue === 'all') {
-      this.filteredTeachers = this.teachers;
-    } else {
-      this.filteredTeachers = this.teachers.filter(teacher => teacher.category === filter.value)
-    }
-  }
- */
-
    filterTeachers() {
-    this.filteredTeachers= this.teachers.filter(teacher =>
-      teacher.province.includes(this.provinceSelected));
+    this.filteredTeachers = this.teachers.filter(teacher =>
+      teacher.province.includes(this.provinceSelected) && teacher.category_title.includes(this.categorySelected) && (+teacher.avg_rating) >= (+this.ratingSelected) && teacher.experience >= this.experienceSelected);
       console.log(this.filteredTeachers);
+
   }
  
    async ngOnInit() {
