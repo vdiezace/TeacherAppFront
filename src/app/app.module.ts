@@ -37,6 +37,7 @@ import { HomeComponentAdmin } from './components/admin-dashboard/home/home.compo
 import { ProfileComponentAdmin } from './components/admin-dashboard/profile/profile.component';
 import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
+import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,9 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
     HomeComponentAdmin,
     ProfileComponentAdmin,
     TeachersComponentAdmin,
-    TeachersReviewsComponent
+    TeachersReviewsComponent,
+    StudentHomeComponent,
+    
 
   ],
   imports: [

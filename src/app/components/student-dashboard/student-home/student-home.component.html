@@ -1,0 +1,38 @@
+<app-student-header></app-student-header>
+<div class="container list-filter">
+    <p>Filter by...</p>
+    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="provinceSelected">
+        <option value="">Province</option>
+        <option *ngFor="let province of provinces" value="{{province}}">{{province}}</option>
+    </select>
+    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="categorySelected">
+        <option value="">Category</option>
+        <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+    </select>
+    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="ratingSelected">
+        <option value="0">Any rating</option>
+        <option *ngFor="let rating of ratings" value="{{rating}}">More than {{rating}}</option>
+    </select>
+    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="experienceSelected">
+        <option value="0">Any experience</option>
+        <option *ngFor="let experience of experiences" value={{experience}}>More than {{experience}}</option>
+    </select>
+</div>
+
+<div class="container teachers mt-3 pt-2 mb-5 pb-4">
+
+    <div class="teacher" *ngFor="let teacher of filteredTeachers">
+
+        <div>
+            <img src="{{teacher.avatar}}" alt="" class="teachers-pic">
+        </div>
+        <div class="teachers-data">
+            <h4>{{teacher.first_name}} {{teacher.last_name}}</h4>
+            <p>{{teacher.avg_rating}}</p>
+        </div>
+        <div class="teachers-buttons">
+            <button class="btn btn-info" routerLink="/student/teachers-details">Book</button>
+            <button class="btn btn-info" routerLink="/student/teachers-reviews">Reviews</button>
+        </div>
+    </div>
+</div>

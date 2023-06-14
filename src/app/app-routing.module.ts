@@ -23,6 +23,7 @@ import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/te
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { AdminGuard } from './guards/admin.guard';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
+import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "contact", component: ContactComponent },
   { path: "student/chat", component: ChatComponent},
+  { path: "student/home", component: StudentHomeComponent},
   { path: "student/classes", component: ClassesComponent},
   { path: "student/profile", component: ProfileComponent},
   { path: "student/reviews", component: ReviewsComponent},

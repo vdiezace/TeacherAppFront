@@ -1,0 +1,45 @@
+.teachers-pic {
+    width: 200px;
+}
+
+.teachers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.teacher {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    width: 300px;
+    text-align: center;
+}
+
+.teachers-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+
+.btn-info {
+    color: #000;
+    background-color: #f08126;
+    border-color: #f08126;
+}
+
+.btn {
+    transition: none;
+}
+
+.list-filter {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-top: 16px;
+    margin-top: 12px;
+}
+
+.option-box {
+    background-color: #D9D9D9;
+}
