@@ -8,25 +8,26 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./student-form.component.css']
 })
 export class StudentFormComponent implements OnInit {
-  userForm: FormGroup | any;
+  studentForm: FormGroup;
+  student_role_id = 3;
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
   ) {
 
 
-    this.userForm = new FormGroup({
-      Name: new FormControl("", [
+    this.studentForm = new FormGroup({
+      first_name: new FormControl("", [
         Validators.required,
         Validators.minLength(3)
       ]),
-      Surname: new FormControl("", [
+      last_name: new FormControl("", [
         Validators.required,
         Validators.minLength(3)
       ]),
-      Address: new FormControl("", [
-        Validators.required
+      username: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3)
       ]),
       Email: new FormControl("", [
         Validators.required,
@@ -41,7 +42,20 @@ export class StudentFormComponent implements OnInit {
       RepitePassword: new FormControl("", [
         Validators.required
       ]),
-      Image: new FormControl("")
+      Address: new FormControl("", [
+        Validators.required
+      ]),
+      Phone: new FormControl("", [
+        Validators.required,
+        Validators.minLength(3)
+      ]),
+      province_id: new FormControl("", [
+        Validators.required
+      ]),
+      city_id: new FormControl("", [
+        Validators.required
+      ]),
+      Image: new FormControl("", [])
 
     }, []);
   }
@@ -49,7 +63,7 @@ export class StudentFormComponent implements OnInit {
 
 
   getDataForm() {
-    console.log(this.userForm)
+    console.log(this.studentForm)
   }
   ngOnInit(): void {
 
