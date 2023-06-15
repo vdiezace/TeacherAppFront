@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ReviewsService } from './reviews.service';
 
 @Component({
   selector: 'app-reviews',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./reviews.component.css']
 })
 export class ReviewsComponent {
+  myReviews: any[];
+
+  constructor(private reviewsService: ReviewsService) {
+
+    this.myReviews = [];
+  }
+
+  async ngOnInit() {
+    const [response] = await this.reviewsService.getReviewsByStudentId();
+    console.log(response);
+  }
+
 
 }

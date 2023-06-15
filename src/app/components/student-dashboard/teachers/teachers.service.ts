@@ -17,7 +17,6 @@ export class TeachersService {
     let token = null;
     if (token = localStorage.getItem('token')) {
       this.userId = this.helper.decodeToken(token).user_id;
-      // this.baseUrl = 'http://localhost:3000/api/students-classes/'+ userId;
 
     }
    }
@@ -29,7 +28,7 @@ export class TeachersService {
       })
     }
     return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl+'api/teachers', httpOptions)
+      this.httpClient.get<any>(this.baseUrl + 'api/teachers', httpOptions)
     )
    }
 
@@ -40,7 +39,7 @@ export class TeachersService {
       })
     }
     return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl+'api/students-classes/'+this.userId, httpOptions)
+      this.httpClient.get<any>(this.baseUrl + 'api/students-classes/' + this.userId, httpOptions)
     ); 
 
    }
