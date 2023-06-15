@@ -1,21 +1,23 @@
+<div class="d-flex justify-content-center align-items-center container-principal">
+    <form class="w-25" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-primary container-submit">Submit</button>
 
-<app-main-header></app-main-header>
+        <div class="mensaje_registro">
+            <p class="little-text">No account? <span class="link little-text" [routerLink]="['/register']">create
+                    one</span></p>
+        </div>
 
-
-<section class="mb-5">
-  <div class="d-flex justify-content-end">
-      <img class="img-fluid img-bg w-75" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684782736/BG_jkjppz.png" alt="color de fondo de la home">
-  </div>
-  <div>
-      <h1 class="titulo">
-          I'm a...
-      </h1>
-      <button class="position-btn-student titulo-btn btn btn-outline-primary rounded-5" [routerLink]="['/login-form']">Student</button>
-      <button class="position-btn-teacher titulo-btn btn btn-outline-primary rounded-5" [routerLink]="['/login-form']">Teacher</button>
-
-    </div>
-  <div>
-      <img class=" img-alumna" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684786057/foto-landing-home_tqkn8p.png" alt="imagen alumna banner">
-  </div>
-  </section>
-
+    </form>
+</div>

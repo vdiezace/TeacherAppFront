@@ -5,9 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 
-
-
-
+/** Components */
 import { AppComponent } from './app.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { C404Component } from './components/c404/c404.component';
@@ -38,6 +36,8 @@ import { ProfileComponentAdmin } from './components/admin-dashboard/profile/prof
 import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
+import { StudentFormComponent } from './components/registro/student-form/student-form.component';
+import { TeacherFormComponent } from './components/registro/teacher-form/teacher-form.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +71,9 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     TeachersComponentAdmin,
     TeachersReviewsComponent,
     StudentHomeComponent,
-    
+    StudentFormComponent,
+    TeacherFormComponent,
+
 
   ],
   imports: [
