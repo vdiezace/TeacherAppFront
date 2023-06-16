@@ -25,7 +25,7 @@ export class TeachersService {
   getAllTeachers() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('user-token')!
+        'Authorization': localStorage.getItem('token')!
       })
     }
     return firstValueFrom(
@@ -36,7 +36,7 @@ export class TeachersService {
   getTeachersByStudentId() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('user-token')!
+        'Authorization': localStorage.getItem('token')!
       })
     }
     return firstValueFrom(

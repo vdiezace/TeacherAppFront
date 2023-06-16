@@ -26,12 +26,12 @@ export class LoginTokenService {
   }
 
   logout() {
-    localStorage.removeItem('user-token')
+    localStorage.removeItem('token')
     this._logged.next(false);
   }
 
   getId() {
-    const token = localStorage.getItem('user-token');
+    const token = localStorage.getItem('token');
     if (!token) {
       alert("No existe el token");
       return false;
@@ -41,7 +41,7 @@ export class LoginTokenService {
   }
 
   getRole() {
-    const token = localStorage.getItem('user-token');
+    const token = localStorage.getItem('token');
     if (!token) {
       alert("No existe el token");
       return false;
