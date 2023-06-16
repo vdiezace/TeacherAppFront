@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { BehaviorSubject, Subject, firstValueFrom } from 'rxjs';
@@ -26,22 +26,22 @@ export class LoginTokenService {
   }
 
   logout() {
-    localStorage.removeItem('user-token')
+    localStorage.removeItem('token')
     this._logged.next(false);
   }
 
   getId() {
-    const token = localStorage.getItem('user-token');
+    const token = localStorage.getItem('token');
     if (!token) {
       alert("No existe el token");
       return false;
     }
     const tokenInfo = this.getDecodedAccessToken(token);
-    return tokenInfo.user_id;
+    return tokenInfo.users_id;
   }
 
   getRole() {
-    const token = localStorage.getItem('user-token');
+    const token = localStorage.getItem('token');
     if (!token) {
       alert("No existe el token");
       return false;
@@ -49,5 +49,21 @@ export class LoginTokenService {
     const tokenInfo = this.getDecodedAccessToken(token);
     return tokenInfo.user_role;
   }
+
+  getTokenHeader(): any {
+    const token = localStorage.getItem('user-token');
+    let httpOptions;
+
+    if (token) {
+      httpOptions = {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+          "authorization": token
+        })
+      }
+      return httpOptions;
+    };
+  }
+
 }
 

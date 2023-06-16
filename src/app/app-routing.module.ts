@@ -42,12 +42,9 @@ const routes: Routes = [
   { path: "student/teachers-details", component: TeachersDetailsComponent},
   { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent},
   { path: "login-form", component: LoginFormComponent },
-  {
-    path: "register", component: RegistroComponent, children: [
-      { path: "student", component: StudentFormComponent },
-      { path: "teacher", component: TeacherFormComponent }
-    ]
-  },
+  { path: "register", component: RegistroComponent },
+  { path: "student-form", component: StudentFormComponent },
+  { path: "teacher-form", component: TeacherFormComponent },
   { path: "teachers", component: LandingTeacherComponent, canActivate: [TeachersGuard] },
   { path: "teachers/students-list", component: StudentslistComponent },
   { path: "teachers/:teacherid", component: TeacherprofileComponent },

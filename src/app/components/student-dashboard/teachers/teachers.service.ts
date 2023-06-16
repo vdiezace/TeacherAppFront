@@ -8,10 +8,10 @@ import { firstValueFrom } from 'rxjs';
 })
 export class TeachersService {
 
-  private baseUrl: string='http://localhost:3000/';
+  private baseUrl: string = 'http://localhost:3000/';
   helper = new JwtHelperService();
 
-  public userId= 0;
+  public userId = 0;
 
   constructor(private httpClient: HttpClient) {
     let token = null;
@@ -19,9 +19,9 @@ export class TeachersService {
       this.userId = this.helper.decodeToken(token).user_id;
 
     }
-   }
+  }
 
-   getAllTeachers() {
+  getAllTeachers() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
@@ -30,9 +30,9 @@ export class TeachersService {
     return firstValueFrom(
       this.httpClient.get<any>(this.baseUrl + 'api/teachers', httpOptions)
     )
-   }
+  }
 
-   getTeachersByStudentId() {
+  getTeachersByStudentId() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
