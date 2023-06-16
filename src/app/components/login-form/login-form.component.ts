@@ -27,7 +27,7 @@ export class LoginFormComponent {
     if (response.fatal) {
       return alert(response.fatal);
     }
-    localStorage.setItem('token', response.token);
+    localStorage.setItem('user-token', response.token);
 
     const userRole = this.helper.decodeToken(response.token).user_role;
     switch (userRole) {
