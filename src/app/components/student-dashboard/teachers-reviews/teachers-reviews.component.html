@@ -1,12 +1,13 @@
 <app-student-header></app-student-header>
 
-<div class="container encuesta">
+<div class="container encuesta" *ngIf="teacherData">
     <div>
-        <img src="" alt="">
+        <img class="teachers-foto" *ngIf="teacherData?.avatar" src="{{teacherData.avatar}}" alt="teachers photo">
     </div>
     <div class="questions">
+      <form novalidate #formulario ="ngForm" (ngSubmit)="onSubmit(formulario)">
         <div class="container-rating">
-            <p>How was your experience with?</p>
+            <p>How was your experience with {{teacherData.first_name}} {{teacherData.last_name}}?</p>
             <span class="star__container float-right">
                 <input type="radio" name="radio-1" value="1"
                   id="iradio-1-1" class="star__radio visuhide"
@@ -135,9 +136,11 @@
                     stars</span></label>
               </span>
         </div> 
-        <div>
-            <p>Give a comment:</p>
-            <textarea name="" id="" cols="30" rows="7"></textarea>
+        <div class="d-flex flex-column pb-3">
+            <label for="comment">Leave a comment:</label>
+            <textarea name="comment" id="comment" cols="30" rows="7" [(ngModel)]="comment"></textarea>
         </div>
+        <input type="submit" value="Send" class="btn submit-btn">
+      </form>
     </div>
 </div>

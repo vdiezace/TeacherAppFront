@@ -6,7 +6,7 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TeachersService {
+export class TeachersReviewsService {
 
   private baseUrl: string='http://localhost:3000/';
   helper = new JwtHelperService();
@@ -21,30 +21,34 @@ export class TeachersService {
     }
    }
 
-   getAllTeachers() {
+  
+
+   getTeacherById(teacherId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
       })
     }
     return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl + 'api/teachers', httpOptions)
-    )
+      this.httpClient.get<any>(this.baseUrl + 'api/teachers/' + teacherId, httpOptions)
+    );
    }
 
-   getTeachersByStudentId() {
+   reviewTeacher(teacherId: number, rating: number, comment: string) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token')!
+        'Authorization': localStorage.getItem('token')!,
+        'Content-Type': 'application/json'
       })
     }
+    const toSend = {
+      teacher_id: teacherId,
+      student_id: this.userId,
+      rating,
+      comment
+    };
     return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl + 'api/students-classes/' + this.userId, httpOptions)
-    ); 
-
-   }
-
-   getTeacherById() {
-    
+      this.httpClient.post<any>(this.baseUrl + 'api/reviews', toSend, httpOptions)
+    );
    }
 }

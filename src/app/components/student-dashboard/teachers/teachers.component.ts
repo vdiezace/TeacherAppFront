@@ -22,7 +22,7 @@ export class TeachersComponent {
     this.teachers = await this.teacherService.getAllTeachers();
     
     console.log(this.teachers);
-
+    
     const response = await this.teacherService.getTeachersByStudentId();
     this.myClasses = response;
     console.log(response);

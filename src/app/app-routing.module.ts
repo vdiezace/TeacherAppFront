@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: "student/reviews", component: ReviewsComponent},
   { path: "student/teachers", component: TeachersComponent},
   { path: "student/teachers-details", component: TeachersDetailsComponent},
-  { path: "student/teachers-reviews", component: TeachersReviewsComponent},
+  { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent},
   { path: "login-form", component: LoginFormComponent },
   { path: "register", component: RegistroComponent },
   { path: "teachers", component: LandingTeacherComponent, canActivate:[TeachersGuard]},

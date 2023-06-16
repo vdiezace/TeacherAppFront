@@ -15,9 +15,13 @@ export class ReviewsComponent {
   }
 
   async ngOnInit() {
-    const [response] = await this.reviewsService.getReviewsByStudentId();
-    console.log(response);
-  }
+    try {
+      const response = await this.reviewsService.getReviewsByStudentId();
+      console.log(response);  
+    }catch(err) {
+      return err;
+    }
+  } 
 
 
 }

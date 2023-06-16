@@ -26,7 +26,7 @@ export class ReviewsService {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
       })
-    }
+    };
     return firstValueFrom(
       this.httpClient.get<any>(this.baseUrl + 'api/reviews/student/' + this.userId, httpOptions)
     )
