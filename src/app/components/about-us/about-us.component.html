@@ -1,13 +1,17 @@
-<app-main-header></app-main-header>
 <div class="position-relative">
     <div class="">
-        <img class="bg-image w-75 position-absolute img-bg" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684782736/BG_jkjppz.png" alt="color de fondo de about-us">
-    </div>    
+        <img class="bg-image w-75 position-absolute img-bg"
+            src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684782736/BG_jkjppz.png"
+            alt="color de fondo de about-us">
+    </div>
 </div>
 <div class="container mt-5 pt-5">
     <div class="row col-4">
         <h1 class="pb-2 mb-2">Elevate your learning</h1>
-        <p>Welcome to TeacherApp, your gateway to personalized education! We are a team of passionate and experienced teachers dedicated to empowering learners like you to reach new heights of knowledge. With our app, you have the freedom to choose from a diverse group of expert teachers, each specializing in their unique subject areas.</p>    
+        <p>Welcome to TeacherApp, your gateway to personalized education! We are a team of passionate and experienced
+            teachers dedicated to empowering learners like you to reach new heights of knowledge. With our app, you have
+            the freedom to choose from a diverse group of expert teachers, each specializing in their unique subject
+            areas.</p>
     </div>
 </div>
 <div class="container mt-5 pt-5 steps">
@@ -16,21 +20,23 @@
         <div class="row g-2 mt-5 pt-5 mb-1 pb-3" *ngIf="currentStep === i">
             <div class="col-md-6">
                 <p class="number-orange">{{step.title1}}</p>
-                <p>{{step.title2}}</p>    
+                <p>{{step.title2}}</p>
             </div>
             <div class="col-md-6">
                 <img class="img-fluid img-thumbnail" src="{{step.image}}" alt="signup-form">
             </div>
         </div>
         <div class="prev-steps-arrow">
-            <button class="arrow-button" (click)="prevStep()" *ngIf="currentStep != 0"><</button>
-        </div>        
+            <button class="arrow-button" (click)="prevStep()" *ngIf="currentStep != 0">
+            </button>
+        </div>
         <div class="next-steps-arrow">
             <button class="arrow-button" (click)="nextStep()" *ngIf="currentStep != arrSteps.length-1">></button>
-        </div>        
+        </div>
     </ng-container>
     <div class="circle-button-container">
-        <button (click)="currentStep = i" class="circle-button {{currentStep === i ? 'selected' : '' }}" *ngFor="let button of arrSteps; let i = index"></button>
+        <button (click)="currentStep = i" class="circle-button {{currentStep === i ? 'selected' : '' }}"
+            *ngFor="let button of arrSteps; let i = index"></button>
     </div>
 </div>
 <div class="container mt-5 pt-3 pb-3 mb-3">

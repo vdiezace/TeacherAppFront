@@ -1,0 +1,109 @@
+<section class="mb-5">
+    <h1>Formulario de estudiante</h1>
+    <form novalidate [formGroup]="studentForm" (submit)="getDataForm()">
+
+        <div class="form-container">
+            <input type="hidden" id="role_id" formControlName="role_id" [value]="student_role_id">
+            <div class="mb-2">
+                <label for="first_name" class="form-first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" aria-describedby="first_name"
+                    formControlName="first_name">
+                <p class="error"
+                    *ngIf="studentForm.get('first_name')?.hasError('required') && studentForm.get('first_name')?.touched">
+                    *This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="last_name" class="form-last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" aria-describedby="last_name"
+                    formControlName="last_name">
+                <p class="error"
+                    *ngIf="studentForm.get('last_name')?.hasError('required') && studentForm.get('last_name')?.touched">
+                    *This
+                    field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="username" class="form-username">Username</label>
+                <input type="text" class="form-control" id="username" aria-describedby="username"
+                    formControlName="username">
+                <p class="error"
+                    *ngIf="studentForm.get('username')?.hasError('required') && studentForm.get('username')?.touched">
+                    *This
+                    field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Email" class="form-email">Email</label>
+                <input type="Email" class="form-control" id="Email" aria-describedby="Email" formControlName="Email">
+                <p class="error"
+                    *ngIf="studentForm.get('Email')?.hasError('required') && studentForm.get('Email')?.touched">
+                    *This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Password" class="form-Password">Password</label>
+                <input type="Password" class="form-control" id="Password" aria-describedby="Password"
+                    formControlName="Password">
+                <p class="error"
+                    *ngIf="studentForm.get('Password')?.hasError('required') && studentForm.get('Password')?.touched">
+                    *This
+                    field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="RepitePassword" class="form-Password">Repeat Password</label>
+                <input type="password" class="form-control" id="RepitePassword" aria-describedby="Password"
+                    formControlName="RepitePassword">
+                <p class="error"
+                    *ngIf="studentForm.get('RepitePassword')?.hasError('required') && studentForm.get('RepitePassword')?.touched">
+                    *This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Phone" class="form-Phone">Phone</label>
+                <input type="text" class="form-control" id="Phone" aria-describedby="Phone" formControlName="Phone">
+                <p class="error"
+                    *ngIf="studentForm.get('Phone')?.hasError('required') && studentForm.get('Phone')?.touched">
+                    *This
+                    field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Address" class="form-Address">Address</label>
+                <input type="text" class="form-control" id="Address" aria-describedby="Address"
+                    formControlName="Address">
+                <p class="error"
+                    *ngIf="studentForm.get('Address')?.hasError('required') && studentForm.get('Address')?.touched">
+                    *This
+                    field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="image" class="form-image">Image</label>
+                <input type="text" class="form-control" id="image" aria-describedby="Image" formControlName="Image">
+            </div>
+            <div class="mb-2">
+                <label for="Province" class="form-Province">Province</label>
+                <input type="text" class="form-control" id="Province" aria-describedby="Province"
+                    formControlName="Province">
+                <p class="error"
+                    *ngIf="studentForm.get('Province')?.hasError('required') && studentForm.get('Province')?.touched">
+                    *This
+                    field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="City" class="form-City">City</label>
+                <input type="text" class="form-control" id="City" aria-describedby="City" formControlName="City">
+                <p class="error"
+                    *ngIf="studentForm.get('City')?.hasError('required') && studentForm.get('City')?.touched">*This
+                    field is required</p>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="Check1">
+                <label class="form-check-label terms" for="Check1">I have read and agreed to the terms and
+                    conditions</label>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="mt-2 btn btn-dark form-button"
+                    [disabled]="!studentForm.valid">Send</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</section>

@@ -24,6 +24,8 @@ import { StudentsComponent } from './components/admin-dashboard/students/student
 import { AdminGuard } from './guards/admin.guard';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
+import { StudentFormComponent } from './components/registro/student-form/student-form.component';
+import { TeacherFormComponent } from './components/registro/teacher-form/teacher-form.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -40,15 +42,20 @@ const routes: Routes = [
   { path: "student/teachers-details", component: TeachersDetailsComponent},
   { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent},
   { path: "login-form", component: LoginFormComponent },
-  { path: "register", component: RegistroComponent },
-  { path: "teachers", component: LandingTeacherComponent, canActivate:[TeachersGuard]},
-  { path: "teachers/students-list", component: StudentslistComponent},
-  { path: "teachers/:teacherid", component: TeacherprofileComponent},
-  { path: "admin", component: HomeComponentAdmin, canActivate:[AdminGuard]},
-  { path: "admin/students", component: StudentsComponent},
-  { path: "admin/teachers", component: TeachersComponentAdmin},
-  { path: "admin/:adminid", component: ProfileComponentAdmin},
- 
+  {
+    path: "register", component: RegistroComponent, children: [
+      { path: "student", component: StudentFormComponent },
+      { path: "teacher", component: TeacherFormComponent }
+    ]
+  },
+  { path: "teachers", component: LandingTeacherComponent, canActivate: [TeachersGuard] },
+  { path: "teachers/students-list", component: StudentslistComponent },
+  { path: "teachers/:teacherid", component: TeacherprofileComponent },
+  { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
+  { path: "admin/students", component: StudentsComponent },
+  { path: "admin/teachers", component: TeachersComponentAdmin },
+  { path: "admin/:adminid", component: ProfileComponentAdmin },
+
   { path: "**", component: C404Component }
 ];
 
