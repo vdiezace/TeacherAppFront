@@ -1,7 +1,7 @@
 export interface Class {
     id?: number;
-    teacher_id: number;
-    student_id: number;
+    teachers_id: number;
+    students_id: number;
     creation?: string;
     title?: string;
     start_hour: number;
