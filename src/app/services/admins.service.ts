@@ -17,31 +17,31 @@ export class AdminsService {
     this.baseUrl = "http://localhost:3000/api/admin";
   }
 
-  getAll(): Promise<any> {
+  getAll() {
     return firstValueFrom(this.httpClient.get<any>(this.baseUrl, this.loginTokenService.getTokenHeader()));
   }
 
-  getAdminById(pId: number): Promise<any> {
+  getAdminById(pId: number) {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/${pId}`, this.loginTokenService.getTokenHeader()));
   }
 
-  createAdmin(pAdmin: Admin): Promise<any> {
+  createAdmin(pAdmin: Admin) {
     return firstValueFrom(this.httpClient.post<Admin>(this.baseUrl, pAdmin, this.loginTokenService.getTokenHeader()));
   }
 
-  updateAdminById(pId: number): Promise<any> {
+  updateAdminById(pId: number) {
     return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/${pId}`, this.loginTokenService.getTokenHeader()));
   }
 
-  validateTeacherById(pId: number): Promise<any> {
+  validateTeacherById(pId: number) {
     return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/validate/${pId}`, this.loginTokenService.getTokenHeader()));
   }
 
-  deleteAdminById(pId: number): Promise<any> {
+  deleteAdminById(pId: number) {
     return firstValueFrom(this.httpClient.delete<any>(`${this.baseUrl}/delete/${pId}`, this.loginTokenService.getTokenHeader()));
   }
 
-  deleteaAllAdmin(): Promise<any> {
+  deleteaAllAdmin() {
     return firstValueFrom(this.httpClient.delete<any>(this.baseUrl, this.loginTokenService.getTokenHeader()));
   }
 
