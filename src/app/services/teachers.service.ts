@@ -5,23 +5,22 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TeacherService {
+export class TeachersService {
 
   private baseUrl: string;
 
-  constructor( private httpClient: HttpClient) {
-    this.baseUrl ='http://localhost:3000/api/teachers'
-   }
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = 'http://localhost:3000/api/teachers'
+  }
 
-   getAll() {
-    
+  getAllTeachers() {
     return firstValueFrom(
       this.httpClient.get<any>(this.baseUrl)
     );
-   }
+  }
 
-   getTeachers() {
+  getTeachers() {
     return firstValueFrom(
-    this.httpClient.get(this.baseUrl));
+      this.httpClient.get(this.baseUrl));
   }
 }
