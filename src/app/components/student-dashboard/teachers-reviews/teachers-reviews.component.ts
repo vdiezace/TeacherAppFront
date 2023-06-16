@@ -25,7 +25,7 @@ export class TeachersReviewsComponent {
 
   }
 
-  async ngOnInit() {
+/*   async ngOnInit() {
     this.teacherId= this.activatedRoute.snapshot.paramMap.get("teacherid");
 
     this.teacherData= await this.teachersReviewsService.getTeacherById(this.teacherId);
@@ -40,5 +40,5 @@ export class TeachersReviewsComponent {
     
     this.teachersReviewsService.reviewTeacher(this.teacherId, avg, this.comment);
   }
-
+ */
 }

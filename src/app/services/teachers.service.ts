@@ -14,9 +14,14 @@ export class TeachersService {
   }
 
   getAllTeachers() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
     return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl)
-    );
+      this.httpClient.get<any>(`${this.baseUrl}`, httpOptions)
+    )
   }
 
   getTeachers() {

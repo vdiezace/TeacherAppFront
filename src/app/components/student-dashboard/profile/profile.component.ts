@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProfileService } from './profile.service';
+import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +10,11 @@ export class ProfileComponent {
 
 public userData : any;
 
-  constructor( private profileService: ProfileService) {
+  constructor( private studentService: StudentsService) {
   }
 
   async ngOnInit() {
-    const response = await this.profileService.getUserData();
+    const response = await this.studentService.getStudentData();
     console.log(response);
     this.userData= response;
     if (this.userData){
