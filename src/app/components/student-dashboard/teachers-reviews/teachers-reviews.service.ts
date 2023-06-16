@@ -14,7 +14,7 @@ export class TeachersReviewsService {
   public userId= 0;
 
   constructor(private httpClient: HttpClient) {
-    let token = null;
+    let token: any;
     if (token = localStorage.getItem('token')) {
       this.userId = this.helper.decodeToken(token).user_id;
 

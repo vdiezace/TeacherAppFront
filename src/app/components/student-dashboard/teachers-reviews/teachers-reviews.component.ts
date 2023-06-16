@@ -38,7 +38,7 @@ export class TeachersReviewsComponent {
     const avg = (+this.value1 + +this.value2 + +this.value3 + +this.value4)/4;
     console.log(avg);
     
-    //this.teachersReviewsService.reviewTeacher(this.teacherId, avg, this.comment);
+    this.teachersReviewsService.reviewTeacher(this.teacherId, avg, this.comment);
   }
 
 }
