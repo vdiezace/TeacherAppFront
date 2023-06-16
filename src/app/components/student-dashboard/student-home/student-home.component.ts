@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TeacherService } from 'src/app/service/teacher.service';
+import { TeachersService } from '../teachers/teachers.service';
 
 @Component({
   selector: 'app-student-home',
@@ -76,13 +76,13 @@ export class StudentHomeComponent {
     "music",
     "arts",
     "programming"
-  ]; 
+  ];
 
   ratings = [
     2,
     3,
     4
-  ]; 
+  ];
 
   experiences = [
     2,
@@ -96,20 +96,20 @@ export class StudentHomeComponent {
   public experienceSelected = "0";
 
 
-  constructor( private teacherService: TeacherService) {
+  constructor(private teachersService: TeachersService) {
     this.teachers = [];
     this.filteredTeachers = [];
   }
 
-   filterTeachers() {
+  filterTeachers() {
     this.filteredTeachers = this.teachers.filter(teacher =>
       teacher.province.includes(this.provinceSelected) && teacher.category_title.includes(this.categorySelected) && (+teacher.avg_rating) >= (+this.ratingSelected) && teacher.experience >= this.experienceSelected);
-      console.log(this.filteredTeachers);
+    console.log(this.filteredTeachers);
 
   }
- 
-   async ngOnInit() {
-    this.teachers = await this.teacherService.getAll();
+
+  async ngOnInit() {
+    this.teachers = await this.teachersService.getAllTeachers();
     this.filterTeachers();
     console.log(this.teachers);
   }
