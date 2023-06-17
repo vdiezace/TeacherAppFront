@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { TeacherService } from 'src/app/service/teacher.service';
+import { TeachersService } from 'src/app/services/teachers.service';
+;
 
 @Component({
   selector: 'app-teacherprofile',
@@ -15,7 +16,7 @@ export class TeacherprofileComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private teacherService: TeacherService
+    private teacherService: TeachersService
   ) {
     this.userForm = new FormGroup({
       Name: new FormControl('', [
@@ -54,6 +55,21 @@ export class TeacherprofileComponent implements OnInit {
   }
 
   getTeacherProfile() {
+    const teacherIdNumber = parseInt(this.teacherId!, 10); 
+  
+    this.teacherService.getTeacherById(teacherIdNumber)
+      .then((teacher: any) => {
+        this.teacher = teacher;
+  
+        // Resto del código...
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+  
+  /*
+  getTeacherProfile() {
     this.teacherService.getTeacherById(this.teacherId!)
       .then((teacher: any) => {
         this.teacher = teacher;
@@ -71,7 +87,7 @@ export class TeacherprofileComponent implements OnInit {
         console.error(error);
       });
   }
-
+*/
   getDataForm() {
     console.log(this.userForm.value);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
-import { TeacherService } from 'src/app/service/teacher.service';
+import { TeachersService } from 'src/app/services/teachers.service';
+
 
 @Component({
   selector: 'app-teacher-filter',
@@ -10,9 +11,15 @@ import { TeacherService } from 'src/app/service/teacher.service';
 export class TeacherFilterComponent implements OnInit {
 
   teachers: Teacher [];
+  selectedValue: any;
+
+  ChangeAVG_Rating(e: Event) {
+    this.selectedValue = (e.target as HTMLInputElement).value;
+  }
+  
  
  
-  constructor(private teacherService: TeacherService) {
+  constructor(private teacherService: TeachersService) {
     this.teachers = [];
 
   }
@@ -20,16 +27,17 @@ export class TeacherFilterComponent implements OnInit {
  
 
   getTeachers(): void {
-    this.teacherService.getTeachers().subscribe(teachers => {
+    this.teacherService.getAllTeachers().subscribe(teachers => {
       this.teachers = teachers;
     });
   }
 
-  async ngOnInit (){
-    this.teachers = await this.teacherService.getAll();
+  async ngOnInit() {
+    const teachers = await this.teacherService.getAllTeachers().toPromise();
+    this.teachers = teachers ? teachers : [];
     this.getTeachers();
-    
   }
+  
 
   get uniqueTeachers(): Teacher[] {
     const uniqueValues: Teacher[] = [];
@@ -54,6 +62,22 @@ export class TeacherFilterComponent implements OnInit {
     this.teachers.forEach((teacher) => {
       const isValueAlreadyCaptured = uniqueValues.some(
         (uniqueTeacher) => uniqueTeacher.avg_rating === teacher.avg_rating
+      );
+
+      if (!isValueAlreadyCaptured) {
+        uniqueValues.push(teacher);
+      }
+    });
+
+    return uniqueValues;
+  }
+
+  get uniqueTeachersProvince(): Teacher[] {
+    const uniqueValues: Teacher[] = [];
+
+    this.teachers.forEach((teacher) => {
+      const isValueAlreadyCaptured = uniqueValues.some(
+        (uniqueTeacher) => uniqueTeacher.province === teacher.province
       );
 
       if (!isValueAlreadyCaptured) {

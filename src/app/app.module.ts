@@ -27,9 +27,6 @@ import { TeachersDetailsComponent } from './components/student-dashboard/teacher
 import { RegistroComponent } from './components/registro/registro.component';
 import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
-import { StudentslistComponent } from './components/studentslist/studentslist.component';
-import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
-import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
 import { ProfileComponentAdmin } from './components/admin-dashboard/profile/profile.component';
@@ -39,6 +36,9 @@ import { environment } from './environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
+import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+
 
 
 
@@ -65,9 +65,6 @@ import { SortPipe } from './pipes/sort.pipe';
     RegistroComponent,
     MapComponent,
     LandingTeacherComponent,
-    StudentslistComponent,
-    TeacherprofileComponent,
-    TeacherFilterComponent,
     StudentsComponent,
     HomeComponentAdmin,
     ProfileComponentAdmin,
@@ -75,6 +72,11 @@ import { SortPipe } from './pipes/sort.pipe';
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
+    MapComponent,
+    TeacherFilterComponent,
+    TeacherprofileComponent,
+
+
 
 
   ],

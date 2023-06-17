@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { LoginTokenService } from './login-token.service';
 import { Teacher } from '../interfaces/teacher.interface';
 
@@ -16,11 +16,21 @@ export class TeachersService {
     this.baseUrl = 'http://localhost:3000/api/teachers'
   }
 
-  getAllTeachers() {
+  
+  
+  /*async getAllTeachers() {
     console.log(this.loginTokenService.getTokenHeader());
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}`, this.loginTokenService.getTokenHeader())
+      await this.httpClient.get<any[]>(`${this.baseUrl}`, this.loginTokenService.getTokenHeader().toPromise())
     )
+  }*/
+  getAllTeachers(): Observable<any[]> {
+    console.log(this.loginTokenService.getTokenHeader());
+  
+    const headers = this.loginTokenService.getTokenHeader();
+    const requestOptions = { headers: headers };
+  
+    return this.httpClient.get<any[]>(`${this.baseUrl}`, requestOptions);
   }
 
   getTeacherById(pTeacherId: number) {

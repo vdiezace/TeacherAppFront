@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Teacher } from '../interface/teacher';
+
 
 
 @Pipe({
