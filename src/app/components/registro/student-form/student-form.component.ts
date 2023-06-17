@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./student-form.component.css']
 })
 export class StudentFormComponent implements OnInit {
-  studentForm: FormGroup;
+  studentForm: FormGroup | any;
   student_role_id = 3;
 
   constructor(
