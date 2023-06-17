@@ -28,15 +28,6 @@ export class TeachersService {
       this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
     )
   } 
-  /* getAllTeachers(): Observable<any[]> {
-    console.log(this.loginTokenService.getTokenHeader());
-  
-    const headers = this.loginTokenService.getTokenHeader();
-    const requestOptions = { headers: headers };
-    console.log(requestOptions);
-  
-    return this.httpClient.get<any[]>(`${this.baseUrl}`, requestOptions);
-  }  */
 
   getTeacherById(pTeacherId: number) {
     return firstValueFrom(
@@ -77,5 +68,10 @@ export class TeachersService {
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${pTeacherId}`, this.loginTokenService.getTokenHeader())
     );
+  }
+
+  getIdTeacherByUserId(pUserId: number) {
+    
+    
   }
 }

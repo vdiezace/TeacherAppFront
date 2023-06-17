@@ -1,8 +1,8 @@
+import { LoginTokenService } from 'src/app/services/login-token.service';
 
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -13,9 +13,10 @@ import { UsersService } from 'src/app/services/users.service';
 export class LoginFormComponent {
 
   formulario: FormGroup;
-  helper = new JwtHelperService();
 
-  constructor(private usersService: UsersService, private router: Router) {
+  constructor(private usersService: UsersService,
+    private loginTokenService:  LoginTokenService,
+    private router: Router) {
     this.formulario = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -27,9 +28,9 @@ export class LoginFormComponent {
     if (response.fatal) {
       return alert(response.fatal);
     }
-    localStorage.setItem('user-token', response.token);
+    localStorage.setItem('token', response.token);
 
-    const userRole = this.helper.decodeToken(response.token).user_role;
+    const userRole = this.loginTokenService.getRole();
     switch (userRole) {
       case "student":
         this.router.navigateByUrl('/student/home');

@@ -1,7 +1,9 @@
+import { LoginTokenService } from 'src/app/services/login-token.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
-import { TeachersReviewsService } from './teachers-reviews.service';
 import { parse } from '@fortawesome/fontawesome-svg-core';
+import { TeachersService } from 'src/app/services/teachers.service';
+import { ReviewsService } from 'src/app/services/reviews.service';
 
 @Component({
   selector: 'app-teachers-reviews',
@@ -19,25 +21,33 @@ export class TeachersReviewsComponent {
   teacherId:any= 0;
   teacherData: any;
 
-  constructor(private teachersReviewsService: TeachersReviewsService ,
+  constructor(private teachersService: TeachersService,
+    private loginTokenService: LoginTokenService,
+    private reviewsService: ReviewsService,
     private activatedRoute: ActivatedRoute) {
 
   }
 
-/*   async ngOnInit() {
-    this.teacherId= this.activatedRoute.snapshot.paramMap.get("teacherid");
+   async ngOnInit() {
+    this.teacherId= +this.activatedRoute.snapshot.paramMap.get("teacherid")!;
 
-    this.teacherData= await this.teachersReviewsService.getTeacherById(this.teacherId);
+    this.teacherData= await this.teachersService.getTeacherById(this.teacherId);
     console.log(this.teacherData);
   }
-*/
+
   onSubmit(formulario: any) {
     console.log(formulario.value);
     console.log(this.value1, this.value2, this.value3, this.value4);
     const avg = (+this.value1 + +this.value2 + +this.value3 + +this.value4)/4;
     console.log(avg);
     
-  //  this.teachersReviewsService.reviewTeacher(this.teacherId, avg, this.comment);
+
+      this.reviewsService.create({
+      teachers_id: this.teacherId,
+      students_id: this.loginTokenService.getId(), 
+      rating: avg,
+      comment: this.comment
+    });
   }
  
 }

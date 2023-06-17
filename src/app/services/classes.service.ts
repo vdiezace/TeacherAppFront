@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { LoginTokenService } from './login-token.service';
@@ -20,11 +20,22 @@ export class ClassesService {
   }
 
   getStudentClasses(pStudentId: number) {
-    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl_studentClasses}/${pStudentId}`, this.loginTokenService.getTokenHeader()))
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl_studentClasses}/${pStudentId}`, httpOptions))
   }
 
   getBookedClassesByTeacherAndDate(pTeacherId: number, pDate: string) {
-    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl_classes}/teacher/teacher=${pTeacherId}&date=${pDate}`, this.loginTokenService.getTokenHeader()))
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl_classes}/teacher/teacher=${pTeacherId}&date=${pDate}`, httpOptions))
   }
 
   create(newClass: Class) {
@@ -32,7 +43,12 @@ export class ClassesService {
   }
 
   getTeacherClasses(pTeacherId: number) {
-    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl_teacherClasses}/${pTeacherId}`, this.loginTokenService.getTokenHeader()))
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl_teacherClasses}/${pTeacherId}`, httpOptions))
   }
 
   getLoggedStudentClasses() {

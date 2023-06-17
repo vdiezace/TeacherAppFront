@@ -17,6 +17,7 @@ export class ClassesComponent {
   async ngOnInit() {
     const response = await this.classesService.getLoggedStudentClasses();
     console.log(response);
+    this.classes = response;
   }
 
 }
