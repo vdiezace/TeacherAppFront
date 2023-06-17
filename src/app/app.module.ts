@@ -33,11 +33,11 @@ import { ProfileComponentAdmin } from './components/admin-dashboard/profile/prof
 import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
 import { environment } from './environments/environment';
-import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -86,7 +86,8 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AgmCoreModule.forRoot(environment.googleMaps),
+    AgmCoreModule.forRoot(environment.googleMaps)
+
 
   ],
   providers: [],
