@@ -1,6 +1,6 @@
 <section class="container mt-5">
     <h1>Formulario de estudiante</h1>
-    <form novalidate [formGroup]="studentForm" (submit)="getDataForm()">
+    <form novalidate (submit)="getDataForm()">
         <input type="hidden" id="role_id" formControlName="role_id" [value]="student_role_id">
         <div class="row mb-5">
             <div class="mb-2">
