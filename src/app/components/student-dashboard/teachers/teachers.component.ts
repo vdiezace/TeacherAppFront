@@ -20,13 +20,13 @@ export class TeachersComponent {
   }
 
    async ngOnInit() {
-    //this.teachers = await this.teacherService.getAllTeachers();
+    this.teachers = await this.teacherService.getAllTeachers();
     
     console.log(this.teachers);
     
-   // const response = await this.teacherService.getTeachersByStudentId();
-  //  this.myClasses = response;
-   // console.log(response);
+   /*  const response = await this.teacherService.getTeachersByStudentId();
+    this.myClasses = response;
+    console.log(response); */
 
    // this.myTeachers = this.teachers.filter((teacher) => {
    //   return this.myClasses.some((cl) => {

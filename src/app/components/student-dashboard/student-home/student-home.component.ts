@@ -68,16 +68,15 @@ export class StudentHomeComponent {
   ];
 
   categories = [
-    "mathematics",
-    "physics",
-    "literature",
-    "english",
-    "mechanics",
-    "biology",
-    "french",
-    "music",
-    "arts",
-    "programming"
+    "Matemáticas",
+    "Física",
+    "Inglés",
+    "Mecánica",
+    "Biología",
+    "Francés",
+    "Música",
+    "Arte",
+    "Programación"
   ];
 
   ratings = [
