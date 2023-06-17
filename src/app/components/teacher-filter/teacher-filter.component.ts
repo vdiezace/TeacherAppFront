@@ -1,35 +1,74 @@
-import { Component } from '@angular/core';
-import { TeachersService } from 'src/app/services/teachers.service';
+import { Component, OnInit } from '@angular/core';
+import { Teacher } from 'src/app/interfaces/teacher.interface';
+import { TeacherService } from 'src/app/service/teacher.service';
 
 @Component({
   selector: 'app-teacher-filter',
   templateUrl: './teacher-filter.component.html',
   styleUrls: ['./teacher-filter.component.css']
 })
-export class TeacherFilterComponent {
+export class TeacherFilterComponent implements OnInit {
 
-  teachers: any[];
-  currentIndex: number = 0;
-
-  constructor(private teachersService: TeachersService) {
+  teachers: Teacher [];
+ 
+ 
+  constructor(private teacherService: TeacherService) {
     this.teachers = [];
+
   }
 
-  async ngOnInit() {
-  //  this.teachers = await this.teachersService.getAllTeachers();
+ 
+
+  getTeachers(): void {
+    this.teacherService.getTeachers().subscribe(teachers => {
+      this.teachers = teachers;
+    });
   }
 
-  previousPage() {
-    if (this.currentIndex >= 3) {
-      this.currentIndex -= 3;
-    }
+  async ngOnInit (){
+    this.teachers = await this.teacherService.getAll();
+    this.getTeachers();
+    
   }
 
-  nextPage() {
-    if (this.currentIndex + 3 < this.teachers.length) {
-      this.currentIndex += 3;
-    }
+  get uniqueTeachers(): Teacher[] {
+    const uniqueValues: Teacher[] = [];
+
+    this.teachers.forEach((teacher) => {
+      const isValueAlreadyCaptured = uniqueValues.some(
+        (uniqueTeacher) => uniqueTeacher.experience === teacher.experience
+      );
+
+      if (!isValueAlreadyCaptured) {
+        uniqueValues.push(teacher);
+      }
+    });
+
+    return uniqueValues;
+  }
+
+
+  get uniqueTeachersRating(): Teacher[] {
+    const uniqueValues: Teacher[] = [];
+
+    this.teachers.forEach((teacher) => {
+      const isValueAlreadyCaptured = uniqueValues.some(
+        (uniqueTeacher) => uniqueTeacher.avg_rating === teacher.avg_rating
+      );
+
+      if (!isValueAlreadyCaptured) {
+        uniqueValues.push(teacher);
+      }
+    });
+
+    return uniqueValues;
   }
 }
+ 
+
+
+
+
+
 
 

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/service/users.service';
+
 
 @Component({
   selector: 'app-studentslist',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class StudentslistComponent {
 
+
+  students: any[];
+
+  constructor(private userService: UsersService) {
+    this.students = [];
+  }
+
+  async ngOnInit (){
+    this.students = await this.userService.getAll();
+    
+  }
+ 
 }
+

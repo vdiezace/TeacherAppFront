@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
+
 
 /** Components */
 import { AppComponent } from './app.component';
@@ -35,9 +35,12 @@ import { HomeComponentAdmin } from './components/admin-dashboard/home/home.compo
 import { ProfileComponentAdmin } from './components/admin-dashboard/profile/profile.component';
 import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
-import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
-import { StudentFormComponent } from './components/registro/student-form/student-form.component';
-import { TeacherFormComponent } from './components/registro/teacher-form/teacher-form.component';
+import { environment } from './environments/environment';
+import { AgmCoreModule } from '@agm/core';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+
+
 
 @NgModule({
   declarations: [
@@ -70,9 +73,8 @@ import { TeacherFormComponent } from './components/registro/teacher-form/teacher
     ProfileComponentAdmin,
     TeachersComponentAdmin,
     TeachersReviewsComponent,
-    StudentHomeComponent,
-    StudentFormComponent,
-    TeacherFormComponent,
+    FilterPipe,
+    SortPipe,
 
 
   ],
@@ -82,7 +84,8 @@ import { TeacherFormComponent } from './components/registro/teacher-form/teacher
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    AgmCoreModule.forRoot(environment.googleMaps),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

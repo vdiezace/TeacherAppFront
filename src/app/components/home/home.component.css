@@ -64,3 +64,21 @@ h1, h2, h3{
     font-weight: 700;
     text-align: center;
 }
+
+body {
+    color: #000000;
+    font-family: Sans-Serif;
+    padding: 30px;
+    background-color: #f6f6f6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  a:hover {
+    color: #222222
+  }
+  
+  

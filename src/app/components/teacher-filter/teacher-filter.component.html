@@ -1,23 +1,56 @@
+
+
 <div class="container">
     <h2 class="title mt-5 mb-5 text-center text-uppercase"> Our Teachers</h2>
 </div>
 
 
+
+<div class="container mb-5">
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4">
+      <label class="dropdown">
+        <div class="dd-button">
+          Experience
+        </div>
+        <input type="checkbox" class="dd-input" id="test">
+        <ul class="dd-menu dd-position">
+          <li class="hr" *ngFor="let teacher of uniqueTeachers | sort">{{ teacher.experience }}</li>
+        </ul>
+      </label>
+      <label class="dropdown">
+      <div class="dd-button">
+          Average Rating
+        </div>
+        <input type="checkbox" class="dd-input" id="test">
+        <ul class="dd-menu dd-position">
+          <li class="hr" *ngFor="let teacher of uniqueTeachersRating | sort">{{ teacher.avg_rating }}</li>
+        </ul>
+      </label>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <!--LLISTA DE TEACHERS-->
+
 <div class="container">
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4" *ngFor="let teacher of teachers; let i = index">
-        <div class="card" *ngIf="i < 6">
-          <img src="{{teacher.avatar}}">
-          <div class="card-body">
-            <h5 class="card-title">{{teacher.first_name | uppercase}} {{teacher.last_name | uppercase}}</h5>
-            <p>{{teacher.category_title | uppercase}}</p>
-            <p>{{teacher.province }}</p>
-            <p> Rating: {{teacher.avg_rating}}</p>
-          </div>
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let teacher of teachers; let i = index">
+      <div class="card" *ngIf="i < 3">
+        <img src="{{teacher.avatar}}">
+        <div class="card-body">
+          <h5 class="card-title">{{teacher.first_name | uppercase}} {{teacher.last_name | uppercase}}</h5>
+          <p>{{teacher.province }}</p>
+          <p> Rating: {{teacher.avg_rating}}</p>
         </div>
       </div>
     </div>
-    
   </div>
   
+</div>
+

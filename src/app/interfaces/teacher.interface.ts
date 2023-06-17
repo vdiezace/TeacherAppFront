@@ -12,6 +12,7 @@ export interface Teacher {
   longitude?: string,
   city_id: number,
   address: string,
+  province: string,
   price_hour: number,
   experience: number,
   category_id: number,
