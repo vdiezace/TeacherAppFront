@@ -83,13 +83,7 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-    AgmCoreModule.forRoot(environment.googleMaps)
-
-
-=======
     AgmCoreModule.forRoot(environment.googleMaps),
->>>>>>> 6ab9be1d27b26147df2a0a899c78692309d50f0e
   ],
   providers: [],
   bootstrap: [AppComponent]
