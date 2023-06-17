@@ -16,6 +16,24 @@
     width: 10px;
 }
 
+<<<<<<< HEAD
 .width-nav{
     width:150px;
 }
+=======
+.img-logo {
+    width: 150px;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    color: #f08126;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid #f08126;
+    border-radius: 0.25rem;
+    transition: box-shadow .15s ease-in-out;
+    margin-left: auto;
+}
+>>>>>>> 76e2f3023411387c0f6201825f67dd21144cc1ab

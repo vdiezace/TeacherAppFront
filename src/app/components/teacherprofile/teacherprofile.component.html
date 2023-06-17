@@ -1,0 +1,56 @@
+<app-teacher-header></app-teacher-header>
+
+<section class="mb-5">
+
+    <form novalidate [formGroup]="userForm" (submit)="getDataForm()">
+        
+        <div class="form-container">
+
+            <div class="mb-2">
+                <label for="name" class="form-name">Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="Name" formControlName="Name">
+                <p class="error" *ngIf="userForm.get('Name')?.hasError('required') && userForm.get('Name')?.touched">*This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Surname" class="form-Surname">Surname</label>
+                <input type="text" class="form-control" id="Surname" aria-describedby="Surname" formControlName="Surname">
+                <p class="error" *ngIf="userForm.get('Surname')?.hasError('required') && userForm.get('Surname')?.touched">*This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Address" class="form-Address">Address</label>
+                <input type="text" class="form-control" id="Address" aria-describedby="Address" formControlName="Address">
+                <p class="error" *ngIf="userForm.get('Address')?.hasError('required') && userForm.get('Address')?.touched">*This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Email" class="form-email">Email</label>
+                <input type="Email" class="form-control" id="Email" aria-describedby="Email" formControlName="Email">
+                <p class="error" *ngIf="userForm.get('Email')?.hasError('required') && userForm.get('Email')?.touched">*This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="Password" class="form-Password">Password</label>
+                <input type="Password" class="form-control" id="Password" aria-describedby="Password" formControlName="Password">
+                <p class="error" *ngIf="userForm.get('Password')?.hasError('required') && userForm.get('Password')?.touched">*This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="RepitePassword" class="form-Password">Repeat Password</label>
+                <input type="password" class="form-control" id="RepitePassword" aria-describedby="Password" formControlName="RepitePassword">
+                <p class="error" *ngIf="userForm.get('RepitePassword')?.hasError('required') && userForm.get('RepitePassword')?.touched">*This field is required</p>
+            </div>
+            <div class="mb-2">
+                <label for="image" class="form-image">Image</label>
+                <input type="text" class="form-control" id="image" aria-describedby="Image" formControlName="Image">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="Check1">
+                <label class="form-check-label terms" for="Check1">I have read and agreed to the terms and conditions</label>
+              </div>
+
+            <div class="button-container">
+                <button type="submit" class="mt-2 btn btn-dark form-button" [disabled]="!userForm.valid">Send</button>
+            </div>
+            
+        </div>
+
+    </form>
+
+</section>

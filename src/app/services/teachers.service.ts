@@ -1,0 +1,76 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, firstValueFrom } from 'rxjs';
+import { LoginTokenService } from './login-token.service';
+import { Teacher } from '../interfaces/teacher.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TeachersService {
+
+  private baseUrl: string;
+
+  constructor(private httpClient: HttpClient,
+    private loginTokenService: LoginTokenService) {
+    this.baseUrl = 'http://localhost:3000/api/teachers'
+  }
+
+  
+  
+  /*async getAllTeachers() {
+    console.log(this.loginTokenService.getTokenHeader());
+    return firstValueFrom(
+      await this.httpClient.get<any[]>(`${this.baseUrl}`, this.loginTokenService.getTokenHeader().toPromise())
+    )
+  }*/
+  getAllTeachers(): Observable<any[]> {
+    console.log(this.loginTokenService.getTokenHeader());
+  
+    const headers = this.loginTokenService.getTokenHeader();
+    const requestOptions = { headers: headers };
+  
+    return this.httpClient.get<any[]>(`${this.baseUrl}`, requestOptions);
+  }
+
+  getTeacherById(pTeacherId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/${pTeacherId}`));
+  }
+
+  getTeacherClassHours(pTeacherId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/hours/${pTeacherId}`)
+    );
+  }
+
+  getTeachersByFilters(pFilterId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/filters/${pFilterId}`)
+    );
+  }
+
+  createNewTeacher(newTeacher: Teacher) {
+    return firstValueFrom(
+      this.httpClient.post<Teacher>(`${this.baseUrl}`, newTeacher)
+    );
+  }
+
+  updateTeacher(pTeacherId: number) {
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/${pTeacherId}`, this.loginTokenService.getTokenHeader())
+    );
+  }
+
+  updateValidateTeacher(pTeacherId: number) {
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/validate/${pTeacherId}`, this.loginTokenService.getTokenHeader())
+    );
+  }
+
+  deleteTeacher(pTeacherId: number) {
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/${pTeacherId}`, this.loginTokenService.getTokenHeader())
+    );
+  }
+}

@@ -1,0 +1,56 @@
+.number-orange {
+    color: #f08126;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.arrow-button {
+    font-size: 60px;
+    color: #f08126;
+    border: none;
+    background-color: transparent;
+}
+
+.steps {
+    position: relative;
+    @media (max-width: 800px) {
+        width: 80%;
+    }
+}
+
+.next-steps-arrow {
+    position: absolute;
+    top: 40%;
+    right: -40px;
+}
+
+.prev-steps-arrow {
+    position: absolute;
+    top: 40%;
+    left: -40px;
+}
+
+.circle-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.circle-button {
+    background-color: #D9D9D9 ;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: none;
+    &.selected {
+        background-color: #f08126;
+    }
+}
+
+.img-bg {
+    top: -48px;
+    right: 0;
+}

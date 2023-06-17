@@ -1,0 +1,92 @@
+.encuesta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.teachers-foto {
+  width: 300px;
+}
+
+.submit-btn {
+  background-color: #f08126;
+}
+
+.survey-row-stars {
+    border-bottom : 1px solid #999999;
+    padding       : 4px;
+    padding-top   : 13px;
+    padding-bottom: 12px;
+    font-size     : 1rem;
+  }
+  
+  .visuhide {
+    position: absolute !important;
+    overflow: hidden;
+    width   : 1px;
+    height  : 1px;
+    clip    : rect(1px, 1px, 1px, 1px);
+  }
+  
+  %star-active {
+    filter: grayscale(0);
+  }
+  
+  %star-inactive {
+    filter: grayscale(1) opacity(0.5);
+  }
+  
+  
+  
+  .star {
+    $p         : &;
+    $star_count: 5;
+  
+    @for $i from 1 through $star_count {
+      &__container:not(:hover)>&__radio:nth-of-type(#{$i}):checked~&__item:nth-of-type(#{$i})~&__item {
+        @extend %star-inactive;
+      }
+  
+    }
+  
+    &__container {
+      border-radius   : 1em;
+      background-color: #ffffff;
+  
+    }
+  
+    &__item {
+      display: inline-flex;
+      width  : 1.6em;
+      height : 1.6em;
+      @extend %star-inactive;
+  
+      cursor: pointer;
+  
+      &::before {
+        content  : url('/assets/reviews/star.svg');
+        display  : inline-block;
+        margin   : auto;
+        font-size: 1em;
+  
+        vertical-align     : top;
+        backface-visibility: hidden;
+        transform-origin   : 50% 33.3%;
+        transition         : transform .3s ease-out;
+      }
+  
+      // Active all stars when the container is hovered…
+      #{$p}__container:hover &,
+      #{$p}__radio:checked~& {
+        @extend %star-active;
+      }
+  
+      // Then deactivate the ones that are after the hovered star
+      &:hover~& {
+        @extend %star-inactive;
+      }
+    }
+  }
