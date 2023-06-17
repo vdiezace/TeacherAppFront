@@ -84,63 +84,6 @@
                     *ngIf="studentForm.get('City')?.hasError('required') && studentForm.get('City')?.touched">
                     *This field is required</p>
             </div>
-            <div class="mb-2">
-                <label for="City" class="form-label">Precio/hora</label>
-                <input type="text" class="form-control" id="City" aria-describedby="City" formControlName="City">
-                <p class="error"
-                    *ngIf="studentForm.get('City')?.hasError('required') && studentForm.get('City')?.touched">
-                    *This field is required</p>
-            </div>
-            <div class="mb-2">
-                <label for="category" class="form-label">Categoria</label>
-                <input type="text" class="form-control" id="City" aria-describedby="category"
-                    formControlName="category">
-                <p class="error"
-                    *ngIf="studentForm.get('category')?.hasError('required') && studentForm.get('category')?.touched">
-                    *This field is required</p>
-            </div>
-            <div class="mb-2">
-                <label for="subject" class="form-label">Asignatura</label>
-                <input type="text" class="form-control" id="subject" aria-describedby="subject"
-                    formControlName="subject">
-            </div>
-            <div class="mb-2">
-                <label for="experience" class="form-label">Experiencia dando clases</label>
-                <input class="form-control" id="experience" aria-describedby="experience" formControlName="experience">
-            </div>
-            <div class="d-flex justify-content-center">
-
-                <div class="row mb-3 m-2 col-lg-5">
-                    <label class="form-label" for="start_class_hour">Hora de inicio</label>
-                    <select class="form-select" name="start_class_hour" id="start_class_hour"
-                        formControlName="start_class_hour">
-                        <option default>Selecciona una hora de inicio</option>
-                        <option *ngFor="let timestamp of timeStampList" [value]="timestamp.value">{{timestamp.hour}}
-                        </option>
-                    </select>
-                    <p class="error" *ngIf="checkControl('start_class_hour', 'required')">
-                        El campo es obligatorio
-                    </p>
-
-                </div>
-
-                <div class="row mb-3 m-2 col-lg-5">
-                    <label class="form-label" for="end_class_hour">Hora de fin</label>
-                    <select class="form-select" name="end_class_hour" id="end_class_hour"
-                        formControlName="end_class_hour">
-                        <option default>Selecciona una hora de fin</option>
-                        <option *ngFor="let timestamp of timeStampList" [value]="timestamp.value">{{timestamp.hour}}
-                        </option>
-                    </select>
-                    <p class="error" *ngIf="checkControl('end_class_hour', 'required')">
-                        El campo es obligatorio
-                    </p>
-                </div>
-                <p class="error" *ngIf="teacherForm.hasError('scheduleCheck')">
-                    La hora de inicio debe ser anterior a la hora de fin.
-                </p>
-            </div>
-
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="Check1">
                 <label class="form-check-label terms" for="Check1">I have read and agreed to the terms and
