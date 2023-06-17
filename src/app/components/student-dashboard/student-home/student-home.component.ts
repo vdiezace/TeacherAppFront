@@ -92,15 +92,19 @@ export class StudentHomeComponent {
     10
   ]
 
-  public provinceSelected = "";
-  public categorySelected = "";
-  public ratingSelected = "0";
-  public experienceSelected = "0";
+  provinceSelected: string;
+  categorySelected: string;
+  ratingSelected: number;
+  experienceSelected: number;
 
 
   constructor(private teachersService: TeachersService) {
     this.teachers = [];
     this.filteredTeachers = [];
+    this.provinceSelected = "";
+    this.categorySelected = "";
+    this.ratingSelected = 0;
+    this.experienceSelected = 0;
   }
 
   filterTeachers() {

@@ -38,6 +38,7 @@ import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/te
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 
 
 
@@ -75,7 +76,8 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
     SortPipe,
     MapComponent,
     TeacherFilterComponent,
-    TeacherprofileComponent
+    TeacherprofileComponent,
+    StudentHomeComponent
   ],
   imports: [
     BrowserModule,
