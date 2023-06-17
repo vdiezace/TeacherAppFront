@@ -15,35 +15,44 @@
         </div>
         <input type="checkbox" class="dd-input" id="test">
         <ul class="dd-menu dd-position">
-          <li class="hr" *ngFor="let teacher of uniqueTeachers | sort">{{ teacher.experience }}</li>
+          <li class="hr" *ngFor="let teacher of uniqueTeachers | sort">
+            <input type="checkbox" [(ngModel)]="selectedExperience" [value]="teacher.experience" (change)="applyFilterExperience()">
+            {{ teacher.experience }}
+          </li>
         </ul>
-      </label>
-      <label class="dropdown">
-      <div class="dd-button">
-          Average Rating
-        </div>
-        <input type="checkbox" class="dd-input" id="test" name="avg_rating" (change)="ChangeAVG_Rating($event)">
-        <ul class="dd-menu dd-position">
-          <li class="hr" [value]= "teacher.avg_rating" *ngFor="let teacher of uniqueTeachersRating | sort">{{ teacher.avg_rating }}</li>
-        </ul>
-      </label>
+      </label>      
       <label class="dropdown">
         <div class="dd-button">
-            Average Rating
-          </div>
-          <input type="checkbox" class="dd-input" id="test">
-          <ul class="dd-menu dd-position">
-            <li class="hr" *ngFor="let teacher of uniqueTeachersRating | sort">{{ teacher.avg_rating }}</li>
-          </ul>
-        </label>
-
+          Average Rating
+        </div>
+        <input type="checkbox" class="dd-input" id="test">
+        <ul class="dd-menu dd-position">
+          <li class="hr" *ngFor="let teacher of uniqueTeachersRating | sort">{{ teacher.avg_rating }}>
+            <input type="checkbox" [(ngModel)]="selectedRating" [value]="teacher.avg_rating" (change)="applyFilterRating()">
+            {{ teacher.avg_rating }}
+          </li>
+        </ul>
+      </label>      
+      <label class="dropdown">
+        <div class="dd-button">
+          Province
+        </div>
+        <input type="checkbox" class="dd-input" id="test">
+        <ul class="dd-menu dd-position">
+          <li class="hr" *ngFor="let teacher of uniqueTeachersProvince | sort">{{ teacher.province }}>
+            <input type="checkbox" [(ngModel)]="selectedProvince" [value]="teacher.province" (change)="applyFilterProvince()">
+            {{ teacher.province }}
+          </li>
+        </ul>
+      </label>  
+      
         <label class="dropdown">
           <div class="dd-button">
               Province
             </div>
             <input type="checkbox" class="dd-input" id="test">
             <ul class="dd-menu dd-position">
-              <li class="hr" *ngFor="let teacher of uniqueTeachersProvince | sort">{{ teacher.province }}</li>
+              <li class="hr" [value]= "teacher.province" *ngFor="let teacher of uniqueTeachersProvince | sort"> {{ teacher.province }} </li>
             </ul>
           </label>
     </div>

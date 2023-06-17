@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/service/users.service';
+import { UsersService } from 'src/app/services/users.service';
+
+
 
 
 @Component({
@@ -17,7 +19,7 @@ export class StudentslistComponent {
   }
 
   async ngOnInit (){
-    this.students = await this.userService.getAll();
+    this.students = await this.userService.getAllUser();
     
   }
  

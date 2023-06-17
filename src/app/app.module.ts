@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from './environments/environment';
+import { AgmCoreModule } from '@agm/core';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 /** Components */
@@ -32,12 +36,9 @@ import { HomeComponentAdmin } from './components/admin-dashboard/home/home.compo
 import { ProfileComponentAdmin } from './components/admin-dashboard/profile/profile.component';
 import { TeachersComponentAdmin } from './components/admin-dashboard/teachers/teachers.component';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
-import { environment } from './environments/environment';
-import { AgmCoreModule } from '@agm/core';
-import { FilterPipe } from './pipes/filter.pipe';
-import { SortPipe } from './pipes/sort.pipe';
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
+
 
 
 
@@ -74,11 +75,7 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
     SortPipe,
     MapComponent,
     TeacherFilterComponent,
-    TeacherprofileComponent,
-
-
-
-
+    TeacherprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +84,6 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
     ReactiveFormsModule,
     HttpClientModule,
     AgmCoreModule.forRoot(environment.googleMaps),
-
   ],
   providers: [],
   bootstrap: [AppComponent]

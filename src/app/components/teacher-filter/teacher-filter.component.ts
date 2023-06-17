@@ -12,6 +12,11 @@ export class TeacherFilterComponent implements OnInit {
 
   teachers: Teacher [];
   selectedValue: any;
+  selectedExperience: number = 0;
+  filteredTeachers: any[] = [];
+  selectedRating: number = 0;
+  selectedProvince: string = "";
+
 
   ChangeAVG_Rating(e: Event) {
     this.selectedValue = (e.target as HTMLInputElement).value;
@@ -24,7 +29,48 @@ export class TeacherFilterComponent implements OnInit {
 
   }
 
- 
+  applyFilterExperience() {
+    if (this.selectedExperience !== null) {
+      this.filteredTeachers = this.uniqueTeachers.filter(teacher => {
+        if (typeof teacher.experience === 'number') {
+          return teacher.experience === this.selectedExperience;
+        } else {
+          return Number(teacher.experience) === this.selectedExperience;
+        }
+      });
+    } else {
+      this.filteredTeachers = this.uniqueTeachers; 
+    }
+  }
+  
+  applyFilterRating() {
+    if (this.selectedRating !== null) {
+      this.filteredTeachers = this.uniqueTeachers.filter(teacher => {
+        if (typeof teacher.avg_rating === 'number') {
+          return teacher.avg_rating === this.selectedExperience;
+        } else {
+          return Number(teacher.avg_rating) === this.selectedRating;
+        }
+      });
+    } else {
+      this.filteredTeachers = this.uniqueTeachersRating; 
+    }
+  }
+  
+  applyFilterProvince() {
+    if (this.selectedProvince !== null) {
+      this.filteredTeachers = this.uniqueTeachers.filter(teacher => {
+        if (typeof teacher.province === 'string') {
+          return teacher.province === this.selectedProvince;
+        } else {
+          return (teacher.province) === this.selectedProvince;
+        }
+      });
+    } else {
+      this.filteredTeachers = this.uniqueTeachersProvince; 
+    }
+  }
+  
 
   getTeachers(): void {
     this.teacherService.getAllTeachers().subscribe(teachers => {

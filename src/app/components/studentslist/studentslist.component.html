@@ -1,4 +1,4 @@
-<app-teacher-header></app-teacher-header>
+
 
 <div class="container">
     <h2 class="title mt-5 mb-5 text-center text-uppercase"> Our Students</h2>
@@ -11,7 +11,7 @@
       <div class="col-12 col-md-6 col-lg-4" *ngFor="let student of students; let i = index">
         <div class="card" *ngIf="i < 3">
           <div class="card-body">
-            <h5 class="card-title">{{student.first_name | uppercase}} {{student.last_name | uppercase}}</h5>
+            <h5 class="card-title">{{student.first_name }} {{student.last_name}}</h5>
             <p>{{student.province }}</p>
           </div>
         </div>
