@@ -58,7 +58,7 @@ export class LoginTokenService {
       httpOptions = {
         headers: new HttpHeaders({
           "Content-Type": "application/json",
-          "authorization": token
+          "Authorization": token
         })
       }
       return httpOptions;

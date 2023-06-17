@@ -73,15 +73,15 @@ export class TeacherFilterComponent implements OnInit {
   
 
   getTeachers(): void {
-    this.teacherService.getAllTeachers().subscribe(teachers => {
+/*     this.teacherService.getAllTeachers().subscribe(teachers => {
       this.teachers = teachers;
-    });
+    }); */
   }
 
   async ngOnInit() {
-    const teachers = await this.teacherService.getAllTeachers().toPromise();
+/*     const teachers = await this.teacherService.getAllTeachers().toPromise();
     this.teachers = teachers ? teachers : [];
-    this.getTeachers();
+    this.getTeachers(); */
   }
   
 
