@@ -108,17 +108,17 @@ export class StudentHomeComponent {
   }
 
   filterTeachers() {
-/*     this.filteredTeachers = this.teachers.filter(teacher =>
-      teacher.province.includes(this.provinceSelected) && teacher.category_title.includes(this.categorySelected) && (+teacher.avg_rating) >= (+this.ratingSelected) && teacher.experience >= this.experienceSelected);
-    console.log(this.filteredTeachers); */
+    this.filteredTeachers = this.teachers.filter(teacher =>
+      teacher.province.includes(this.provinceSelected) &&  (!teacher.category_title || teacher.category_title.includes(this.categorySelected))  &&  (+teacher.avg_rating) >= (+this.ratingSelected) && teacher.experience >= this.experienceSelected);
+    console.log(this.teachers); 
 
   }
 
   async ngOnInit() {
     const response = await this.teachersService.getAllTeachers();
     console.log(response);
+    this.teachers= response;
     this.filterTeachers();
-    console.log(this.teachers);
   }
 
 
