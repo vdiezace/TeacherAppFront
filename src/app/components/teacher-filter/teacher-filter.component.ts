@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TeachersService } from '../student-dashboard/teachers/teachers.service';
+import { TeachersService } from 'src/app/services/teachers.service';
 
 @Component({
   selector: 'app-teacher-filter',
@@ -16,7 +16,7 @@ export class TeacherFilterComponent {
   }
 
   async ngOnInit() {
-    this.teachers = await this.teachersService.getAllTeachers();
+  //  this.teachers = await this.teachersService.getAllTeachers();
   }
 
   previousPage() {

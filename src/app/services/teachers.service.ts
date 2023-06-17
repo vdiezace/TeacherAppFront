@@ -17,6 +17,7 @@ export class TeachersService {
   }
 
   getAllTeachers() {
+    console.log(this.loginTokenService.getTokenHeader());
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}`, this.loginTokenService.getTokenHeader())
     )
@@ -48,6 +49,18 @@ export class TeachersService {
   updateTeacher(pTeacherId: number) {
     return firstValueFrom(
       this.httpClient.put<any>(`${this.baseUrl}/${pTeacherId}`, this.loginTokenService.getTokenHeader())
+    );
+  }
+
+  updateValidateTeacher(pTeacherId: number) {
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/validate/${pTeacherId}`, this.loginTokenService.getTokenHeader())
+    );
+  }
+
+  deleteTeacher(pTeacherId: number) {
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/${pTeacherId}`, this.loginTokenService.getTokenHeader())
     );
   }
 }

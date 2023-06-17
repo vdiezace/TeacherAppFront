@@ -34,4 +34,8 @@ export class ClassesService {
   getTeacherClasses(pTeacherId: number) {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl_teacherClasses}/${pTeacherId}`, this.loginTokenService.getTokenHeader()))
   }
+
+  getLoggedStudentClasses() {
+    return this.getStudentClasses(this.loginTokenService.getId());
+  }
 }

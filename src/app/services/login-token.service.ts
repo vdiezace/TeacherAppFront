@@ -37,7 +37,7 @@ export class LoginTokenService {
       return false;
     }
     const tokenInfo = this.getDecodedAccessToken(token);
-    return tokenInfo.users_id;
+    return tokenInfo.user_id;
   }
 
   getRole() {
@@ -51,7 +51,7 @@ export class LoginTokenService {
   }
 
   getTokenHeader(): any {
-    const token = localStorage.getItem('user-token');
+    const token = localStorage.getItem('token');
     let httpOptions;
 
     if (token) {

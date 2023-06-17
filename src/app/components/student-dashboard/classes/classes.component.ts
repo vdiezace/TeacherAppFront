@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ClassesService } from './classes.service';
+import { ClassesService } from 'src/app/services/classes.service';
 
 @Component({
   selector: 'app-classes',
@@ -15,8 +15,7 @@ export class ClassesComponent {
   }
 
   async ngOnInit() {
-    const response = await this.classesService.getStudentClasses();
-    this.classes = response;
+    const response = await this.classesService.getLoggedStudentClasses();
     console.log(response);
   }
 

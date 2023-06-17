@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ReviewsService } from './reviews.service';
+import { LoginTokenService } from 'src/app/services/login-token.service';
+import { ReviewsService } from 'src/app/services/reviews.service';
 
 @Component({
   selector: 'app-reviews',
@@ -9,14 +10,15 @@ import { ReviewsService } from './reviews.service';
 export class ReviewsComponent {
   myReviews: any[];
 
-  constructor(private reviewsService: ReviewsService) {
+  constructor(private reviewsService: ReviewsService,
+    private loginTokenService: LoginTokenService) {
 
     this.myReviews = [];
   }
 
   async ngOnInit() {
     try {
-      const response = await this.reviewsService.getReviewsByStudentId();
+      const response = await this.reviewsService.getReviewByStudent(this.loginTokenService.getId());
       console.log(response);  
     }catch(err) {
       return err;
