@@ -38,6 +38,7 @@ import { TeacherFilterComponent } from './components/teacher-filter/teacher-filt
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
+import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
 
 
 
@@ -75,7 +76,8 @@ import { TeacherClassesComponent } from './components/landing-teacher/teacher-cl
     TeacherFilterComponent,
     TeacherprofileComponent,
     StudentHomeComponent,
-    TeacherClassesComponent
+    TeacherClassesComponent,
+    StudentsListComponent
   ],
   imports: [
     BrowserModule,

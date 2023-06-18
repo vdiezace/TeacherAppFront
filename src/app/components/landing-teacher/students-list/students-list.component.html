@@ -1,22 +1,25 @@
 <app-teacher-header></app-teacher-header>
 
+<div class="container mt-5 mb-5">
+  <h1 class="title text-center mt-3 mb-3">
+    My Students
+  </h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-center">Student's Name</th>
+        <th class="text-center">Student's Surname</th>
+        <th class="text-center">Student's Email </th>
 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of myStudents">
+        <td class="text-center">{{ student.first_name }}</td>
+        <td class="text-center">{{ student.last_name }}</td>
+        <td class="text-center">{{ student.email}}</td>
 
-<div class="container">
-    <h2 class="title mt-5 mb-5 text-center text-uppercase"> Our Students</h2>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-
-<!--LISTA DE STUDENTS -->
-<div class="container">
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4" *ngFor="let student of students; let i = index">
-        <div class="card" *ngIf="i < 3">
-          <div class="card-body">
-            <h5 class="card-title">{{student.first_name }} {{student.last_name}}</h5>
-            <p>{{student.province }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
