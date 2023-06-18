@@ -27,6 +27,7 @@ import { StudentFormComponent } from './components/registro/student-form/student
 import { TeacherFormComponent } from './components/registro/teacher-form/teacher-form.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
+import { TeacherReviewsComponent } from './components/landing-teacher/teacher-reviews/teacher-reviews.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: "teachers/students-list", component: StudentsListComponent},
   { path: "teachers/classes", component: TeacherClassesComponent},
   { path: "teachers/profile", component: TeacherprofileComponent },
+  { path: "teachers/reviews", component: TeacherReviewsComponent },
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
   { path: "admin/students", component: StudentsComponent },
   { path: "admin/teachers", component: TeachersComponentAdmin },

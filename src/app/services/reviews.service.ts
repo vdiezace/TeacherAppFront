@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginTokenService } from './login-token.service';
 import { firstValueFrom } from 'rxjs';
@@ -20,13 +20,32 @@ export class ReviewsService {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/student/${pStudentId}`, this.loginTokenService.getTokenHeader()))
   }
 
-  getReviewsByTeacherIdAndStudentId(pTeacherId: number, pStudentId: number) {
-    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}&studentid=${pStudentId}`, this.loginTokenService.getTokenHeader()))
+  getReviewsByTeacherIdAndStudentId(){
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('token')!
+    })
   }
+  return firstValueFrom(
+    this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
+  )
+} 
 
-  getReviewsByTeacherId(pTeacherId: number) {
-    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}`, this.loginTokenService.getTokenHeader()))
-  }
+
+ //getReviewsByTeacherId(pTeacherId: number) {
+   // return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}`, this.loginTokenService.getTokenHeader()))
+  //}
+
+  getReviewsByTeacherId() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(
+      this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
+    )
+  } 
 
   create(newReview: Review) {
     return firstValueFrom(this.httpClient.post<Review>(this.baseUrl, newReview, this.loginTokenService.getTokenHeader()))

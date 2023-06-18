@@ -39,6 +39,7 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 
 
 
@@ -77,7 +78,9 @@ import { StudentsListComponent } from './components/landing-teacher/students-lis
     TeacherprofileComponent,
     StudentHomeComponent,
     TeacherClassesComponent,
-    StudentsListComponent
+    StudentsListComponent,
+    TimeFormatPipe,
+
   ],
   imports: [
     BrowserModule,
