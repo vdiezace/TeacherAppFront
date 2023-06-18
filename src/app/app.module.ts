@@ -28,7 +28,7 @@ import { ChatComponent } from './components/student-dashboard/chat/chat.componen
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { MapComponent } from './components/map/map.component';
+// import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
@@ -63,7 +63,7 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
-    MapComponent,
+    // MapComponent,
     LandingTeacherComponent,
     StudentsComponent,
     HomeComponentAdmin,
@@ -72,7 +72,7 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
-    MapComponent,
+    // MapComponent,
     TeacherFilterComponent,
     TeacherprofileComponent,
     StudentHomeComponent
