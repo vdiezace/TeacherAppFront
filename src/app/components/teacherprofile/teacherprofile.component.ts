@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { LoginTokenService } from 'src/app/services/login-token.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 ;
 
@@ -14,9 +15,13 @@ export class TeacherprofileComponent implements OnInit {
   teacher: any;
   teacherId: string | null = null;
 
+  public teacherData : any;
+
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private teacherService: TeachersService
+    private teacherService: TeachersService,
+    private loginTokenService: LoginTokenService
   ) {
     this.userForm = new FormGroup({
       Name: new FormControl('', [
@@ -44,16 +49,29 @@ export class TeacherprofileComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params => {
-      const teacherId = params.get('teacher_id');
-      if (teacherId) {
-        this.teacherId = teacherId;
-        this.getTeacherProfile();
-      }
-    });
+  async ngOnInit() {
+    const teacherId = this.loginTokenService.getId();
+    const response = await this.teacherService.getTeacherById(teacherId);
+    console.log(response);
+    this.teacherData = response;
+    if (this.teacherData) {
+      console.log(this.teacherData.avatar);
+      this.FormWithTeacherData();
+    }
   }
 
+  FormWithTeacherData() {
+    this.userForm.patchValue({
+      Name: this.teacherData.first_name,
+      Surname: this.teacherData.last_name,
+      Address: this.teacherData.address,
+      Email: this.teacherData.email,
+      Password: this.teacherData.password,
+      Image: this.teacherData.avatar
+    });
+  }
+  
+/*
   getTeacherProfile() {
     const teacherIdNumber = parseInt(this.teacherId!, 10); 
   
@@ -91,4 +109,4 @@ export class TeacherprofileComponent implements OnInit {
   getDataForm() {
     console.log(this.userForm.value);
   }
-}
+    }
