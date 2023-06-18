@@ -41,14 +41,14 @@ export class ReviewsService {
    // return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}`, this.loginTokenService.getTokenHeader()))
   //}
 
-  getReviewsByTeacherId() {
+  getReviewsByTeacherId(pTeacherId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
       })
     }
     return firstValueFrom(
-      this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
+      this.httpClient.get<any[]>(`${this.baseUrl}/teacher/${pTeacherId}`, httpOptions)
     )
   } 
 

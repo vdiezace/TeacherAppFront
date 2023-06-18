@@ -3,3 +3,18 @@
 <div class="container text-center title mt-5 mb-5 col-12 ">
 <h1 *ngIf="teacherData"> {{teacherData.first_name}}'s Reviews</h1>
 </div>
+
+<div class="container mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        <div class="col" *ngFor="let review of reviewData">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Review ID: {{ review.id }}</h5>
+              <p class="card-text">Rating: {{ review.rating }}</p>
+              <p class="card-text">Comment: {{ review.comment }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

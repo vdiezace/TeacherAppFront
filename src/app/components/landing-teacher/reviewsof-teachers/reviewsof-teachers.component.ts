@@ -12,6 +12,7 @@ export class ReviewsofTeachersComponent {
   teacher: any;
   reviews: any;
   public teacherData : any ;
+  public reviewData: any;
  
   
 
@@ -23,8 +24,15 @@ constructor(private teachersService: TeachersService,
  
 
 }
-ngOnInit() {
+async ngOnInit() {
   this.getTeacherById(this.loginTokenService.getId());
+
+  const response = await this.reviewsService.getReviewsByTeacherId(this.loginTokenService.getId());
+  console.log(response);
+  this.reviewData= response;
+  if (this.reviewData){
+  console.log(this.reviewData.comment);
+  }
 }
 
 async getTeacherById(teacherId: number) {
@@ -36,5 +44,6 @@ async getTeacherById(teacherId: number) {
     console.log(error);
   }
 }
+
 }
 
