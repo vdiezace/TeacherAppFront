@@ -13,7 +13,6 @@ import { TeachersComponent } from './components/student-dashboard/teachers/teach
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
-import { StudentslistComponent } from './components/studentslist/studentslist.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { TeachersGuard } from './guards/teachers.guard';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
@@ -25,6 +24,9 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 import { StudentFormComponent } from './components/registro/student-form/student-form.component';
 import { TeacherFormComponent } from './components/registro/teacher-form/teacher-form.component';
+import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
+import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
+import { TeacherReviewsComponent } from './components/landing-teacher/teacher-reviews/teacher-reviews.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -44,8 +46,10 @@ const routes: Routes = [
   { path: "student-form", component: StudentFormComponent },
   { path: "teacher-form", component: TeacherFormComponent },
   { path: "teachers", component: LandingTeacherComponent, canActivate: [TeachersGuard] },
-  { path: "teachers/students-list", component: StudentslistComponent },
-  { path: "teachers/:teacherid", component: TeacherprofileComponent },
+  { path: "teachers/students-list", component: StudentsListComponent},
+  { path: "teachers/classes", component: TeacherClassesComponent},
+  { path: "teachers/profile", component: TeacherprofileComponent },
+  { path: "teachers/reviews", component: TeacherReviewsComponent },
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
   { path: "admin/students", component: StudentsComponent },
   { path: "admin/teachers", component: TeachersComponentAdmin },

@@ -17,10 +17,10 @@
           <a class="nav-link link-nav width-nav" [routerLink]="['/teachers/students-list']">Students</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav" [routerLink]="['/signup']">Classes</a>
+          <a class="nav-link link-nav" routerLink="/teachers/classes">Classes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav" [routerLink]="['teachers/:teacherid']">My profile</a>
+          <a class="nav-link link-nav" routerLink="'teachers/profile'">My profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link link-nav" (click)="onClickLogout()">Log out</a>

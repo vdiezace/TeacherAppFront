@@ -1,0 +1,26 @@
+<div class="container mt-5 mb-5">
+  <h1 class="title text-center mt-3 mb-3">
+    My Students
+  </h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-center">Review ID</th>
+        <th class="text-center">Rating</th>
+        <th class="text-center">Comment </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let review of myReviews">
+        <td class="text-center">{{ review.id }}</td>
+        <td class="text-center">{{ review.rating }}</td>
+        <td class="text-center">{{ review.comment}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  
+  

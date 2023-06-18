@@ -1,4 +1,4 @@
-import { LatLngLiteral } from '@agm/core';
+/*import { LatLngLiteral } from '@agm/core';
 import { Component } from '@angular/core';
 import { TeachersService } from 'src/app/services/teachers.service';
 
@@ -19,16 +19,13 @@ export class MapComponent {
   }
 
   async ngOnInit() {
-/*     this.teacherService.getAllTeachers().subscribe((teachers: TeachersService[]) => {
-      this.teachers = teachers;
-  
-      this.locations = this.teachers.map(teacher => ({
-        lat: teacher.latitude,
-        lng: teacher.longitude
-      }));
-    }); */
-  }
-  
+    /*     this.teacherService.getAllTeachers().subscribe((teachers: TeachersService[]) => {
+          this.teachers = teachers;
+      
+          this.locations = this.teachers.map(teacher => ({
+            lat: teacher.latitude,
+            lng: teacher.longitude
+          }));
+        }); */
 
-}
 

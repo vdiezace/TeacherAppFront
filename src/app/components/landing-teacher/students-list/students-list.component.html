@@ -1,0 +1,25 @@
+<app-teacher-header></app-teacher-header>
+
+<div class="container mt-5 mb-5">
+  <h1 class="title text-center mt-3 mb-3">
+    My Students
+  </h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-center">Student's Name</th>
+        <th class="text-center">Student's Surname</th>
+        <th class="text-center">Student's Email </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of myStudents">
+        <td class="text-center">{{ student.first_name }}</td>
+        <td class="text-center">{{ student.last_name }}</td>
+        <td class="text-center">{{ student.email}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

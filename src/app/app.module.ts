@@ -28,7 +28,7 @@ import { ChatComponent } from './components/student-dashboard/chat/chat.componen
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { MapComponent } from './components/map/map.component';
+// import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
@@ -38,6 +38,9 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
+import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
+import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 
 
 
@@ -63,7 +66,7 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
-    MapComponent,
+    // MapComponent,
     LandingTeacherComponent,
     StudentsComponent,
     HomeComponentAdmin,
@@ -72,10 +75,14 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
-    MapComponent,
+    // MapComponent,
     TeacherFilterComponent,
     TeacherprofileComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    TeacherClassesComponent,
+    StudentsListComponent,
+    TimeFormatPipe,
+
   ],
   imports: [
     BrowserModule,
