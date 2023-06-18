@@ -38,6 +38,8 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
+import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
+import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 
 
 
@@ -75,7 +77,9 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     // MapComponent,
     TeacherFilterComponent,
     TeacherprofileComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    RegistroStudentComponent,
+    RegistroTeacherComponent
   ],
   imports: [
     BrowserModule,
