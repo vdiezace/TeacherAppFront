@@ -7,14 +7,18 @@
 
 <!--LISTA DE STUDENTS -->
 <div class="container">
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-4" *ngFor="let student of students; let i = index">
-        <div class="card" *ngIf="i < 3">
-          <div class="card-body">
-            <h5 class="card-title">{{student.first_name }} {{student.last_name}}</h5>
-            <p>{{student.province }}</p>
-          </div>
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let student of students; let i = index">
+      <div class="card" *ngIf="i < 3">
+        <div>
+          <img [src]="student.avatar" alt="">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{student.first_name}} {{student.last_name}}</h5>
+          <p>{{student.province}}</p>
         </div>
       </div>
     </div>
   </div>
+</div>
+
