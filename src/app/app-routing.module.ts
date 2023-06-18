@@ -12,7 +12,6 @@ import { ReviewsComponent } from './components/student-dashboard/reviews/reviews
 import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { TeachersGuard } from './guards/teachers.guard';
@@ -43,7 +42,6 @@ const routes: Routes = [
   { path: "student/teachers", component: TeachersComponent},
   { path: "student/teachers-details", component: TeachersDetailsComponent},
   { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent},
-  { path: "login-form", component: LoginFormComponent },
   { path: "register", component: RegistroComponent },
   { path: "student-form", component: StudentFormComponent },
   { path: "teacher-form", component: TeacherFormComponent },

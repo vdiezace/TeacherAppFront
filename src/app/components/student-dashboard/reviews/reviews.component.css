@@ -4,3 +4,13 @@
     padding-bottom: 14px;
     margin-bottom: 12px;
 }
+
+.greyscale {
+    filter: grayscale(1);
+}
+
+.review {
+    display: flex;
+    border: 1px solid;
+    gap: 10px;
+}
