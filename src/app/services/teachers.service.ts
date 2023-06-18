@@ -18,20 +18,16 @@ export class TeachersService {
 
   
   
-  /*async getAllTeachers() {
-    console.log(this.loginTokenService.getTokenHeader());
+  getAllTeachers() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
     return firstValueFrom(
-      await this.httpClient.get<any[]>(`${this.baseUrl}`, this.loginTokenService.getTokenHeader().toPromise())
+      this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
     )
-  }*/
-  getAllTeachers(): Observable<any[]> {
-    console.log(this.loginTokenService.getTokenHeader());
-  
-    const headers = this.loginTokenService.getTokenHeader();
-    const requestOptions = { headers: headers };
-  
-    return this.httpClient.get<any[]>(`${this.baseUrl}`, requestOptions);
-  }
+  } 
 
   getTeacherById(pTeacherId: number) {
     return firstValueFrom(
@@ -72,5 +68,10 @@ export class TeachersService {
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${pTeacherId}`, this.loginTokenService.getTokenHeader())
     );
+  }
+
+  getIdTeacherByUserId(pUserId: number) {
+    
+    
   }
 }

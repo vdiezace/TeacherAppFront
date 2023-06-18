@@ -20,5 +20,8 @@ export interface Teacher {
   is_approved: number,
   avg_rating: number,
   start_class_hour: number,
-  end_class_hour: number
+  end_class_hour: number,
+  category_title?: string
+
+  
 }

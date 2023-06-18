@@ -1,0 +1,14 @@
+<app-teacher-header></app-teacher-header>
+
+<div class="container">
+    <h1 class="text-center mb-5 mt-5">Teacher Reviews</h1>
+    <ul>
+      <li *ngFor="let review of reviews">
+        <h3>{{ review.rating}}</h3>
+        <p>Rating: {{ review.rating }}</p>
+        <hr>
+      </li>
+    </ul>
+  </div>
+  
+  
