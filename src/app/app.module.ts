@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { environment } from './environments/environment';
-//import { AgmCoreModule } from '@agm/core';
+import { environments } from './environments/environments'
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 
@@ -28,7 +27,6 @@ import { ChatComponent } from './components/student-dashboard/chat/chat.componen
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
-// import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
@@ -42,6 +40,7 @@ import { TeacherClassesComponent } from './components/landing-teacher/teacher-cl
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { EditComponent } from './components/teacherprofile/edit/edit.component';
+import { ReviewsofTeachersComponent } from './components/landing-teacher/reviewsof-teachers/reviewsof-teachers.component';
 
 
 
@@ -67,7 +66,6 @@ import { EditComponent } from './components/teacherprofile/edit/edit.component';
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
-    // MapComponent,
     LandingTeacherComponent,
     StudentsComponent,
     HomeComponentAdmin,
@@ -76,7 +74,6 @@ import { EditComponent } from './components/teacherprofile/edit/edit.component';
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
-    // MapComponent,
     TeacherFilterComponent,
     TeacherprofileComponent,
     StudentHomeComponent,
@@ -84,6 +81,7 @@ import { EditComponent } from './components/teacherprofile/edit/edit.component';
     StudentsListComponent,
     TimeFormatPipe,
     EditComponent,
+    ReviewsofTeachersComponent,
 
   ],
   imports: [
@@ -92,7 +90,7 @@ import { EditComponent } from './components/teacherprofile/edit/edit.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    //AgmCoreModule.forRoot(environment.googleMaps),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -26,8 +26,9 @@ import { StudentFormComponent } from './components/registro/student-form/student
 import { TeacherFormComponent } from './components/registro/teacher-form/teacher-form.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
-import { TeacherReviewsComponent } from './components/landing-teacher/teacher-reviews/teacher-reviews.component';
+
 import { EditComponent } from './components/teacherprofile/edit/edit.component';
+import { ReviewsofTeachersComponent } from './components/landing-teacher/reviewsof-teachers/reviewsof-teachers.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -41,7 +42,7 @@ const routes: Routes = [
   { path: "student/profile", component: ProfileComponent},
   { path: "student/reviews", component: ReviewsComponent},
   { path: "student/teachers", component: TeachersComponent},
-  { path: "student/teachers-details/:teacherid", component: TeachersDetailsComponent},
+  { path: "student/teachers-details", component: TeachersDetailsComponent},
   { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent},
   { path: "register", component: RegistroComponent },
   { path: "student-form", component: StudentFormComponent },
@@ -51,7 +52,7 @@ const routes: Routes = [
   { path: "teachers/classes", component: TeacherClassesComponent},
   { path: "teachers/profile", component: TeacherprofileComponent },
   { path: "teachers/profile/edit", component: EditComponent },
-  { path: "teachers/reviews", component: TeacherReviewsComponent },
+  { path: "teachers/reviews", component: ReviewsofTeachersComponent},
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
   { path: "admin/students", component: StudentsComponent },
   { path: "admin/teachers", component: TeachersComponentAdmin },
