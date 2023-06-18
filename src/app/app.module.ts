@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './environments/environment';
-import { AgmCoreModule } from '@agm/core';
+//import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 
@@ -85,7 +85,7 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AgmCoreModule.forRoot(environment.googleMaps),
+    //AgmCoreModule.forRoot(environment.googleMaps),
   ],
   providers: [],
   bootstrap: [AppComponent]
