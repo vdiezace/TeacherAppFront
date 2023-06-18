@@ -20,4 +20,8 @@ export class ClassesComponent {
     this.classes = response;
   }
 
+  cancelar() {
+    
+  }
+
 }
