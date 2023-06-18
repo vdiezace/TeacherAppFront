@@ -1,4 +1,4 @@
-import { LatLngLiteral } from '@agm/core';
+/*import { LatLngLiteral } from '@agm/core';
 import { Component } from '@angular/core';
 import { TeachersService } from 'src/app/services/teachers.service';
 
@@ -26,9 +26,9 @@ export class MapComponent {
         lat: teacher.latitude,
         lng: teacher.longitude
       }));
-    }); */
+    }); 
   }
   
 
 }
-
+*/

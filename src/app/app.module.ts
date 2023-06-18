@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './environments/environment';
-import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 
@@ -29,7 +28,6 @@ import { ChatComponent } from './components/student-dashboard/chat/chat.componen
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
@@ -65,7 +63,6 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
-    MapComponent,
     LandingTeacherComponent,
     StudentsComponent,
     HomeComponentAdmin,
@@ -74,7 +71,6 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
-    MapComponent,
     TeacherFilterComponent,
     TeacherprofileComponent,
     StudentHomeComponent
@@ -85,7 +81,6 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AgmCoreModule.forRoot(environment.googleMaps),
   ],
   providers: [],
   bootstrap: [AppComponent]
