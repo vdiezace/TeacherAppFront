@@ -14,16 +14,20 @@
         <th class="text-center">Date</th>
         <th class="text-center">Starts</th>
         <th class="text-center">Finishes</th>
+        <th class="text-center">Acces Class</th>
       </tr>
     </thead>
     <tbody>
+      
       <tr *ngFor="let bookedClass of bookedClasses">
         <td class="text-center">{{ teacherData?.first_name }}</td>
         <td class="text-center">{{ getStudentName(bookedClass.students_id) }}</td>
         <td class="text-center">{{ bookedClass.start_date}}</td>
         <td class="text-center">{{ bookedClass.start_hour | timeFormat }}</td>
         <td class="text-center">{{ bookedClass.end_hour | timeFormat }}</td>
+        <td class="text-center"><button class="titulo-btn btn btn-outline-primary rounded-5 ">Join</button></td>
       </tr>
+
     </tbody>
   </table>
 </div>
