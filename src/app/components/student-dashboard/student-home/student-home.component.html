@@ -23,7 +23,7 @@
 
     <div class="teacher" *ngFor="let teacher of filteredTeachers">
 
-        <div>
+        <div class="h-100 d-flex align-items-center justify-content-center">
             <img src="{{teacher.avatar}}" alt="" class="teachers-pic">
         </div>
         <div class="teachers-data">
@@ -31,7 +31,7 @@
             <p>{{teacher.avg_rating}}</p>
         </div>
         <div class="teachers-buttons">
-            <button class="btn btn-info" routerLink="/student/teachers-details">Book</button>
+            <button class="btn btn-info" routerLink="/student/teachers-details/{{teacher.teacher_id}}">Book</button>
             <button class="btn btn-info" routerLink="/student/teachers-reviews/{{teacher.teacher_id}}">Reviews</button>
         </div>
     </div>

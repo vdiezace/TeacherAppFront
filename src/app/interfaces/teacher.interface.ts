@@ -21,7 +21,8 @@ export interface Teacher {
   avg_rating: number,
   start_class_hour: number,
   end_class_hour: number,
-  category_title?: string
+  category_title?: string,
+  teacher_id?: number
 
   
 }

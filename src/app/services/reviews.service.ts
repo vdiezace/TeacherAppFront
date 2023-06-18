@@ -68,4 +68,13 @@ export class ReviewsService {
   create(newReview: Review) {
     return firstValueFrom(this.httpClient.post<Review>(this.baseUrl, newReview, this.loginTokenService.getTokenHeader()))
   }
+
+  updateReview(pReviewId: number, updateReview: Review) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.put<Review>(`${this.baseUrl}/${pReviewId}`, updateReview, httpOptions))
+  }
 }

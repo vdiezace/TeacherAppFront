@@ -1,7 +1,7 @@
 <app-student-header></app-student-header>
 
 <div class="container encuesta" *ngIf="teacherData">
-    <div>
+    <div class="w-50">
         <img class="teachers-foto" *ngIf="teacherData?.avatar" src="{{teacherData.avatar}}" alt="teachers photo">
     </div>
     <div class="questions">
@@ -136,9 +136,9 @@
                     stars</span></label>
               </span>
         </div> 
-        <div class="d-flex flex-column pb-3">
+        <div class="d-flex flex-column pb-3 mt-4">
             <label for="comment">Leave a comment:</label>
-            <textarea name="comment" id="comment" cols="30" rows="7" [(ngModel)]="comment"></textarea>
+            <textarea name="comment" id="comment" [(ngModel)]="comment"></textarea>
         </div>
         <input type="submit" value="Send" class="btn submit-btn">
       </form>

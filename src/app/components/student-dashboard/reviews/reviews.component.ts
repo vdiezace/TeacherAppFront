@@ -2,6 +2,7 @@ import { TeachersService } from 'src/app/services/teachers.service';
 import { Component } from '@angular/core';
 import { LoginTokenService } from 'src/app/services/login-token.service';
 import { ReviewsService } from 'src/app/services/reviews.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reviews',
@@ -10,13 +11,17 @@ import { ReviewsService } from 'src/app/services/reviews.service';
 })
 export class ReviewsComponent {
   myReviews: any[];
-  teachers: any[]
+  teachers: any[];
+  reviewId: number;
+
   constructor(private reviewsService: ReviewsService,
     private teacherService:  TeachersService,
-    private loginTokenService: LoginTokenService) {
+    private loginTokenService: LoginTokenService,
+    private activatedRoute: ActivatedRoute) {
 
     this.myReviews = [];
     this.teachers = [];
+    this.reviewId = 0;
   }
 
   round(n: number){
@@ -41,10 +46,17 @@ export class ReviewsComponent {
       console.log(this.myReviews);
     }catch(err) {
       return err;
-    }
+    };
+
+    //this.reviewId= +this.activatedRoute.snapshot.paramMap.get("reviewid")!;
+
   } 
 
-
+  updateReview() {
+   /*  this.reviewsService.updateReview({
+      
+    }) */
+  }
 
 
 }

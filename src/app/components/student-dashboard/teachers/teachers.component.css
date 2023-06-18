@@ -32,3 +32,18 @@
 .btn {
     transition: none;
 }
+
+.review-button {
+    padding-bottom: 15px;
+}
+
+img {
+    margin: 18px;
+    width: 100%;
+}
+
+.teachers-data p{
+    margin: 10px 20px;
+    text-align: left;
+} 
+
