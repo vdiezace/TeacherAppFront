@@ -7,11 +7,11 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./registro-teacher.component.css']
 })
 export class RegistroTeacherComponent {
-  teacherForm: FormGroup;
+  teacherFormulario: FormGroup;
 
   constructor(
   ) {
-    this.teacherForm = new FormGroup({
+    this.teacherFormulario = new FormGroup({
       first_name: new FormControl(),
       last_name: new FormControl(),
       username: new FormControl(),

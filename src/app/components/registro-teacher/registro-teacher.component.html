@@ -1,6 +1,6 @@
 <section class="container mt-5">
     <h1>Formulario de profesores</h1>
-    <form novalidate [formGroup]="teacherForm" (ngSubmit)="getDataForm()">
+    <form novalidate formGroup="teacherFormulario" (ngSubmit)="getDataForm()">
         <div class="row mb-5">
             <div class="mb-2">
                 <label for="first_name" class="form-label">First Name</label>
@@ -58,13 +58,9 @@
                 <label class="form-check-label terms" for="Check1">I have read and agreed to the terms and
                     conditions</label>
             </div>
-
             <div class="button-container">
                 <button type="submit" class="mt-2 btn btn-dark form-button">Send</button>
             </div>
-
         </div>
-
     </form>
-
 </section>

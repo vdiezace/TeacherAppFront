@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './environments/environment';
 //import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 /** Components */
@@ -38,18 +38,10 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
-<<<<<<< HEAD
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { EditComponent } from './components/teacherprofile/edit/edit.component';
-=======
-import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
-import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
->>>>>>> feature_registro
-
-
-
 
 
 @NgModule({
@@ -85,23 +77,17 @@ import { RegistroTeacherComponent } from './components/registro-teacher/registro
     TeacherFilterComponent,
     TeacherprofileComponent,
     StudentHomeComponent,
-<<<<<<< HEAD
     TeacherClassesComponent,
     StudentsListComponent,
     TimeFormatPipe,
     EditComponent,
 
-=======
-    RegistroStudentComponent,
-    RegistroTeacherComponent
->>>>>>> feature_registro
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     //AgmCoreModule.forRoot(environment.googleMaps),
   ],
   providers: [],
