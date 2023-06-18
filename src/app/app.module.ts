@@ -41,6 +41,7 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { EditComponent } from './components/teacherprofile/edit/edit.component';
 
 
 
@@ -82,6 +83,7 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     TeacherClassesComponent,
     StudentsListComponent,
     TimeFormatPipe,
+    EditComponent,
 
   ],
   imports: [
