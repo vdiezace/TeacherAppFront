@@ -1,21 +1,26 @@
 <app-teacher-header></app-teacher-header>
-
-<table class="table">
+<div class="container mt-5 mb-5">
+  <h1 class="title text-center mt-3 mb-3">
+    Booked Classes
+  </h1>
+  <table class="table">
     <thead>
       <tr>
-        <th>Clase</th>
-        <th>Profesor</th>
-        <th>Fecha</th>
-        <th>Hora</th>
+        <th class="text-center">Teacher</th>
+        <th class="text-center">Student's Name</th>
+        <th class="text-center">Date</th>
+        <th class="text-center">Starts</th>
+        <th class="text-center">Finishes</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let bookedClass of bookedClasses">
-        <td>{{ bookedClass.name }}</td>
-        <td>{{ bookedClass.teacher }}</td>
-        <td>{{ bookedClass.date }}</td>
-        <td>{{ bookedClass.time }}</td>
+        <td class="text-center">{{ teacherData?.first_name }}</td>
+        <td class="text-center">{{ getStudentName(bookedClass.students_id) }}</td>
+        <td class="text-center">{{ bookedClass.start_date }}</td>
+        <td class="text-center">{{ bookedClass.start_hour }}</td>
+        <td class="text-center">{{ bookedClass.end_hour }}</td>
       </tr>
     </tbody>
   </table>
-  
+</div>
