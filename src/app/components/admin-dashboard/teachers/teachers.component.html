@@ -3,16 +3,20 @@
 <table>
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Ubicación</th>
-        <th>Edad</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>EPhone number</th>
+        <th>Location</th>
+        <th>Age</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let teacher of teachers">
         <td>{{ teacher.nombre }}</td>
         <td>{{ teacher.apellidos }}</td>
+        <td>{{ teacher.email }}</td>
+        <td>{{ teacher.numero }}</td>
         <td>{{ teacher.ubicacion }}</td>
         <td>{{ teacher.edad }}</td>
       </tr>
