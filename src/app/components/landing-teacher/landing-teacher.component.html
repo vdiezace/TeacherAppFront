@@ -1,46 +1,43 @@
 <app-teacher-header></app-teacher-header>
-<div class="container text-center title mt-5 mb-5 col-12 "><h1>teacher.name DASHBOARD</h1></div>
+<div class="container text-center title mt-5 mb-5 col-12 "><h1 *ngIf="teacherData"> {{teacherData.first_name}}'s Dashboard</h1></div>
+
+
 
 <div class="container center mb-5">
 <div class="row g-3">
   <div class="col-lg-4 col-md-6">
     <div class="card">
       <div class="card-body">
-        <h2 class="card-title">Student's List</h2>
-        <!-- Aquí puedes mostrar una vista previa del listado de alumnos -->
+        <h2 class="card-title text-center">Booked Classes</h2>
+        <button class="btn btn-info" routerLink="/teachers/classes">See all Classes</button>
       </div>
     </div>
   </div>
   <div class="col-lg-4 col-md-6">
-    <div class="card">
+    <div class="card" *ngIf="hasError">
       <div class="card-body">
-        <h2 class="card-title">Last reviews</h2>
-        <!-- Aquí puedes mostrar una vista previa de las últimas valoraciones -->
+        <h2 class="card-title text-center">Last reviews</h2>
+        <p>Aún no tienes ninguna review.</p>
       </div>
     </div>
   </div>
   <div class="col-lg-4 col-md-6">
-    <div class="card">
+    <div class="card" *ngIf="!hasError">
       <div class="card-body">
-        <h2 class="card-title">Average rating</h2>
-        <!-- Aquí puedes mostrar una vista previa de la puntuación media -->
+        <h2 class="card-title text-center">Last reviews</h2>
+        <p>{{reviews.comment}}</p>
       </div>
     </div>
   </div>
   <div class="col-lg-4 col-md-6">
-    <div class="card">
+    <div class="card" *ngIf="teacherData && teacherData.first_name">
       <div class="card-body">
-        <h2 class="card-title">Upcoming classes</h2>
-        <!-- Aquí puedes mostrar una vista previa de las próximas clases -->
+        <h2 class="card-title  text-center">Average rating</h2>
+        <h1>{{ teacherData.first_name }}'s Details</h1>
+        <p>AV Rate: {{ teacherData.avg_rating }}</p>
       </div>
     </div>
   </div>
-  <div class="col-lg-4 col-md-6">
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">Register a class</h2>
-        <!-- Aquí puedes mostrar una vista previa del formulario de registro de clase -->
-    </div>
-    </div>
-    </div>
-</div>
+  
+  
+</div> 

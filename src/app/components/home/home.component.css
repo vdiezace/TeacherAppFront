@@ -1,7 +1,8 @@
 .img-bg {
-    position: relative;
+    position: reltive;
     float: left;
     top: 0px;
+    width:100%;
 }
 
 .titulo {
@@ -69,7 +70,7 @@ body {
     color: #000000;
     font-family: Sans-Serif;
     padding: 30px;
-    background-color: #f6f6f6;
+    background-color: #ffffff;
   }
   
   a {

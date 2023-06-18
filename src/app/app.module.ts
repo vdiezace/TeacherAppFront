@@ -37,6 +37,7 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
+import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 
 
 
@@ -73,7 +74,8 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     SortPipe,
     TeacherFilterComponent,
     TeacherprofileComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    TeacherClassesComponent
   ],
   imports: [
     BrowserModule,

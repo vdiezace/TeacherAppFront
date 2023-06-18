@@ -24,6 +24,10 @@ export class ReviewsService {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}&studentid=${pStudentId}`, this.loginTokenService.getTokenHeader()))
   }
 
+  getReviewsByTeacherId(pTeacherId: number) {
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}`, this.loginTokenService.getTokenHeader()))
+  }
+
   create(newReview: Review) {
     return firstValueFrom(this.httpClient.post<Review>(this.baseUrl, newReview, this.loginTokenService.getTokenHeader()))
   }

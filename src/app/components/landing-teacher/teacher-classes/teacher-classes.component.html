@@ -1,0 +1,21 @@
+<app-teacher-header></app-teacher-header>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Clase</th>
+        <th>Profesor</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bookedClass of bookedClasses">
+        <td>{{ bookedClass.name }}</td>
+        <td>{{ bookedClass.teacher }}</td>
+        <td>{{ bookedClass.date }}</td>
+        <td>{{ bookedClass.time }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
