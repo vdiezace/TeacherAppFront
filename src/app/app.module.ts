@@ -21,7 +21,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ProfileComponent } from './components/student-dashboard/profile/profile.component';
 import { ClassesComponent } from './components/student-dashboard/classes/classes.component';
 import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
@@ -57,7 +56,6 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     AboutUsComponent,
     LoginComponent,
     ContactComponent,
-    LoginFormComponent,
     ProfileComponent,
     ClassesComponent,
     TeachersComponent,

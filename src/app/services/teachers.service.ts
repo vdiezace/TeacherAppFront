@@ -10,10 +10,12 @@ import { Teacher } from '../interfaces/teacher.interface';
 export class TeachersService {
 
   private baseUrl: string;
+  private baseUrlClasses: string;
 
   constructor(private httpClient: HttpClient,
     private loginTokenService: LoginTokenService) {
-    this.baseUrl = 'http://localhost:3000/api/teachers'
+    this.baseUrl = 'http://localhost:3000/api/teachers';
+    this.baseUrlClasses = 'http://localhost:3000/api/teachers-classes';
   }
 
   
@@ -28,6 +30,11 @@ export class TeachersService {
       this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
     )
   } 
+  
+  getTeacherClassesByStudentId(pStudentId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrlClasses}/${pStudentId}`))
+  }
 
   getTeacherById(pTeacherId: number) {
     return firstValueFrom(
@@ -70,8 +77,4 @@ export class TeachersService {
     );
   }
 
-  getIdTeacherByUserId(pUserId: number) {
-    
-    
-  }
 }
