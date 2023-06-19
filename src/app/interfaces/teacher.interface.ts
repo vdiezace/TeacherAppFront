@@ -1,4 +1,5 @@
 export interface Teacher {
+  province: any;
   id?: number,
   first_name: string,
   last_name: string,
@@ -12,7 +13,7 @@ export interface Teacher {
   longitude?: string,
   city_id: number,
   address: string,
-  province: string,
+  province_id?: string,
   price_hour: number,
   experience: number,
   category_id: number,

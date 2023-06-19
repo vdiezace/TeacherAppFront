@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { Category } from 'src/app/interfaces/category.interface';
 import { City } from 'src/app/interfaces/city.interface';
 import { Province } from 'src/app/interfaces/province.interface';
@@ -10,6 +11,7 @@ import { LocationsService } from 'src/app/services/locations.service';
 import { LoginTokenService } from 'src/app/services/login-token.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-teacher',
@@ -79,34 +81,39 @@ export class RegistroTeacherComponent implements OnInit {
         if (id) {
           this.title = "Update";
           this.action = "Update";
-          const response = this.teachersService.getTeacherById(id);
-          console.log(response)
-
+          const response = await this.teachersService.getTeacherById(id);
+          //console.log(response)
+          const teacher: Teacher = response;
+          //console.log(teacher)
           this.teacherForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.teacher_role_id, []),
-            first_name: new FormControl("", []),
-            last_name: new FormControl("", []),
-            username: new FormControl("", []),
-            email: new FormControl("", []),
-            password: new FormControl("", []),
-            repitePassword: new FormControl("", []),
-            phone: new FormControl("", []),
-            address: new FormControl("", []),
-            avatar: new FormControl("", []),
-            province_id: new FormControl("", []),
-            city_id: new FormControl("", []),
-            price_hour: new FormControl("", []),
-            category_id: new FormControl("", []),
-            subject: new FormControl("", []),
-            experience: new FormControl("", []),
-            start_class_hour: new FormControl("", []),
-            end_class_hour: new FormControl("", [])
+            first_name: new FormControl(teacher?.first_name, []),
+            last_name: new FormControl(teacher?.last_name, []),
+            username: new FormControl(teacher?.username, []),
+            email: new FormControl(teacher?.email, []),
+            password: new FormControl(teacher?.password, []),
+            repitePassword: new FormControl(teacher?.password, []),
+            phone: new FormControl(teacher?.phone, []),
+            address: new FormControl(teacher?.address, []),
+            avatar: new FormControl(teacher?.avatar, []),
+            province_id: new FormControl(teacher?.province_id, []),
+            city_id: new FormControl(teacher?.city_id, []),
+            price_hour: new FormControl(teacher?.price_hour, []),
+            category_id: new FormControl(teacher?.category_id, []),
+            subject: new FormControl(teacher?.subject, []),
+            experience: new FormControl(teacher?.experience, []),
+            start_class_hour: new FormControl(teacher?.start_class_hour, []),
+            end_class_hour: new FormControl(teacher?.end_class_hour, [])
           }, []);
         }
       })
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops! It seems that there has been an error.',
+        text: "Try it again"
+      });
     }
   }
 
@@ -128,37 +135,49 @@ export class RegistroTeacherComponent implements OnInit {
     }
   }
 
-  getDataForm() {
-    //console.log(this.teacherFormulario.value);
-    if (this.teacherForm.status === "VALID") {
-      this.activatedRoute.params.subscribe(async (params: any) => {
-        const user = await this.usersService.findByEmail(this.teacherForm.value.email);
-        let response: any;
-        let teacher = this.teacherForm.value;
-
-        if (!params.teacherId) {
-          if (user != null) {
-            alert("Error al registrar el usuario. El correo introducido ya existe")
-          } else {
-            if (this.userLatitude != undefined) {
-              teacher.latitude = this.userLatitude;
-              teacher.longitude = this.userLongitude;
-            }
-            try {
-              response = this.teachersService.createNewTeacher(teacher);
-              if (response.teachers_id) {
-                alert("El profesor se ha creado correctamente");
-              }
-              this.router.navigate(["/login"]);
-            } catch (error) {
-              console.log(error)
-            }
-          }
+  async getDataForm() {
+    let teacher = this.teacherForm.value;
+    if (teacher.id) {
+      /** Actualizo */
+      try {
+        let response = await this.teachersService.updateTeacher(teacher);
+        if (response.id) {
+          Swal.fire({
+            icon: 'success',
+            title: `The teacher ${response.first_name} ${response.last_name} has been successfully updated.`
+          })
+          this.router.navigate(['/home']);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Ops! It seems that there has been an error.',
+            text: "Try it again"
+          });
         }
-      })
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      /** Registro */
+      try {
+        let response = await this.teachersService.createNewTeacher(teacher);
+        if (response.id) {
+          Swal.fire({
+            icon: 'success',
+            title: `The teacher ${response.first_name} ${response.last_name} has been successfully created.`
+          });
+          this.router.navigate(['/home']);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Ops! It seems that there has been an error.',
+            text: "Try it again"
+          });
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
-
-
   }
 
   checkControl(pControlName: string, pError: string): boolean {
