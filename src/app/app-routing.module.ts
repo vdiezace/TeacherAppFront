@@ -57,7 +57,7 @@ const routes: Routes = [
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
   { path: "admin/students", component: StudentsComponent },
   { path: "admin/teachers", component: TeachersComponentAdmin },
-  { path: "admin/:adminid", component: ProfileComponentAdmin },
+  { path: "admin/profile", component: ProfileComponentAdmin },
  
 
   { path: "**", component: C404Component }
