@@ -9,7 +9,7 @@ import { StudentsService } from 'src/app/services/students.service';
 })
 export class ProfileComponent {
 
-public userData : any;
+  userData : any;
 
   constructor( private studentService: StudentsService,
     private loginTokenService: LoginTokenService) {

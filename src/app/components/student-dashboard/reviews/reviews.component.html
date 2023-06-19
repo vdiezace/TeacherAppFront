@@ -20,7 +20,7 @@
               <p *ngFor="let item of [].constructor(5); let i = index"><img [ngClass] = "{greyscale:round(review.rating)<i+1}" src="/assets/reviews/star.svg" alt="star"></p>
             </div>
             <div class="upd-button">
-              <button class="btn btn-info" (click)="updateReview()">Update</button>
+              <button class="btn btn-info" routerLink="/student/teachers-reviews/{{review.teacherData?.teacher_id}}">Update</button>
             </div>
             </div>
           </div>

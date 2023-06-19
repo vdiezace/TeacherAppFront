@@ -1,6 +1,8 @@
+import { LoginTokenService } from 'src/app/services/login-token.service';
 import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
+import { StudentsService } from 'src/app/services/students.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 
 @Component({
@@ -95,9 +97,12 @@ export class StudentHomeComponent {
   categorySelected: string;
   ratingSelected: number;
   experienceSelected: number;
+  userData: any;
 
+  constructor(private teachersService: TeachersService,
+    private studentService: StudentsService,
+    private logintTokenService: LoginTokenService) {
 
-  constructor(private teachersService: TeachersService) {
     this.teachers = [];
     this.filteredTeachers = [];
     this.provinceSelected = "";
@@ -118,6 +123,9 @@ export class StudentHomeComponent {
     console.log(response);
     this.teachers= response;
     this.filterTeachers();
+
+    this.userData = await this.studentService.getStudentById(this.logintTokenService.getId());
+    console.log(this.userData);
   }
 
 

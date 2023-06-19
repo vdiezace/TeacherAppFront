@@ -20,14 +20,14 @@
 
 .next-steps-arrow {
     position: absolute;
-    top: 40%;
-    right: -40px;
+    top: 50%;
+    right: -50px;
 }
 
 .prev-steps-arrow {
     position: absolute;
-    top: 40%;
-    left: -40px;
+    top: 50%;
+    left: -50px;
 }
 
 .circle-button-container {
@@ -53,4 +53,13 @@
 .img-bg {
     top: -48px;
     right: 0;
+}
+
+.about-us {
+    height: 500px;
+}
+
+.about-us-foto {
+    max-height: 100%;
+    max-width: 100%;
 }

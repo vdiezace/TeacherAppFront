@@ -21,11 +21,11 @@
             <td>{{class.teacher_name}}</td>
             <td>{{class.teacher_surname}}</td>
             <td>{{class.category}}</td>
-            <td>{{class.start_date}}</td>
-            <td>{{class.start_hour | date: 'HH:mm'}}</td>
-            <td>{{class.end_hour}}</td>
-            <td><button class="btn btn-info">Join</button></td>
-            <td><button class="btn btn-danger" (click)="cancelar()">X</button></td>
+            <td>{{class.start_date.substring(0,10)}}</td>
+            <td>{{class.start_hour | timeFormat}}</td>
+            <td>{{class.end_hour | timeFormat}}</td>
+            <td> <a href="https://meet.google.com/wdd-buxm-kmg" target="_blank" rel="noopener noreferrer"><button class="btn btn-info">Join</button></a></td>
+            <td><button class="btn btn-danger" (click)="cancelar(class.id)">X</button></td>
           </tr>
         </tbody>
       </table>    

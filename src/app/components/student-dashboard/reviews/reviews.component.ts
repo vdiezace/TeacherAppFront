@@ -48,15 +48,11 @@ export class ReviewsComponent {
       return err;
     };
 
-    //this.reviewId= +this.activatedRoute.snapshot.paramMap.get("reviewid")!;
+    this.reviewId= +this.activatedRoute.snapshot.paramMap.get("reviewid")!;
 
   } 
 
-  updateReview() {
-   /*  this.reviewsService.updateReview({
-      
-    }) */
-  }
+  
 
 
 }

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './environments/environment';
 //import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 /** Components */
@@ -41,9 +41,7 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
-
-
-
+import { EditComponent } from './components/teacherprofile/edit/edit.component';
 
 
 @NgModule({
@@ -82,14 +80,15 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     TeacherClassesComponent,
     StudentsListComponent,
     TimeFormatPipe,
+    EditComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
     //AgmCoreModule.forRoot(environment.googleMaps),
   ],
   providers: [],

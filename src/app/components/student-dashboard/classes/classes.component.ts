@@ -20,8 +20,8 @@ export class ClassesComponent {
     this.classes = response;
   }
 
-  cancelar() {
-    
+  async cancelar(pClassId: number) {
+    await this.classesService.deleteClassById(pClassId);
   }
 
 }
