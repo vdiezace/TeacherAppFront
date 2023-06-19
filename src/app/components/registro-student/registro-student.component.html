@@ -1,58 +1,59 @@
 <app-main-header></app-main-header>
 <section class="container mt-5 footer-position">
     <h1>Formulario de estudiante</h1>
-    <form novalidate (ngSubmit)="getDataForm()">
+    <form novalidate [formGroup]="studentForm" (ngSubmit)="getDataForm()">
+        <input type="hidden" id="role_id" formControlName="role_id" [value]="student_role_id">
         <div class="row mb-5">
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="first_name" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="first_name" aria-describedby="first_name"
-                    formControlName="first_name">
+                <input type="text" class="form-control" id="first_name" formControlName="first_name">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="last_name" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="last_name" aria-describedby="last_name"
-                    formControlName="last_name">
+                <input type="text" class="form-control" id="last_name" formControlName="last_name">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" aria-describedby="username"
-                    formControlName="username">
+                <input type="text" class="form-control" id="username" formControlName="username">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="Email" aria-describedby="email" formControlName="email">
+                <input type="email" class="form-control" id="Email" formControlName="email">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" aria-describedby="password"
-                    formControlName="password">
+                <input type="password" class="form-control" id="password" formControlName="password">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="repitePassword" class="form-label">Repeat Password</label>
-                <input type="password" class="form-control" id="repitePassword" aria-describedby="Password"
-                    formControlName="repitePassword">
+                <input type="password" class="form-control" id="repitePassword" formControlName="repitePassword">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone" aria-describedby="phone" formControlName="phone">
+                <input type="text" class="form-control" id="phone" formControlName="phone">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" aria-describedby="address"
-                    formControlName="address">
+                <input type="text" class="form-control" id="address" formControlName="address">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="avatar" class="form-label">Avatar</label>
-                <input type="text" class="form-control" id="avatar" aria-describedby="avatar" formControlName="avatar">
+                <input type="text" class="form-control" id="avatar" formControlName="avatar">
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="province" class="form-label">Province</label>
-                <input type="text" class="form-control" id="province" aria-describedby="province"
-                    formControlName="province">
+                <select name="province" (change)="onSelected($event)" class="form-select" id="province"
+                    formControlName="province_id">
+                    <option defaul>Select a province</option>
+                    <option *ngFor="let province of province" [value]="province?.id">{{province?.name}}</option>
+                </select>
             </div>
-            <div class="mb-2">
+            <div class="mb-2 m-2 col-lg-5">
                 <label for="city" class="form-label">City</label>
-                <input type="text" class="form-control" id="city" aria-describedby="city" formControlName="city">
+                <select name="city" class="form-select" id="city" formControlName="city_id">
+                    <option defaul>Select a city</option>
+                    <option *ngFor="let city of city" [value]="city?.id">{{city?.name}}</option>
+                </select>
 
             </div>
             <div class="mb-3 form-check">
@@ -61,7 +62,7 @@
                     conditions</label>
             </div>
 
-            <div class="button-container mb-5">
+            <div class="button-container">
                 <button type="submit" class="mt-2 btn btn-dark form-button">Send</button>
             </div>
 
