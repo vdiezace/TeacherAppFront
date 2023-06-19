@@ -4,11 +4,11 @@ import { ReviewsService } from 'src/app/services/reviews.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 
 @Component({
-  selector: 'app-reviewsof-teachers',
-  templateUrl: './reviewsof-teachers.component.html',
-  styleUrls: ['./reviewsof-teachers.component.css']
+  selector: 'app-reviews-teachers',
+  templateUrl: './reviews-teachers.component.html',
+  styleUrls: ['./reviews-teachers.component.css']
 })
-export class ReviewsofTeachersComponent {
+export class ReviewsTeachersComponent {
   teacher: any;
   reviews: any;
   public teacherData : any ;
@@ -46,4 +46,3 @@ async getTeacherById(teacherId: number) {
 }
 
 }
-

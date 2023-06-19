@@ -8,6 +8,7 @@ import { Teacher } from 'src/app/interfaces/teacher.interface';
 import { User } from 'src/app/interfaces/user.interface';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { LocationsService } from 'src/app/services/locations.service';
+import { LoginTokenService } from 'src/app/services/login-token.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -27,6 +28,10 @@ export class RegistroTeacherComponent implements OnInit {
   userLatitude: number | undefined = undefined;
   userLongitude: number | undefined = undefined;
   action: string = "Registrar";
+  teacher: any;
+  teacherId: string | null = null;
+  public teacherData : any;
+
 
   constructor(
     private categoriesService: CategoriesService,
@@ -34,7 +39,8 @@ export class RegistroTeacherComponent implements OnInit {
     private usersService: UsersService,
     private teachersService: TeachersService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loginTokenService: LoginTokenService
   ) {
     this.teacherForm = new FormGroup({
       role_id: new FormControl(this.teacher_role_id, []),
@@ -78,32 +84,42 @@ export class RegistroTeacherComponent implements OnInit {
           this.action = "Actualizar";
           const response = this.usersService.getById(id);
           //console.log(response)
+          
 
           this.teacherForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.teacher_role_id, []),
-            first_name: new FormControl("", []),
-            last_name: new FormControl("", []),
-            username: new FormControl("", []),
-            email: new FormControl("", []),
-            password: new FormControl("", []),
+            first_name: new FormControl(this.teacherData.first_name, []),
+            last_name: new FormControl(this.teacherData.last_name, []),
+            username: new FormControl(this.teacherData.username, []),
+            email: new FormControl(this.teacherData.email, []),
+            password: new FormControl(this.teacherData.password, []),
             repitePassword: new FormControl("", []),
-            phone: new FormControl("", []),
-            address: new FormControl("", []),
-            avatar: new FormControl("", []),
-            province_id: new FormControl("", []),
-            city_id: new FormControl("", []),
-            price_hour: new FormControl("", []),
-            category_id: new FormControl("", []),
-            subject: new FormControl("", []),
-            experience: new FormControl("", []),
-            start_class_hour: new FormControl("", []),
-            end_class_hour: new FormControl("", [])
+            phone: new FormControl(this.teacherData.phone, []),
+            address: new FormControl(this.teacherData.address, []),
+            avatar: new FormControl(this.teacherData.avatar, []),
+            province_id: new FormControl(this.teacherData.province_id, []),
+            city_id: new FormControl(this.teacherData.city_id, []),
+            price_hour: new FormControl(this.teacherData.price_hour, []),
+            category_id: new FormControl(this.teacherData.category_id, []),
+            subject: new FormControl(this.teacherData.subject, []),
+            experience: new FormControl(this.teacherData.experience, []),
+            start_class_hour: new FormControl(this.teacherData.start_class_hour, []),
+            end_class_hour: new FormControl(this.teacherData.end_class_hour, [])
           }, []);
+          console.log(this.teacherForm)
         }
       })
+
     } catch (error) {
       console.log(error);
+    }
+
+    const teacherId = this.loginTokenService.getId();
+    const response = await this.teachersService.getTeacherById(teacherId);
+    console.log(response);
+    this.teacherData = response;
+    if (this.teacherData) {
     }
   }
 
@@ -154,7 +170,13 @@ export class RegistroTeacherComponent implements OnInit {
         }
       })
     }
-
-
   }
-}
+  
+  }
+
+ 
+
+  
+
+
+

@@ -27,7 +27,7 @@ import { StudentsListComponent } from './components/landing-teacher/students-lis
 
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
-import { ReviewsofTeachersComponent } from './components/landing-teacher/reviewsof-teachers/reviewsof-teachers.component';
+import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: "teachers/classes", component: TeacherClassesComponent },
   { path: "teachers/profile", component: TeacherprofileComponent },
   { path: "teachers/profile/edit/:teacherid", component: RegistroTeacherComponent },
-  { path: "teachers/reviews", component: ReviewsofTeachersComponent },
+  { path: "teachers/reviews", component: ReviewsTeachersComponent },
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
   { path: "admin/students", component: StudentsComponent },
   { path: "admin/teachers", component: TeachersComponentAdmin },

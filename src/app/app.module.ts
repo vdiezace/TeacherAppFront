@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { environments } from './environments/environments'
+import { environments } from './environments/environments';
 import { AgmCoreModule } from '@agm/core';
-
-
-/* Pipes */
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -42,9 +40,12 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
+import { EditComponent } from './components/teacherprofile/edit/edit.component';
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
-import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
+
+import { MapComponent } from './components/map/map.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
+    MapComponent,
     LandingTeacherComponent,
     StudentsComponent,
     HomeComponentAdmin,
@@ -75,14 +77,17 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
+    TimeFormatPipe,
     TeacherFilterComponent,
     TeacherprofileComponent,
     StudentHomeComponent,
     TeacherClassesComponent,
     StudentsListComponent,
     TimeFormatPipe,
+    EditComponent,
     RegistroTeacherComponent,
-    RegistroStudentComponent
+    RegistroStudentComponent,
+    ReviewsTeachersComponent
 
   ],
   imports: [
@@ -91,7 +96,7 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AgmCoreModule.forRoot(environments.googleMaps),
+    AgmCoreModule.forRoot(environments.googleMaps)
   ],
   providers: [],
   bootstrap: [AppComponent]
