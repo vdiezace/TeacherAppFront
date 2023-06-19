@@ -16,7 +16,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
-        <button type="submit" class="btn btn-primary container-submit">Submit</button>
+        <button type="submit" (submit)="onSubmit" class="btn btn-primary container-submit">Submit</button>
 
         <div class="mensaje_registro">
             <p class="little-text">No account? <span class="link little-text" [routerLink]="['/register']">create

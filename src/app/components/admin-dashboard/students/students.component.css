@@ -6,7 +6,7 @@ table {
   }
   
   th, td {
-    border: 1px solid rgba(0, 0, 0, 0.233);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.233);
     padding: 8px;
     text-align: center;
   }
@@ -14,4 +14,7 @@ table {
   th {
     background-color: #f2f2f2;
   }
-  
+  .fila:hover{
+    cursor: pointer;
+    background-color: rgba(247, 218, 185, 0.39);
+  }
