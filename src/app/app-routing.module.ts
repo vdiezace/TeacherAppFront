@@ -22,11 +22,12 @@ import { StudentsComponent } from './components/admin-dashboard/students/student
 import { AdminGuard } from './guards/admin.guard';
 import { TeachersReviewsComponent } from './components/student-dashboard/teachers-reviews/teachers-reviews.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
-import { StudentFormComponent } from './components/registro/student-form/student-form.component';
-import { TeacherFormComponent } from './components/registro/teacher-form/teacher-form.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
 import { TeacherReviewsComponent } from './components/landing-teacher/teacher-reviews/teacher-reviews.component';
+import { EditComponent } from './components/teacherprofile/edit/edit.component';
+import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
+import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -34,21 +35,22 @@ const routes: Routes = [
   { path: "about-us", component: AboutUsComponent },
   { path: "login", component: LoginComponent },
   { path: "contact", component: ContactComponent },
-  { path: "student/chat", component: ChatComponent},
-  { path: "student/home", component: StudentHomeComponent},
-  { path: "student/classes", component: ClassesComponent},
-  { path: "student/profile", component: ProfileComponent},
-  { path: "student/reviews", component: ReviewsComponent},
-  { path: "student/teachers", component: TeachersComponent},
-  { path: "student/teachers-details/:teacherid", component: TeachersDetailsComponent},
-  { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent},
+  { path: "student/chat", component: ChatComponent },
+  { path: "student/home", component: StudentHomeComponent },
+  { path: "student/classes", component: ClassesComponent },
+  { path: "student/profile", component: ProfileComponent },
+  { path: "student/reviews", component: ReviewsComponent },
+  { path: "student/teachers", component: TeachersComponent },
+  { path: "student/teachers-details/:teacherid", component: TeachersDetailsComponent },
+  { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent },
   { path: "register", component: RegistroComponent },
-  { path: "student-form", component: StudentFormComponent },
-  { path: "teacher-form", component: TeacherFormComponent },
+  { path: "register/student", component: RegistroStudentComponent },
+  { path: "register/teacher", component: RegistroTeacherComponent },
   { path: "teachers", component: LandingTeacherComponent, canActivate: [TeachersGuard] },
-  { path: "teachers/students-list", component: StudentsListComponent},
-  { path: "teachers/classes", component: TeacherClassesComponent},
+  { path: "teachers/students-list", component: StudentsListComponent },
+  { path: "teachers/classes", component: TeacherClassesComponent },
   { path: "teachers/profile", component: TeacherprofileComponent },
+  { path: "teachers/profile/edit", component: EditComponent },
   { path: "teachers/reviews", component: TeacherReviewsComponent },
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
   { path: "admin/students", component: StudentsComponent },

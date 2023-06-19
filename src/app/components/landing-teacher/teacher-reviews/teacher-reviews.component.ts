@@ -15,45 +15,28 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class TeacherReviewsComponent  {
 
-  students: Student[];
-  review: Review[];
-  myReviews: any[];
-  myStudents: any[];
+  myReviews: Review[];
 
-  constructor(
-    private classesService: ClassesService,
-    private loginTokenService: LoginTokenService,
-    private teachersService: TeachersService,
-    private studentsService: StudentsService,
-    private reviewsService: ReviewsService
-  ) {
-    this.review = [];
-    this.myStudents = [];
+  constructor(private reviewsService: ReviewsService) {
     this.myReviews = [];
-    this.students = [];
   }
 
-  async ngOnInit() {
-    this.review = await this.reviewsService.getReviewsByTeacherId();
-    console.log(this.review);
+  ngOnInit() {
+    this.getReviewsByTeacherIdAndStudentId();
+  }
 
-    this.myReviews = await this.reviewsService.getReviewsByTeacherIdAndStudentId();
-    console.log(this.myReviews);
-
-    this.myStudents = this.students.filter((student) => {
-      return this.myReviews.some((cl) => {
-        return cl.students_id === student.id;
-      });
-    });
-    console.log(this.myStudents);
+  getReviewsByTeacherIdAndStudentId() {
+    this.reviewsService.getReviewsByTeacherIdAndStudentId().subscribe(
+      (reviews: Review[]) => {
+        this.myReviews = reviews;
+        console.log(this.myReviews);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
-
-
-
-
-
-
 
 
 
