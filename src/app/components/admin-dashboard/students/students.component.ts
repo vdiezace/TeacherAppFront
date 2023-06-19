@@ -9,12 +9,12 @@ import { StudentsService } from 'src/app/services/students.service';
 })
 export class StudentsComponent {
 
-
-  students = [
-    { nombre: 'Juan', apellidos: 'Pérez',email:'juan@gmail.com', numero:650650650, ubicacion: 'Madrid', edad: 20 },
-    { nombre: 'María', apellidos: 'López', email:'Maria@gmail.com',  numero:650650651, ubicacion: 'Barcelona', edad: 22 },
-    { nombre: 'Pedro', apellidos: 'Gómez', email:'Pedro@gmail.com',  numero:650650652, ubicacion: 'Valencia', edad: 19 },];
-
+students:any=[];
+  /*students = [
+    { first_name: 'Juan', last_name: 'Pérez',email:'juan@gmail.com', phone:650650650, address: 'Madrid' },
+    { first_name: 'María', last_name: 'López', email:'Maria@gmail.com',  phone:650650651, address: 'Barcelona'},
+    { first_name: 'Pedro', last_name: 'Gómez', email:'Pedro@gmail.com',  phone:650650652, address: 'Valencia' },];
+*/
   public userData : any;
 
   constructor( private studentsservice: StudentsService) {

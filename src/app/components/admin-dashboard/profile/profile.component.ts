@@ -7,6 +7,7 @@ import { LoginTokenService } from 'src/app/services/login-token.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponentAdmin {
 
 

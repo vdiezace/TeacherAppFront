@@ -8,17 +8,15 @@
         <th>Email</th>
         <th>Phone number</th>
         <th>Location</th>
-        <th>Age</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let student of students">
-        <td>{{ student.nombre }}</td>
-        <td>{{ student.apellidos }}</td>
+      <tr class="fila" *ngFor="let student of students">
+        <td>{{ student.first_name }}</td>
+        <td>{{ student.last_name }}</td>
         <td>{{ student.email }}</td>
-        <td>{{ student.numero }}</td>
-        <td>{{ student.ubicacion }}</td>
-        <td>{{ student.edad }}</td>
+        <td>{{ student.phone }}</td>
+        <td>{{ student.address }}</td>
       </tr>
     </tbody>
   </table>
