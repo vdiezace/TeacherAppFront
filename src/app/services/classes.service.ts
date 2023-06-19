@@ -61,6 +61,6 @@ export class ClassesService {
         'Authorization': localStorage.getItem('token')!
       })
     }
-    return firstValueFrom(this.httpClient.delete<any>(`${this.baseUrl_classes}/${pClassId}`, this.loginTokenService.getTokenHeader()));
+    return firstValueFrom(this.httpClient.delete<any>(`${this.baseUrl_classes}/${pClassId}`, httpOptions));
   }
 }

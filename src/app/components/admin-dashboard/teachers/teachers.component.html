@@ -1,20 +1,25 @@
 <app-admin-header></app-admin-header>
 
-<table>
+
+
+  <table>
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Ubicación</th>
-        <th>Edad</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Location</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let teacher of teachers">
-        <td>{{ teacher.nombre }}</td>
-        <td>{{ teacher.apellidos }}</td>
-        <td>{{ teacher.ubicacion }}</td>
-        <td>{{ teacher.edad }}</td>
+      <tr class="fila" *ngFor="let teacher of teachers">
+        <td>{{ teacher.first_name }}</td>
+        <td>{{ teacher.last_name }}</td>
+        <td>{{ teacher.email }}</td>
+        <td>{{ teacher.phone }}</td>
+        <td>{{ teacher.address }}</td>
       </tr>
     </tbody>
   </table>
+
