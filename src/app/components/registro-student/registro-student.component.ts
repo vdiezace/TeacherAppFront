@@ -129,8 +129,8 @@ export class RegistroStudentComponent implements OnInit {
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Ops! Parece que ha habido un error',
-        text: "Inténtelo de nuevo"
+        title: 'Ops! It seems that there has been an error.',
+        text: "Try it again"
       });
     }
   }
@@ -146,14 +146,14 @@ export class RegistroStudentComponent implements OnInit {
         if (response.id) {
           Swal.fire({
             icon: 'success',
-            title: `El estudiante ${response.first_name} ${response.last_name} se ha actualizado correctamente`
+            title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
           })
           this.router.navigate(['/home']);
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Ops! Parece que ha habido un error',
-            text: "Inténtelo de nuevo"
+            title: 'Ops! It seems that there has been an error.',
+            text: "Try it again"
           });
         }
       } catch (error) {
@@ -169,14 +169,14 @@ export class RegistroStudentComponent implements OnInit {
         if (response.id) {
           Swal.fire({
             icon: 'success',
-            title: `El estudiante ${response.first_name} ${response.last_name} se ha creado correctamente`
+            title: `The student ${response.first_name} ${response.last_name} has been successfully created.`
           });
           this.router.navigate(['/home']);
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Ops! Parece que ha habido un error',
-            text: "Inténtelo de nuevo"
+            title: 'Ops! It seems that there has been an error.',
+            text: "Try it again"
           });
         }
       } catch (error) {
