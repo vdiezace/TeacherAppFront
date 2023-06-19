@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Category } from 'src/app/interfaces/category.interface';
@@ -42,24 +42,47 @@ export class RegistroTeacherComponent implements OnInit {
   ) {
     this.teacherForm = new FormGroup({
       role_id: new FormControl(this.teacher_role_id, []),
-      first_name: new FormControl("", []),
-      last_name: new FormControl("", []),
-      username: new FormControl("", []),
-      email: new FormControl("", []),
-      password: new FormControl("", []),
-      repitePassword: new FormControl("", []),
-      phone: new FormControl("", []),
+      first_name: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
+      ]),
+      last_name: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)]),
+      username: new FormControl("", [
+        Validators.required,
+      ]),
+      email: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(8)
+      ]),
+      repitePassword: new FormControl("", [
+        Validators.required
+      ]),
+      phone: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^[+][0-9]+$/),
+        Validators.maxLength(13),
+        Validators.minLength(11)
+      ]),
       address: new FormControl("", []),
       avatar: new FormControl("", []),
-      province_id: new FormControl("", []),
-      city_id: new FormControl("", []),
-      price_hour: new FormControl("", []),
-      category_id: new FormControl("", []),
+      province_id: new FormControl("", [Validators.required]),
+      city_id: new FormControl("", [Validators.required]),
+      price_hour: new FormControl("", [Validators.required]),
+      category_id: new FormControl("", [Validators.required]),
       subject: new FormControl("", []),
-      experience: new FormControl("", []),
-      start_class_hour: new FormControl("", []),
-      end_class_hour: new FormControl("", [])
-    }, []);
+      experience: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/^[0-9]+$/),
+        Validators.maxLength(2)
+      ]),
+      start_class_hour: new FormControl("", [Validators.required]),
+      end_class_hour: new FormControl("", [Validators.required])
+    }, [this.checkPassword]);
   }
 
   async ngOnInit(): Promise<void> {
@@ -88,23 +111,46 @@ export class RegistroTeacherComponent implements OnInit {
           this.teacherForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.teacher_role_id, []),
-            first_name: new FormControl(teacher?.first_name, []),
-            last_name: new FormControl(teacher?.last_name, []),
-            username: new FormControl(teacher?.username, []),
-            email: new FormControl(teacher?.email, []),
-            password: new FormControl(teacher?.password, []),
-            repitePassword: new FormControl(teacher?.password, []),
-            phone: new FormControl(teacher?.phone, []),
-            address: new FormControl(teacher?.address, []),
-            avatar: new FormControl(teacher?.avatar, []),
-            province_id: new FormControl(teacher?.province_id, []),
-            city_id: new FormControl(teacher?.city_id, []),
-            price_hour: new FormControl(teacher?.price_hour, []),
-            category_id: new FormControl(teacher?.category_id, []),
-            subject: new FormControl(teacher?.subject, []),
-            experience: new FormControl(teacher?.experience, []),
-            start_class_hour: new FormControl(teacher?.start_class_hour, []),
-            end_class_hour: new FormControl(teacher?.end_class_hour, [])
+            first_name: new FormControl(teacher.first_name, [
+              Validators.required,
+              Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
+            ]),
+            last_name: new FormControl(teacher.last_name, [
+              Validators.required,
+              Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)]),
+            username: new FormControl(teacher.username, [
+              Validators.required,
+            ]),
+            email: new FormControl(teacher.email, [
+              Validators.required,
+              Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+            password: new FormControl(teacher.password, [
+              Validators.required,
+              Validators.minLength(8)
+            ]),
+            repitePassword: new FormControl(teacher.password, [
+              Validators.required
+            ]),
+            phone: new FormControl(teacher.phone, [
+              Validators.required,
+              Validators.pattern(/^[+][0-9]+$/),
+              Validators.maxLength(13),
+              Validators.minLength(11)
+            ]),
+            address: new FormControl(teacher.address, []),
+            avatar: new FormControl(teacher.avatar, []),
+            province_id: new FormControl(teacher.province_id, [Validators.required]),
+            city_id: new FormControl(teacher.city_id, [Validators.required]),
+            price_hour: new FormControl(teacher.price_hour, [Validators.required]),
+            category_id: new FormControl(teacher.category_id, [Validators.required]),
+            subject: new FormControl(teacher.subject, []),
+            experience: new FormControl(teacher.experience, [
+              Validators.required,
+              Validators.pattern(/^[0-9]+$/),
+              Validators.maxLength(2)
+            ]),
+            start_class_hour: new FormControl(teacher.start_class_hour, [Validators.required]),
+            end_class_hour: new FormControl(teacher.end_class_hour, [Validators.required])
           }, []);
         }
       })
