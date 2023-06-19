@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-btn-orange {
-    color: "#f08126";
+* {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.btn-orange {
+    color: #f08126;
   }
+
+.footer-position {
+  min-height: 700px;
+}

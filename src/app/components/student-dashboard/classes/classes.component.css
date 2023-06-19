@@ -1,0 +1,15 @@
+.btn-info {
+    color: #000;
+    background-color: #f08126;
+    border-color: #f08126;
+}
+
+.btn-danger {
+    color: #000;
+    font-weight: bold;
+}
+
+.btn {
+    transition: none;
+}
+

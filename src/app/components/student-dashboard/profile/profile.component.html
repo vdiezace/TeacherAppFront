@@ -1,0 +1,29 @@
+<app-student-header></app-student-header>
+
+<div class="container-fluid mt-5 pt-3 mb-5 pb-3 footer-position">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card w-100 border-0 m-auto" *ngIf="userData">
+                <div class="card-horizontal align-items-center">
+                    <div class="img-square-wrapper w-50">
+                        <img class="student-avatar" [src]="userData?.avatar" alt="Card image cap">
+                    </div>
+                    <div class="vr"></div>
+                    <div class="card-body">
+                        <p>Name: {{userData?.first_name}}</p>
+                        <p>Surname: {{userData?.last_name}}</p>
+                        <p>Phone: {{userData?.phone}}</p>
+                        <p>Email: {{userData?.email}}</p>
+                        <p>Address: {{userData?.address}}</p>
+                        <p>Province: {{userData?.province}}</p>
+                        <p>City: {{userData?.city}}</p>
+                        <img src="" alt="">
+                        <div class="d-flex justify-content-start edit-btn">       
+                            <button class="btn btn-info" [routerLink]="['/student/profile/edit/'+userData.id]">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

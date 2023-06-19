@@ -1,0 +1,20 @@
+
+.titulo-btn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    width: 50%;
+    color: #f08126;
+    border-color: #f08126;
+    align-items: center;
+}
+
+
+.titulo-btn:hover {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    width: 50%;
+    color: #ffffff;
+    background-color:#f08126 ;
+    border-color: #f08126;
+    align-items: center;
+}

@@ -1,0 +1,19 @@
+<app-student-header></app-student-header>
+<div class="container footer-position">
+    <div class="book-teacher" >
+        <h5>Book your class of {{teacher?.category_title}} with {{teacher?.first_name}} {{teacher?.last_name}}</h5>
+        <img class="teachers-pic" src="{{teacher?.avatar}}" alt="">
+    </div>
+    <div class="book-class">
+        <input class="option-box" type="date" name="" id="" [(ngModel)] = "date">
+        <select class="option-box" name="" id="" [(ngModel)] = "startHourSelected">
+            <option value="0">Start hour</option>
+            <option *ngFor="let hour of startHour" value="{{hour.split(':')[0]}}">{{hour}}</option>
+        </select>
+        <select class="option-box" name="" id="" [(ngModel)] = "endHourSelected">
+            <option value="0">End hour</option>
+            <option *ngFor="let hour of endHour" value="{{hour.split(':')[0]}}">{{hour}}</option>
+        </select>
+        <button class="btn btn-info" type="submit" (click)="onClick()">Book</button>
+    </div>
+</div>

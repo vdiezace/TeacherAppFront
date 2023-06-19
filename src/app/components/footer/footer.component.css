@@ -1,8 +1,7 @@
-/*--------------------------------------------------------------
-# General styles
---------------------------------------------------------------*/
+
 html, body {
     height: 100%;
+    box-sizing: border-box;
 }
 
 .container {
@@ -15,12 +14,8 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    box-sizing: inherit;
 }
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
-
-
 
 footer {
     background-color: #f08126;
@@ -52,4 +47,9 @@ footer a:hover {
 footer hr, p {
     margin: 0;
     padding: 0;
+}
+
+.footer-bottom{
+    margin-top: auto;
+    
 }

@@ -1,0 +1,20 @@
+table {
+    margin: 2rem 0;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 10%;
+  }
+  
+  th, td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.233);
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  .fila:hover{
+    cursor: pointer;
+    background-color: rgba(247, 218, 185, 0.39);
+  }

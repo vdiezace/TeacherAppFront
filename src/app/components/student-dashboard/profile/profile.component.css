@@ -1,0 +1,26 @@
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.vr {
+  margin-left: 10px;
+  color: #f08126;
+  height: auto;
+  width: 2px;
+}
+
+.btn-info {
+  color: #000;
+  background-color: #f08126;
+  border-color: #f08126;
+}
+
+.btn {
+  transition: none;
+}
+
+.student-avatar {
+  width: 80%;
+}
+

@@ -1,0 +1,36 @@
+.reviews-title {
+    padding-top: 14px;
+    margin-top: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 12px;
+}
+
+.greyscale {
+    filter: grayscale(1);
+}
+
+.review {
+    display: flex;
+    border: 1px solid;
+    gap: 10px;
+}
+
+.btn-info {
+    color: #000;
+    background-color: #f08126;
+    border-color: #f08126;
+
+}
+
+.btn {
+    transition: none;
+}
+
+.no-review {
+    padding-bottom: 140px;
+    margin-bottom: 40px;
+}
+
+.btn-button {
+    display: flex;
+}

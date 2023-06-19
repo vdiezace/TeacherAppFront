@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-header',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class TeacherHeaderComponent {
 
+
+  router = inject(Router);
+
+  onClickLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }

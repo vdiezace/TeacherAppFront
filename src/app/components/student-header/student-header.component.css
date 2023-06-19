@@ -1,0 +1,14 @@
+.img-logo {
+    width: 150px;
+}
+
+.link-nav {
+    color: #f08126;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+
+}
+
+.clickable {
+    cursor: pointer;
+}

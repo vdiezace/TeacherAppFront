@@ -1,1 +1,39 @@
 <app-main-header></app-main-header>
+<div class="container mt-5 pt-5">
+    <h1 class="mb-4 pb-5 fw-bold">Any doubts?</h1>
+</div>
+<div class="container pb-3 mb-2 footer-position">
+    <div class="row mt-4 pt-2 g-5">
+        <div class="col-md-5 mt-0">
+            <p class="text-contact">We'd love to hear from you! If you have any questions, comments or feedback about
+                our services, please don't hesitate to get in touch. Our friendly customer support team is always here
+                to help you in any way we can. Simply fill out the contact form, and we'll get back to you as soon as
+                possible. Thank you for choosing us!</p>
+        </div>
+        <div class="container col-md-5">
+            <form novalidate #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+                <div class="mb-3 col-12">
+                    <input class="form-control fondo rounded-pill" type="text" name="name" id="name" placeholder="Name"
+                        ngModel>
+                </div>
+                <div class="mb-3 col-12">
+                    <input class="form-control fondo rounded-pill" type="text" name="Surname" id="Surname"
+                        placeholder="Surname" ngModel>
+                </div>
+                <div class="mb-3 col-12">
+                    <input class="form-control fondo rounded-pill" type="text" name="Email" id="Email"
+                        placeholder="Email" ngModel>
+                </div>
+                <div class="mb-3 col-12">
+                    <textarea class="form-control fondo rounded-pill" name="Message" placeholder="Message"
+                        ngModel></textarea>
+                </div>
+                <div>
+                    <button class="btn right rounded-pill" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

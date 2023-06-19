@@ -1,0 +1,19 @@
+<app-student-header></app-student-header>
+
+<div class="container teachers mt-5 pt-4 mb-5 pb-4">
+    <div class="teacher" *ngFor="let teacher of myTeachers">
+        <div class="h-100">
+            <img src="{{teacher.avatar}}" alt="" class="teachers-pic">
+        </div>
+        <div class="teachers-data">
+            <h4>{{teacher.first_name}} {{teacher.last_name}}</h4>
+            <p>Category: {{teacher.category_title}}</p>
+            <p>Address: {{teacher.address}}<br/>{{teacher.city}} ({{teacher.province}})</p>
+            <p>Phone number: <a href="tel: {{teacher.phone}}">{{teacher.phone}}</a></p>
+            <p>Email: <a href="mailto:{{teacher.email}}">{{teacher.email}}</a></p>
+            <div class="review-button">
+                <button class="btn btn-info" routerLink="/student/teachers-reviews/{{teacher.teacher_id}}">Reviews</button>
+            </div>
+        </div>
+    </div>
+</div>
