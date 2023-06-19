@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: "teachers/students-list", component: StudentsListComponent },
   { path: "teachers/classes", component: TeacherClassesComponent },
   { path: "teachers/profile", component: TeacherprofileComponent },
-  { path: "teachers/profile/edit", component: EditComponent },
+  { path: "teachers/profile/edit/:teacherid", component: RegistroTeacherComponent },
   { path: "teachers/reviews", component: TeacherReviewsComponent },
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
   { path: "admin/students", component: StudentsComponent },
