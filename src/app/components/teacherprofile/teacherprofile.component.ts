@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { LoginTokenService } from 'src/app/services/login-token.service';
 import { TeachersService } from 'src/app/services/teachers.service';
+import Swal from 'sweetalert2';
 ;
 
 @Component({
@@ -12,17 +12,26 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class TeacherprofileComponent implements OnInit {
 
-  public teacherData : any;
-  constructor( private TeachersService: TeachersService,
+  teacherData: any;
+  constructor(private teachersService: TeachersService,
     private loginTokenService: LoginTokenService) {
   }
 
   async ngOnInit() {
-    const response = await this.TeachersService.getTeacherById(this.loginTokenService.getId());
-    console.log(response);
-    this.teacherData= response;
-    if (this.teacherData){
-    console.log(this.teacherData.avatar);
+    try {
+      const response = await this.teachersService.getTeacherById(this.loginTokenService.getId());
+      //console.log(response);
+      this.teacherData = response;
+      if (this.teacherData) {
+        console.log(this.teacherData.avatar);
+      }
     }
+    catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
+    };
   }
 }

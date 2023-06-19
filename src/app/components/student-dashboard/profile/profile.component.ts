@@ -10,22 +10,22 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent {
 
-  userData : any;
+  userData: any;
 
-  constructor( private studentService: StudentsService,
+  constructor(private studentService: StudentsService,
     private loginTokenService: LoginTokenService) {
   }
 
   async ngOnInit() {
     try {
       const response = await this.studentService.getStudentById(this.loginTokenService.getId());
-      console.log(response);
-      this.userData= response;
-      if (this.userData){
-      console.log(this.userData.avatar);
-      }  
+      //console.log(response);
+      this.userData = response;
+      if (this.userData) {
+        console.log(this.userData.avatar);
+      }
     }
-    catch(error) {
+    catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
