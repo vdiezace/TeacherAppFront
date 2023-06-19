@@ -8,7 +8,7 @@ import { TeachersService } from 'src/app/services/teachers.service';
   styleUrls: ['./new-map.component.css']
 })
 export class NewMapComponent {
-  teachers: any[];
+ /* teachers: any[];
   locations: LatLngLiteral[];
 
   constructor(private teacherService: TeachersService) {
@@ -29,5 +29,5 @@ export class NewMapComponent {
     }).catch(error => {
       console.log(error);
     });
-  }
+  }*/
 }

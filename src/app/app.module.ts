@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environments } from './environments/environments';
-import { AgmCoreModule } from '@agm/core';
+//import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
@@ -87,7 +87,7 @@ import { NewMapComponent } from './components/new-map/new-map.component';
     RegistroTeacherComponent,
     RegistroStudentComponent,
     ReviewsTeachersComponent,
-    NewMapComponent
+    //NewMapComponent
 
   ],
   imports: [
@@ -96,7 +96,7 @@ import { NewMapComponent } from './components/new-map/new-map.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AgmCoreModule.forRoot(environments.googleMaps)
+    //AgmCoreModule.forRoot(environments.googleMaps)
   ],
   providers: [],
   bootstrap: [AppComponent]
