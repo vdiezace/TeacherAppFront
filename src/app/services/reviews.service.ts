@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginTokenService } from './login-token.service';
-import { Observable, firstValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { Review } from '../interfaces/review.interface';
 
 @Injectable({
@@ -25,20 +25,7 @@ export class ReviewsService {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/student/${pStudentId}`, httpOptions))
   }
 
-  getReviewsByTeacherIdAndStudentId(): Observable<Review[]> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token')!
-      })
-    };
-
-    return this.httpClient.get<Review[]>(
-      `${this.baseUrl}/reviews/${this.loginTokenService.getId()}`,
-      httpOptions
-    );
-  }
-
-  /*getReviewsByTeacherIdAndStudentId(){
+  getReviewsByTeacherIdAndStudentId(){
   const httpOptions = {
     headers: new HttpHeaders({
       'Authorization': localStorage.getItem('token')!
@@ -47,7 +34,7 @@ export class ReviewsService {
   return firstValueFrom(
     this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
   )
-} */
+} 
 
 getReviewByTeacherIdAndStudentId(pTeacherId: number, pStudentId: number){
   const httpOptions = {
@@ -64,14 +51,14 @@ getReviewByTeacherIdAndStudentId(pTeacherId: number, pStudentId: number){
    // return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}`, this.loginTokenService.getTokenHeader()))
   //}
 
-  getReviewsByTeacherId() {
+  getReviewsByTeacherId(pTeacherId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
       })
     }
     return firstValueFrom(
-      this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
+      this.httpClient.get<any[]>(`${this.baseUrl}/teacher/${pTeacherId}`, httpOptions)
     )
   } 
 
@@ -79,12 +66,14 @@ getReviewByTeacherIdAndStudentId(pTeacherId: number, pStudentId: number){
     return firstValueFrom(this.httpClient.post<Review>(this.baseUrl, newReview, this.loginTokenService.getTokenHeader()))
   }
 
-  updateReview(pReviewId: number, updateReview: Review) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token')!
-      })
-    }
-    return firstValueFrom(this.httpClient.put<Review>(`${this.baseUrl}/${pReviewId}`, updateReview, httpOptions))
+
+
+updateReview(pReviewId: number, updateReview: Review) {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('token')!
+    })
   }
+  return firstValueFrom(this.httpClient.put<Review>(`${this.baseUrl}/${pReviewId}`, updateReview, httpOptions))
+}
 }

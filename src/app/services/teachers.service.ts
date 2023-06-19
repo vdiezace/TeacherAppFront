@@ -37,8 +37,13 @@ export class TeachersService {
   }
 
   getTeacherById(pTeacherId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/${pTeacherId}`));
+      this.httpClient.get<any>(`${this.baseUrl}/${pTeacherId}`, httpOptions));
   }
 
   getTeacherClassHours(pTeacherId: number) {
@@ -59,9 +64,10 @@ export class TeachersService {
     );
   }
 
-  updateTeacher(pTeacherId: number) {
+  updateTeacher(pTeacherId: number, teacherData: any) {
+    console.log(teacherData);
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/${pTeacherId}`, this.loginTokenService.getTokenHeader())
+      this.httpClient.put<any>(`${this.baseUrl}/${pTeacherId}`, teacherData, this.loginTokenService.getTokenHeader())
     );
   }
 

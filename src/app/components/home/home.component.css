@@ -1,24 +1,43 @@
 .img-bg {
-    position: reltive;
+    position: relative;
     float: left;
-    top: 0px;
+    top: -30px;
+    right: -33px;
     width:100%;
+}
+ @media(max-width: 1024px) {
+    .img-bg {
+        display: none;
+    }
+ }
+
+.title-container {
+    position:absolute;
+    width: 400px;
+    top: 150px; 
+    left: 100px;
+    text-align: center;
+}
+
+@media(max-width:1024px){
+    .title-container{
+        position:relative;
+        top:0;
+        left:0;
+        width:90%;
+        margin:0 auto;
+    }
 }
 
 .titulo {
-    position: absolute;
-    top: 200px; 
-    left: 150px;
+position: relative;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
-    width: 25%;
 }
 
 
 .position-btn {
-    position: absolute;
-    top: 375px; 
-    left: 150px;
+    position: relative;
 }
 
 @media (min-width: 768px) {
@@ -45,13 +64,15 @@
 .img-alumna {
     position: absolute;
     width:150%;
-    top: 250px; 
-    left: 900px;
+    top: 150px; 
+    right: 100px;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
     width: 25%;
     border-radius: 50%;
 }
+
+
 
 
 .text-card{

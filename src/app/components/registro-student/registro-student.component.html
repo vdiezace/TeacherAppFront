@@ -1,4 +1,4 @@
-<app-main-header></app-main-header>
+<app-student-header></app-student-header>
 <section class="container mt-5 footer-position">
     <h1>Formulario de estudiante</h1>
     <form novalidate [formGroup]="studentForm" (ngSubmit)="getDataForm()">
@@ -44,7 +44,7 @@
                 <label for="province" class="form-label">Province</label>
                 <select name="province" (change)="onSelected($event)" class="form-select" id="province"
                     formControlName="province_id">
-                    <option defaul>Select a province</option>
+                    <option default>Select a province</option>
                     <option *ngFor="let province of province" [value]="province?.id">{{province?.name}}</option>
                 </select>
             </div>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="button-container">
-                <button type="submit" class="mt-2 btn btn-dark form-button">Send</button>
+                <button type="submit" (click)="onSubmit()" class="mt-2 btn btn-dark form-button">{{isEdition?'Update':'Send'}}</button>
             </div>
 
         </div>

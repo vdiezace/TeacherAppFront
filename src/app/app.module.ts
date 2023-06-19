@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { environment } from './environments/environment';
+import { environments } from './environments/environments';
 //import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -28,7 +29,6 @@ import { ChatComponent } from './components/student-dashboard/chat/chat.componen
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
-// import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
@@ -40,10 +40,10 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
-import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { EditComponent } from './components/teacherprofile/edit/edit.component';
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
+import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
 
 
 @NgModule({
@@ -66,7 +66,6 @@ import { RegistroStudentComponent } from './components/registro-student/registro
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
-    // MapComponent,
     LandingTeacherComponent,
     StudentsComponent,
     HomeComponentAdmin,
@@ -75,7 +74,7 @@ import { RegistroStudentComponent } from './components/registro-student/registro
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
-    // MapComponent,
+    TimeFormatPipe,
     TeacherFilterComponent,
     TeacherprofileComponent,
     StudentHomeComponent,
@@ -84,7 +83,9 @@ import { RegistroStudentComponent } from './components/registro-student/registro
     TimeFormatPipe,
     EditComponent,
     RegistroTeacherComponent,
-    RegistroStudentComponent
+    RegistroStudentComponent,
+    ReviewsTeachersComponent,
+    //NewMapComponent
 
   ],
   imports: [
@@ -93,7 +94,7 @@ import { RegistroStudentComponent } from './components/registro-student/registro
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    //AgmCoreModule.forRoot(environment.googleMaps),
+    //AgmCoreModule.forRoot(environments.googleMaps)
   ],
   providers: [],
   bootstrap: [AppComponent]

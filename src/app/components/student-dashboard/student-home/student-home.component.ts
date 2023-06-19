@@ -123,6 +123,7 @@ export class StudentHomeComponent {
   }
 
   async ngOnInit() {
+    console.log("student home");
     try {
       const response = await this.teachersService.getAllTeachers();
       console.log(response);

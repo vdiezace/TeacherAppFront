@@ -16,16 +16,16 @@ export class StudentsService {
     private loginTokenService: LoginTokenService) {
     this.baseUrl = 'http://localhost:3000/api/students';
 
-   }
- 
-  getStudentData() {
+  }
+
+  getStudentData(): Promise<any> {
     return firstValueFrom(
       this.httpClient.get(`${this.baseUrl}/${this.loginTokenService.getId()}`, this.loginTokenService.getTokenHeader())
     );
   }
 
 
-  getAllStudents() {
+  getAllStudents(): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
@@ -34,45 +34,51 @@ export class StudentsService {
     return firstValueFrom(
       this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
     )
-  } 
+  }
 
   getStudentById(pStudentId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/${pStudentId}`, this.loginTokenService.getTokenHeader())
+      this.httpClient.get<any>(`${this.baseUrl}/${pStudentId}`, httpOptions)
     );
   }
 
-  createNewStudent(newStudent: Student) {
+  createNewStudent(pStudent: Student): Promise<Student> {
     return firstValueFrom(
-      this.httpClient.post<Student>(`${this.baseUrl}`, newStudent)
+      this.httpClient.post<Student>(`${this.baseUrl}`, pStudent)
     );
   }
 
-  updateStudent(pStudentId: number) {
+  updateStudent(pStudentId: number, studentData: any) {
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/${pStudentId}`, this.loginTokenService.getTokenHeader())
+      this.httpClient.put<any>(`${this.baseUrl}/${pStudentId}`, studentData, this.loginTokenService.getTokenHeader())
     );
   }
 
-  deleteStudent(pStudentId: number) {
+
+  deleteStudent(pStudentId: number): Promise<any> {
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${pStudentId}`, this.loginTokenService.getTokenHeader())
     );
   }
 
-  getStudentActiveStatus() {
+  getStudentActiveStatus(): Promise<any> {
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/status/active`)
     );
   }
 
-  getStudentDiactiveStatus() {
+  getStudentDiactiveStatus(): Promise<any> {
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/status/diactive`)
     );
   }
 
-  activateStudent(pStudentId: number) {
+  activateStudent(pStudentId: number): Promise<any> {
     return firstValueFrom(
       this.httpClient.put<any>(`${this.baseUrl}/${pStudentId}/active`, this.loginTokenService.getTokenHeader())
     );

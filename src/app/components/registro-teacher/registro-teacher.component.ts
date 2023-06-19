@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -27,6 +28,9 @@ export class RegistroTeacherComponent implements OnInit {
   userLatitude: number | undefined = undefined;
   userLongitude: number | undefined = undefined;
   action: string = "Registrar";
+
+  teacherId= 0;
+  isEdition= false;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -73,13 +77,15 @@ export class RegistroTeacherComponent implements OnInit {
       })
       this.activatedRoute.params.subscribe(async (params: any) => {
         //console.log(params.teacherId);
-        let id = parseInt(params.teacherId)
+        let id = parseInt(params.teacherid)
         if (id) {
-          this.action = "Actualizar";
-          const response = this.usersService.getById(id);
+          this.action= "Actualizar";
+          this.teacherId= id;
+this.isEdition= true;
+          // const response = this.usersService.getById(id);
           //console.log(response)
-
-          this.teacherForm = new FormGroup({
+          this.loadTeacherData();
+/*           this.teacherForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.teacher_role_id, []),
             first_name: new FormControl("", []),
@@ -99,7 +105,7 @@ export class RegistroTeacherComponent implements OnInit {
             experience: new FormControl("", []),
             start_class_hour: new FormControl("", []),
             end_class_hour: new FormControl("", [])
-          }, []);
+          }, []); */
         }
       })
     } catch (error) {
@@ -125,9 +131,48 @@ export class RegistroTeacherComponent implements OnInit {
     }
   }
 
+  async loadTeacherData(){
+    const response= await this.teachersService.getTeacherById(this.teacherId);
+    const response1= await this.usersService.getById(response.users_id);
+    if (response.users_id) {
+      this.teacherForm = new FormGroup({
+        users_id: new FormControl(response.users_id, []),
+        user_id: new FormControl(response.users_id, []),
+        id: new FormControl(response.users_id, [])
+,
+        role_id: new FormControl(response.role_id, []),
+        first_name: new FormControl(response.first_name, []),
+        last_name: new FormControl(response.last_name, []),
+        username: new FormControl(response1.username, []),
+        email: new FormControl(response.email, []),
+        password: new FormControl(response.password, []),
+        repitePassword: new FormControl(response.password, []),
+        phone: new FormControl(response.phone, []),
+        address: new FormControl(response.address, []),
+        avatar: new FormControl(response.avatar, []),
+        province_id: new FormControl(response.province_id, []),
+        city_id: new FormControl(response.city_id, []),
+        price_hour: new FormControl(response.price_hour, []),
+        category_id: new FormControl(response.categories_id, []),
+        subject: new FormControl(response.subject, []),
+        experience: new FormControl(response.experience, []),
+        start_class_hour: new FormControl(response.start_class_hour, []),
+        end_class_hour: new FormControl(response.end_class_hour, [])
+      }, []);
+    }
+  }
+
+
   getDataForm() {
     //console.log(this.teacherFormulario.value);
     if (this.teacherForm.status === "VALID") {
+
+      if (this.isEdition){
+        console.log(this.teacherForm.value);
+        this.teachersService.updateTeacher(this.teacherId, this.teacherForm.value);
+      } else {
+
+      console.log("click?");
       this.activatedRoute.params.subscribe(async (params: any) => {
         const user = await this.usersService.findByEmail(this.teacherForm.value.email);
         let response: any;
@@ -154,7 +199,7 @@ export class RegistroTeacherComponent implements OnInit {
         }
       })
     }
-
+  }
 
   }
 }
