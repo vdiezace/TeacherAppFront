@@ -89,40 +89,41 @@ export class RegistroStudentComponent implements OnInit {
           this.action = "Update";
           const response = await this.studentsService.getStudentById(id);
           const student: Student = response;
+          //console.log(response)
           this.studentForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.student_role_id, []),
-            first_name: new FormControl("", [
+            first_name: new FormControl(response.first_name, [
               Validators.required,
               Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
             ]),
-            last_name: new FormControl("", [
+            last_name: new FormControl(response.last_name, [
               Validators.required,
               Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
             ]),
-            username: new FormControl("", [
+            username: new FormControl(response.username, [
               Validators.required,
             ]),
-            email: new FormControl("", [
+            email: new FormControl(response.email, [
               Validators.required,
               Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
             ]),
-            password: new FormControl("", [
+            password: new FormControl(response.password, [
               Validators.required,
               Validators.minLength(8)
             ]),
-            repitePassword: new FormControl("", [
+            repitePassword: new FormControl(response.password, [
               Validators.required
             ]),
-            phone: new FormControl("", [
+            phone: new FormControl(response.phone, [
               Validators.required,
               Validators.pattern(/^[+][0-9]+$/),
               Validators.maxLength(13),
               Validators.minLength(11)]),
-            address: new FormControl("", []),
-            avatar: new FormControl("", []),
-            province_id: new FormControl("", [Validators.required]),
-            city_id: new FormControl("", [Validators.required])
+            address: new FormControl(response.address, []),
+            avatar: new FormControl(response.avatar, []),
+            province_id: new FormControl(response.province_id, [Validators.required]),
+            city_id: new FormControl(response.city_id, [Validators.required])
           }, [this.checkPassword]);
         }
       })
