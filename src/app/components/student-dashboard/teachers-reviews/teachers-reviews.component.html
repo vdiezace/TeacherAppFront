@@ -140,7 +140,7 @@
             <label for="comment">Leave a comment:</label>
             <textarea name="comment" id="comment" [(ngModel)]="comment"></textarea>
         </div>
-        <input type="submit" value="Send" class="btn submit-btn">
+        <input type="submit" value="{{isEdition?'Update':'Send'}}" class="btn submit-btn">
       </form>
     </div>
 </div>

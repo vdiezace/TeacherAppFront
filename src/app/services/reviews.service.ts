@@ -36,6 +36,16 @@ export class ReviewsService {
   )
 } 
 
+getReviewByTeacherIdAndStudentId(pTeacherId: number, pStudentId: number){
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('token')!
+    })
+  }
+  return firstValueFrom(
+    this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}&studentid=${pStudentId}`, httpOptions)
+  )
+} 
 
  //getReviewsByTeacherId(pTeacherId: number) {
    // return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}?teacherid=${pTeacherId}`, this.loginTokenService.getTokenHeader()))
