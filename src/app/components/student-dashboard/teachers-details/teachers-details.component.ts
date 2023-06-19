@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
 import { ClassesService } from 'src/app/services/classes.service';
 import { LoginTokenService } from 'src/app/services/login-token.service';
 import { TeachersService } from 'src/app/services/teachers.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-teachers-details',
@@ -58,7 +59,8 @@ export class TeachersDetailsComponent {
   constructor( private classesService: ClassesService,
     private loginTokenService: LoginTokenService,
     private teacherService: TeachersService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
     this.date = "";
     this.startHourSelected = 0;
     this.endHourSelected = 0;
@@ -67,15 +69,34 @@ export class TeachersDetailsComponent {
 
 
   async onClick() {
-    const response = await this.classesService.create({
-     start_hour: +this.startHourSelected,
-     end_hour: +this.endHourSelected,
-     start_date: this.date,
-     teachers_id: this.teacherId ,
-     students_id: this.loginTokenService.getId(),
-     cancel_date: ""
-    });
-    console.log(response);
+    try {
+      const response = await this.classesService.create({
+        start_hour: +this.startHourSelected,
+        end_hour: +this.endHourSelected,
+        start_date: this.date,
+        teachers_id: this.teacherId ,
+        students_id: this.loginTokenService.getId(),
+        cancel_date: ""
+       });
+       console.log(response);   
+       if(response) {
+        this.router.navigate(["student/home"]).then(()=>{
+          Swal.fire({
+            title: 'Done!',
+            text: 'Your class has been booked',
+            icon: 'success',
+            timer: 3000
+          });
+        })
+       }
+    }
+    catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
+    }
   }
 
   async ngOnInit() {

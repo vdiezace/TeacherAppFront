@@ -1,5 +1,5 @@
 export interface City {
     id: number;
     name: string;
-    provice_id: number
+    province_id: number
 }

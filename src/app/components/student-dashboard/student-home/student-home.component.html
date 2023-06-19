@@ -1,22 +1,27 @@
 <app-student-header></app-student-header>
- <div class="container list-filter">
-    <p>Filter by...</p>
-    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="provinceSelected">
-        <option value="">Province</option>
-        <option *ngFor="let province of provinces" value="{{province}}">{{province}}</option>
-    </select>
-    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="categorySelected">
-        <option value="">Category</option>
-        <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
-    </select>
-    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="ratingSelected">
-        <option value="0">Any rating</option>
-        <option *ngFor="let rating of ratings" value="{{rating}}">More than {{rating}}</option>
-    </select>
-    <select class="option-box" (change)="filterTeachers()" [(ngModel)]="experienceSelected">
-        <option value="0">Any experience</option>
-        <option *ngFor="let experience of experiences" value={{experience}}>More than {{experience}}</option>
-    </select>
+<div class="container">
+    <div class="welcome mt-3 pt-5 pb-3 mb-1">
+        <h2 class="welcome">Hello, {{userData?.first_name}}! It's a good day to start studying!</h2>
+    </div>
+    <div class="list-filter">
+        <p>Filter by...</p>
+        <select class="option-box" (change)="filterTeachers()" [(ngModel)]="provinceSelected">
+            <option value="">Province</option>
+            <option *ngFor="let province of provinces" value="{{province}}">{{province}}</option>
+        </select>
+        <select class="option-box" (change)="filterTeachers()" [(ngModel)]="categorySelected">
+            <option value="">Category</option>
+            <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+        </select>
+        <select class="option-box" (change)="filterTeachers()" [(ngModel)]="ratingSelected">
+            <option value="0">Any rating</option>
+            <option *ngFor="let rating of ratings" value="{{rating}}">More than {{rating}}</option>
+        </select>
+        <select class="option-box" (change)="filterTeachers()" [(ngModel)]="experienceSelected">
+            <option value="0">Any experience</option>
+            <option *ngFor="let experience of experiences" value={{experience}}>More than {{experience}}</option>
+        </select>
+    </div>    
 </div>
 
 <div class="container teachers mt-3 pt-2 mb-5 pb-4">
@@ -28,7 +33,7 @@
         </div>
         <div class="teachers-data">
             <h4>{{teacher.first_name}} {{teacher.last_name}}</h4>
-            <p>{{teacher.avg_rating}}</p>
+            <p class="">Rating: {{teacher.avg_rating}} <img class="star-rating" src="/assets/reviews/star.svg" alt="star"> </p>
         </div>
         <div class="teachers-buttons">
             <button class="btn btn-info" routerLink="/student/teachers-details/{{teacher.teacher_id}}">Book</button>

@@ -3,18 +3,20 @@
 <table>
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Ubicación</th>
-        <th>Edad</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Location</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let student of students">
-        <td>{{ student.nombre }}</td>
-        <td>{{ student.apellidos }}</td>
-        <td>{{ student.ubicacion }}</td>
-        <td>{{ student.edad }}</td>
+      <tr class="fila" *ngFor="let student of students">
+        <td>{{ student.first_name }}</td>
+        <td>{{ student.last_name }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.phone }}</td>
+        <td>{{ student.address }}</td>
       </tr>
     </tbody>
   </table>

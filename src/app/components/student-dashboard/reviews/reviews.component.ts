@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { LoginTokenService } from 'src/app/services/login-token.service';
 import { ReviewsService } from 'src/app/services/reviews.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reviews',
@@ -45,18 +46,19 @@ export class ReviewsComponent {
       });
       console.log(this.myReviews);
     }catch(err) {
-      return err;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
+;
     };
 
-    //this.reviewId= +this.activatedRoute.snapshot.paramMap.get("reviewid")!;
+    this.reviewId= +this.activatedRoute.snapshot.paramMap.get("reviewid")!;
 
   } 
 
-  updateReview() {
-   /*  this.reviewsService.updateReview({
-      
-    }) */
-  }
+  
 
 
 }

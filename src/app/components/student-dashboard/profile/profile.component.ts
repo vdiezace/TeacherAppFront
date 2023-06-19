@@ -1,6 +1,7 @@
 import { LoginTokenService } from './../../../services/login-token.service';
 import { Component } from '@angular/core';
 import { StudentsService } from 'src/app/services/students.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -9,19 +10,28 @@ import { StudentsService } from 'src/app/services/students.service';
 })
 export class ProfileComponent {
 
-public userData : any;
+  userData : any;
 
   constructor( private studentService: StudentsService,
     private loginTokenService: LoginTokenService) {
   }
 
   async ngOnInit() {
-    const response = await this.studentService.getStudentById(this.loginTokenService.getId());
-    console.log(response);
-    this.userData= response;
-    if (this.userData){
-    console.log(this.userData.avatar);
+    try {
+      const response = await this.studentService.getStudentById(this.loginTokenService.getId());
+      console.log(response);
+      this.userData= response;
+      if (this.userData){
+      console.log(this.userData.avatar);
+      }  
     }
+    catch(error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
+    };
   }
 
 }

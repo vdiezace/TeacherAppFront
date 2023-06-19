@@ -1,3 +1,4 @@
+<app-main-header></app-main-header>
 <div class="position-relative">
     <div class="">
         <img class="bg-image w-75 position-absolute img-bg"
@@ -5,7 +6,7 @@
             alt="color de fondo de about-us">
     </div>
 </div>
-<div class="container mt-5 pt-5">
+<div class="container mt-5 pt-5 footer-position">
     <div class="row col-4">
         <h1 class="pb-2 mb-2">Elevate your learning</h1>
         <p>Welcome to TeacherApp, your gateway to personalized education! We are a team of passionate and experienced
@@ -17,18 +18,17 @@
 <div class="container mt-5 pt-5 steps">
     <h2 class="pt-5 mt-5">How to get started learning</h2>
     <ng-container *ngFor="let step of arrSteps; let i = index">
-        <div class="row g-2 mt-5 pt-5 mb-1 pb-3" *ngIf="currentStep === i">
+        <div class="row g-2 mt-5 pt-5 mb-1 pb-3 about-us" *ngIf="currentStep === i">
             <div class="col-md-6">
                 <p class="number-orange">{{step.title1}}</p>
                 <p>{{step.title2}}</p>
             </div>
-            <div class="col-md-6">
-                <img class="img-fluid img-thumbnail" src="{{step.image}}" alt="signup-form">
+            <div class="col-md-6 about-us-foto">
+                <img class="img-fluid img-thumbnail about-us-foto" src="{{step.image}}" alt="signup-form">
             </div>
         </div>
         <div class="prev-steps-arrow">
-            <button class="arrow-button" (click)="prevStep()" *ngIf="currentStep != 0">
-            </button>
+            <button class="arrow-button" (click)="prevStep()" *ngIf="currentStep != 0"><</button>
         </div>
         <div class="next-steps-arrow">
             <button class="arrow-button" (click)="nextStep()" *ngIf="currentStep != arrSteps.length-1">></button>

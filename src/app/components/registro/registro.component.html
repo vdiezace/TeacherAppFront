@@ -1,6 +1,6 @@
 <app-main-header></app-main-header>
 
-<div class="mb-5">
+<div class="mb-5 footer-position">
     <div class="d-flex justify-content-end">
         <img class="img-fluid img-bg w-75"
             src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684782736/BG_jkjppz.png"
@@ -11,9 +11,9 @@
             I'm a...
         </h1>
         <button class="position-btn-student titulo-btn btn btn-outline-primary rounded-5"
-            [routerLink]="['/student-form']">Student</button>
+            [routerLink]="['/register', 'student']">Student</button>
         <button class="position-btn-teacher titulo-btn btn btn-outline-primary rounded-5"
-            [routerLink]="['/teacher-form']">Teacher</button>
+            [routerLink]="['/register', 'teacher']">Teacher</button>
 
     </div>
     <div>

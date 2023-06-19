@@ -1,6 +1,6 @@
 <app-student-header></app-student-header>
 
-<div class="container">
+<div class="container footer-position">
     <h3 class="reviews-title">My reviews</h3>
     <div class="no-review" *ngIf="myReviews.length === 0">
       <p>You don't have any reviews yet...</p>
@@ -20,7 +20,7 @@
               <p *ngFor="let item of [].constructor(5); let i = index"><img [ngClass] = "{greyscale:round(review.rating)<i+1}" src="/assets/reviews/star.svg" alt="star"></p>
             </div>
             <div class="upd-button">
-              <button class="btn btn-info" (click)="updateReview()">Update</button>
+              <button class="btn btn-info" routerLink="/student/teachers-reviews/{{review.teacherData?.teacher_id}}">Update</button>
             </div>
             </div>
           </div>

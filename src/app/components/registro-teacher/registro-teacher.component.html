@@ -1,0 +1,114 @@
+<app-main-header></app-main-header>
+<section class="container mt-5 footer-position">
+    <h1>Formulario de profesores</h1>
+    <form novalidate [formGroup]="teacherForm" (ngSubmit)="getDataForm()">
+        <input type="hidden" id="role_id" formControlName="role_id" [value]="teacher_role_id">
+        <div class="row mb-5">
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first_name" formControlName="first_name">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last_name" formControlName="last_name">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" formControlName="username">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" formControlName="email">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="repitePassword" class="form-label">Repeat Password</label>
+                <input type="password" class="form-control" id="repitePassword" formControlName="repitePassword">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" formControlName="phone">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" formControlName="address">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="avatar" class="form-label">Avatar</label>
+                <input type="text" class="form-control" id="avatar" formControlName="avatar">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="province" class="form-label">Province</label>
+                <select name="province" (change)="onSelected($event)" class="form-select" id="province"
+                    formControlName="province_id">
+                    <option defaul>Select a province</option>
+                    <option *ngFor="let province of province" [value]="province?.id">{{province?.name}}</option>
+                </select>
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="city" class="form-label">City</label>
+                <select name="city" class="form-select" id="city" formControlName="city_id">
+                    <option defaul>Select a city</option>
+                    <option *ngFor="let city of city" [value]="city?.id">{{city?.name}}</option>
+                </select>
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label class="form-label" for="price_hour">precio/hora</label>
+                <input class="form-label" type="text" id="price_hour" class="form-control "
+                    formControlName="price_hour">
+            </div>
+
+            <div class="mb-2 m-2 col-lg-5">
+                <label class="form-label" for="category">Categoría</label>
+                <select class="form-select" name="category" id="category" formControlName="category_id">
+                    <option default>Select a category</option>
+                    <option *ngFor="let category of categories" [value]="category?.id">{{category?.title}}</option>
+                </select>
+            </div>
+
+            <div class="mb-2 m-2 col-lg-5">
+                <label class="form-label" for="subject">Subject </label>
+                <input class="form-label" type="text" id="subject" class="form-control " formControlName="subject">
+            </div>
+
+            <div class="mb-2 m-2 col-lg-5">
+                <label class="form-label" for="experience">Experience: </label>
+                <input class="form-label" type="number" id="experience" class="form-control "
+                    formControlName="experience">
+            </div>
+
+            <h4>Horario</h4>
+
+            <div class="row mb-2 m-2 col-lg-5">
+                <label class="form-label" for="start_class_hour">Start Class Hour</label>
+                <select class="form-select" name="start_class_hour" id="start_class_hour"
+                    formControlName="start_class_hour">
+                    <option default>Select an start class hour</option>
+                    <option *ngFor="let timestamp of timeStampList" [value]="timestamp.value">{{timestamp.hour}}
+                    </option>
+                </select>
+
+            </div>
+            <div class="row mb-2 m-2 col-lg-5">
+                <label class="form-label" for="end_class_hour">End Class Hour</label>
+                <select class="form-select" name="end_class_hour" id="end_class_hour" formControlName="end_class_hour">
+                    <option default>Select an end class hour</option>
+                    <option *ngFor="let timestamp of timeStampList" [value]="timestamp.value">{{timestamp.hour}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="Check1">
+            <label class="form-check-label terms" for="Check1">I have read and agreed to the terms and
+                conditions</label>
+        </div>
+
+        <div class="button-container  mb-5">
+            <input type="submit" [value]="action" class="mt-2 btn btn-dark form-button">
+        </div>
+    </form>
+</section>
