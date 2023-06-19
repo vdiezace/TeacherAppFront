@@ -29,6 +29,7 @@ import { RegistroStudentComponent } from './components/registro-student/registro
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
 
+
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
   { path: "home", component: HomeComponent },
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: "admin/students", component: StudentsComponent },
   { path: "admin/teachers", component: TeachersComponentAdmin },
   { path: "admin/:adminid", component: ProfileComponentAdmin },
+ 
 
   { path: "**", component: C404Component }
 ];
