@@ -6,7 +6,7 @@ import { environment } from './environments/environment';
 //import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 /** Components */
@@ -88,6 +88,7 @@ import { EditComponent } from './components/teacherprofile/edit/edit.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule
     //AgmCoreModule.forRoot(environment.googleMaps),
   ],
   providers: [],
