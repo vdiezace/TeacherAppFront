@@ -10,8 +10,9 @@ export interface Student {
     avatar?: string,
     latitude?: string,
     longitude?: string,
-    city_id: number,
+    city_id?: number,
+    province_id?: number,
     address: string,
-    is_active: number,
-    subscribed: string;
+    is_active?: number,
+    subscribed?: string;
 }

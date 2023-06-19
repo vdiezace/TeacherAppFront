@@ -10,16 +10,16 @@
                     </div>
                     <div class="vr"></div>
                     <div class="card-body">
-                        <p>Name: {{userData.first_name}}</p>
-                        <p>Surname: {{userData.last_name}}</p>
-                        <p>Phone: {{userData.phone}}</p>
-                        <p>Email: {{userData.email}}</p>
-                        <p>Address: {{userData.address}}</p>
-                        <p>Province: {{userData.province}}</p>
-                        <p>City: {{userData.city}}</p>
+                        <p>Name: {{userData?.first_name}}</p>
+                        <p>Surname: {{userData?.last_name}}</p>
+                        <p>Phone: {{userData?.phone}}</p>
+                        <p>Email: {{userData?.email}}</p>
+                        <p>Address: {{userData?.address}}</p>
+                        <p>Province: {{userData?.province}}</p>
+                        <p>City: {{userData?.city}}</p>
                         <img src="" alt="">
-                        <div class="d-flex justify-content-start edit-btn">       
-                            <button class="btn btn-info">Edit</button>
+                        <div class="d-flex justify-content-start edit-btn">
+                            <button [routerLink]="['/student/profile', userData?.id]" class="btn btn-info">Edit</button>
                         </div>
                     </div>
                 </div>

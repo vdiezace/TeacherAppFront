@@ -28,6 +28,7 @@ import { TeacherReviewsComponent } from './components/landing-teacher/teacher-re
 import { EditComponent } from './components/teacherprofile/edit/edit.component';
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
+import { StudentGuard } from './guards/student.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -36,10 +37,10 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "contact", component: ContactComponent },
   { path: "student/chat", component: ChatComponent },
-  { path: "student/home", component: StudentHomeComponent },
+  { path: "student", component: StudentHomeComponent, canActivate: [StudentGuard] },
   { path: "student/classes", component: ClassesComponent },
   { path: "student/profile", component: ProfileComponent },
-  { path: "student/profile/edit/:studentid", component: RegistroStudentComponent },
+  { path: "student/profile/:studentid", component: RegistroStudentComponent, canActivate: [StudentGuard] },
   { path: "student/reviews", component: ReviewsComponent },
   { path: "student/teachers", component: TeachersComponent },
   { path: "student/teachers-details/:teacherid", component: TeachersDetailsComponent },

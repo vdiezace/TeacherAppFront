@@ -5,7 +5,6 @@ import { Category } from 'src/app/interfaces/category.interface';
 import { City } from 'src/app/interfaces/city.interface';
 import { Province } from 'src/app/interfaces/province.interface';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
-import { User } from 'src/app/interfaces/user.interface';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { LocationsService } from 'src/app/services/locations.service';
 import { TeachersService } from 'src/app/services/teachers.service';
