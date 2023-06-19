@@ -33,7 +33,7 @@
         </div>
         <div class="teachers-data">
             <h4>{{teacher.first_name}} {{teacher.last_name}}</h4>
-            <p>{{teacher.avg_rating}}</p>
+            <p class="">Rating: {{teacher.avg_rating}} <img class="star-rating" src="/assets/reviews/star.svg" alt="star"> </p>
         </div>
         <div class="teachers-buttons">
             <button class="btn btn-info" routerLink="/student/teachers-details/{{teacher.teacher_id}}">Book</button>

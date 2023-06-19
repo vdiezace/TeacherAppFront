@@ -27,18 +27,27 @@ export class ClassesComponent {
 
 
   async deleteClass(pClassId: number) {
-    const response = await this.classesService.deleteClassById(pClassId);
-    if (response.id) {
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-        this.router.navigate(["student/classes"]).then(() => {
-          Swal.fire({
-            title: 'Canceled!',
-            text: 'Your class has been canceled.',
-            icon: 'success',
-            timer: 3000
-          });
-        })
-      );
+    try {
+      const response = await this.classesService.deleteClassById(pClassId);
+      if (response.id) {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+          this.router.navigate(["student/classes"]).then(() => {
+            Swal.fire({
+              title: 'Canceled!',
+              text: 'Your class has been canceled.',
+              icon: 'success',
+              timer: 3000
+            });
+          })
+        );
+      }  
+    }
+    catch(error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      });
     }
   }
 
