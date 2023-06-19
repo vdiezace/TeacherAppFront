@@ -63,7 +63,8 @@ export class RegistroStudentComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[+][0-9]+$/),
         Validators.maxLength(13),
-        Validators.minLength(11)]),
+        Validators.minLength(11)
+      ]),
       address: new FormControl("", []),
       avatar: new FormControl("", []),
       province_id: new FormControl("", [Validators.required]),
@@ -124,7 +125,7 @@ export class RegistroStudentComponent implements OnInit {
             avatar: new FormControl(response.avatar, []),
             province_id: new FormControl(response.province_id, [Validators.required]),
             city_id: new FormControl(response.city_id, [Validators.required])
-          }, [this.checkPassword]);
+          }, []);
         }
       })
     } catch (error) {

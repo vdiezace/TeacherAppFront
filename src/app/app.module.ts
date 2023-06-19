@@ -45,8 +45,6 @@ import { RegistroTeacherComponent } from './components/registro-teacher/registro
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
 import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
 
-import { NewMapComponent } from './components/new-map/new-map.component';
-
 
 @NgModule({
   declarations: [

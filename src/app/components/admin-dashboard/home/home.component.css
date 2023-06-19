@@ -1,10 +1,10 @@
-.titulo-admin{
+.titulo-admin {
     display: flex;
     margin-top: 2rem;
     justify-content: center;
 }
 
-.container{
+.container {
     display: flex;
     width: 80%;
     margin: 2rem;
@@ -12,7 +12,7 @@
     gap: 1rem;
 }
 
-.container-card{
+.container-card {
     justify-content: center;
     align-items: center;
     border: 1px solid grey;
@@ -21,16 +21,17 @@
     border-radius: 1rem;
     width: 33%;
     height: 10rem;
-    
+
 }
-.container-card:hover{
+
+.container-card:hover {
     cursor: pointer;
     transform: translateY(-10px);
     background-color: rgb(253, 178, 92);
-    
+
 }
 
-.card-title{
+.card-title {
     font-size: 1.3rem;
     font-weight: 700;
 }
