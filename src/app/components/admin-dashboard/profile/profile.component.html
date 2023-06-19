@@ -9,21 +9,17 @@
           <div class="card-horizontal align-items-center">
             <div class=""> 
             <div class="img-rounded-wrapper d-flex justify-content-center">
-              <img class=" rounded-5 mt-3" [src]="adminData.avatar" alt="Card image cap">
             </div>
             </div>
             <div class="vr"></div>
             <div class="card-body d-flex justify-content-center flex-column">
               <p class="card-text shadow border-1 p-2 rounded-1">Name: {{adminData.first_name}}</p>
               <p class="card-text shadow border-1 p-2 rounded-1">Surname: {{adminData.last_name}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Phone: {{adminData.phone}}</p>
+              <p class="card-text shadow border-1 p-2 rounded-1">Phone: {{adminData.username}}</p>
               <p class="card-text shadow border-1 p-2 rounded-1">Email: {{adminData.email}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Address: {{adminData.address}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Province: {{adminData.province}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">City: {{adminData.city}}</p>
               <img src="" alt="">
               <div class="d-flex justify-content-center">       
-                <button class="titulo-btn btn btn-outline-primary rounded-5 mt-3 mb-3" routerLink="/teachers/profile/edit">Edit</button>
+                <button class="titulo-btn btn btn-outline-primary rounded-5 mt-3 mb-3" [routerLink]="['/admin/profile', adminData?.id]">Edit</button>
               </div>
             </div>
           </div>
