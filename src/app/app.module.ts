@@ -42,6 +42,8 @@ import { TeacherClassesComponent } from './components/landing-teacher/teacher-cl
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { EditComponent } from './components/teacherprofile/edit/edit.component';
+import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
+import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { EditComponent } from './components/teacherprofile/edit/edit.component';
     StudentsListComponent,
     TimeFormatPipe,
     EditComponent,
+    RegistroTeacherComponent,
+    RegistroStudentComponent
 
   ],
   imports: [
@@ -88,7 +92,7 @@ import { EditComponent } from './components/teacherprofile/edit/edit.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
     //AgmCoreModule.forRoot(environment.googleMaps),
   ],
   providers: [],
