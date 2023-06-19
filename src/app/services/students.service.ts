@@ -24,11 +24,17 @@ export class StudentsService {
     );
   }
 
+
   getAllStudents() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}`, this.loginTokenService.getTokenHeader())
-    );
-  }
+      this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
+    )
+  } 
 
   getStudentById(pStudentId: number) {
     return firstValueFrom(

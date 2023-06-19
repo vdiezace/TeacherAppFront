@@ -54,4 +54,13 @@ export class ClassesService {
   getLoggedStudentClasses() {
     return this.getStudentClasses(this.loginTokenService.getId());
   }
+
+  deleteClassById(pClassId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.delete<any>(`${this.baseUrl_classes}/${pClassId}`, this.loginTokenService.getTokenHeader()));
+  }
 }

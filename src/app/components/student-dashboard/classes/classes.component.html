@@ -8,10 +8,11 @@
             <th scope="col">Teacher's name</th>
             <th scope="col">Teacher's surname</th>
             <th scope="col">Category</th>
-            <th scope="col">Start</th>
-            <th scope="col">Finish</th>
-            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">Start hour</th>
+            <th scope="col">End hour</th>
             <th scope="col">Join</th>
+            <th scope="col">Cancel</th>
           </tr>
         </thead>
         <tbody>
@@ -20,12 +21,11 @@
             <td>{{class.teacher_name}}</td>
             <td>{{class.teacher_surname}}</td>
             <td>{{class.category}}</td>
-            <td>{{class.creation_date}}</td>
-            <td>{{class.start_date}}</td>
-            <td>{{class.start_hour}}</td>
-            <td>{{class.end_hour}}</td>
-            <td></td>
-            <td></td>
+            <td>{{class.start_date.substring(0,10)}}</td>
+            <td>{{class.start_hour | timeFormat}}</td>
+            <td>{{class.end_hour | timeFormat}}</td>
+            <td> <a href="https://meet.google.com/wdd-buxm-kmg" target="_blank" rel="noopener noreferrer"><button class="btn btn-info">Join</button></a></td>
+            <td><button class="btn btn-danger" (click)="cancelar(class.id)">X</button></td>
           </tr>
         </tbody>
       </table>    

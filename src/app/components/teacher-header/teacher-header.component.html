@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg border-bottom">
   <div class="container-fluid w-100">
-    <a class="w-50" [routerLink]="['/home']"> <img class="img-logo" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684780186/logo-petit_v3cgru.png" alt="logotipo empresa teacherapp"></a>
+    <a class="w-50" [routerLink]="['/teachers']"> <img class="img-logo" src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684780186/logo-petit_v3cgru.png" alt="logotipo empresa teacherapp"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,10 +17,10 @@
           <a class="nav-link link-nav width-nav" [routerLink]="['/teachers/students-list']">Students</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav" [routerLink]="['/signup']">Classes</a>
+          <a class="nav-link link-nav" routerLink="/teachers/classes">Classes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav" [routerLink]="['teachers/:teacherid']">My profile</a>
+          <a class="nav-link link-nav" routerLink="/teachers/profile">My profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link link-nav" (click)="onClickLogout()">Log out</a>

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from './environments/environment';
 //import { AgmCoreModule } from '@agm/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 /** Components */
@@ -21,7 +21,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ProfileComponent } from './components/student-dashboard/profile/profile.component';
 import { ClassesComponent } from './components/student-dashboard/classes/classes.component';
 import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
@@ -29,7 +28,7 @@ import { ChatComponent } from './components/student-dashboard/chat/chat.componen
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { MapComponent } from './components/map/map.component';
+// import { MapComponent } from './components/map/map.component';
 import { LandingTeacherComponent } from './components/landing-teacher/landing-teacher.component';
 import { StudentsComponent } from './components/admin-dashboard/students/students.component';
 import { HomeComponentAdmin } from './components/admin-dashboard/home/home.component';
@@ -39,9 +38,10 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
 import { TeacherFilterComponent } from './components/teacher-filter/teacher-filter.component';
 import { TeacherprofileComponent } from './components/teacherprofile/teacherprofile.component';
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
-
-
-
+import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
+import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { EditComponent } from './components/teacherprofile/edit/edit.component';
 
 
 @NgModule({
@@ -57,7 +57,6 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     AboutUsComponent,
     LoginComponent,
     ContactComponent,
-    LoginFormComponent,
     ProfileComponent,
     ClassesComponent,
     TeachersComponent,
@@ -65,7 +64,7 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
-    MapComponent,
+    // MapComponent,
     LandingTeacherComponent,
     StudentsComponent,
     HomeComponentAdmin,
@@ -74,17 +73,22 @@ import { StudentHomeComponent } from './components/student-dashboard/student-hom
     TeachersReviewsComponent,
     FilterPipe,
     SortPipe,
-    MapComponent,
+    // MapComponent,
     TeacherFilterComponent,
     TeacherprofileComponent,
-    StudentHomeComponent
+    StudentHomeComponent,
+    TeacherClassesComponent,
+    StudentsListComponent,
+    TimeFormatPipe,
+    EditComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
     //AgmCoreModule.forRoot(environment.googleMaps),
   ],
   providers: [],
