@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { Category } from 'src/app/interfaces/category.interface';
 import { City } from 'src/app/interfaces/city.interface';
 import { Province } from 'src/app/interfaces/province.interface';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
-import { User } from 'src/app/interfaces/user.interface';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { LocationsService } from 'src/app/services/locations.service';
 import { LoginTokenService } from 'src/app/services/login-token.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-teacher',
@@ -27,11 +28,8 @@ export class RegistroTeacherComponent implements OnInit {
   timeStampList: any[] = [];
   userLatitude: number | undefined = undefined;
   userLongitude: number | undefined = undefined;
-  action: string = "Registrar";
-  teacher: any;
-  teacherId: string | null = null;
-  public teacherData : any;
-
+  action: string = "Register";
+  title: string = "Register";
 
   constructor(
     private categoriesService: CategoriesService,
@@ -79,47 +77,43 @@ export class RegistroTeacherComponent implements OnInit {
       })
       this.activatedRoute.params.subscribe(async (params: any) => {
         //console.log(params.teacherId);
-        let id = parseInt(params.teacherId)
+        let id = parseInt(params.teacherid)
         if (id) {
-          this.action = "Actualizar";
-          const response = this.usersService.getById(id);
+          this.title = "Update";
+          this.action = "Update";
+          const response = await this.teachersService.getTeacherById(id);
           //console.log(response)
-          
-
+          const teacher: Teacher = response;
+          //console.log(teacher)
           this.teacherForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.teacher_role_id, []),
-            first_name: new FormControl(this.teacherData.first_name, []),
-            last_name: new FormControl(this.teacherData.last_name, []),
-            username: new FormControl(this.teacherData.username, []),
-            email: new FormControl(this.teacherData.email, []),
-            password: new FormControl(this.teacherData.password, []),
-            repitePassword: new FormControl("", []),
-            phone: new FormControl(this.teacherData.phone, []),
-            address: new FormControl(this.teacherData.address, []),
-            avatar: new FormControl(this.teacherData.avatar, []),
-            province_id: new FormControl(this.teacherData.province_id, []),
-            city_id: new FormControl(this.teacherData.city_id, []),
-            price_hour: new FormControl(this.teacherData.price_hour, []),
-            category_id: new FormControl(this.teacherData.category_id, []),
-            subject: new FormControl(this.teacherData.subject, []),
-            experience: new FormControl(this.teacherData.experience, []),
-            start_class_hour: new FormControl(this.teacherData.start_class_hour, []),
-            end_class_hour: new FormControl(this.teacherData.end_class_hour, [])
+            first_name: new FormControl(teacher?.first_name, []),
+            last_name: new FormControl(teacher?.last_name, []),
+            username: new FormControl(teacher?.username, []),
+            email: new FormControl(teacher?.email, []),
+            password: new FormControl(teacher?.password, []),
+            repitePassword: new FormControl(teacher?.password, []),
+            phone: new FormControl(teacher?.phone, []),
+            address: new FormControl(teacher?.address, []),
+            avatar: new FormControl(teacher?.avatar, []),
+            province_id: new FormControl(teacher?.province, []),
+            city_id: new FormControl(teacher?.city_id, []),
+            price_hour: new FormControl(teacher?.price_hour, []),
+            category_id: new FormControl(teacher?.category_id, []),
+            subject: new FormControl(teacher?.subject, []),
+            experience: new FormControl(teacher?.experience, []),
+            start_class_hour: new FormControl(teacher?.start_class_hour, []),
+            end_class_hour: new FormControl(teacher?.end_class_hour, [])
           }, []);
-          console.log(this.teacherForm)
         }
       })
-
     } catch (error) {
-      console.log(error);
-    }
-
-    const teacherId = this.loginTokenService.getId();
-    const response = await this.teachersService.getTeacherById(teacherId);
-    console.log(response);
-    this.teacherData = response;
-    if (this.teacherData) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops! It seems that there has been an error.',
+        text: "Try it again"
+      });
     }
   }
 
@@ -141,42 +135,75 @@ export class RegistroTeacherComponent implements OnInit {
     }
   }
 
-  getDataForm() {
-    //console.log(this.teacherFormulario.value);
-    if (this.teacherForm.status === "VALID") {
-      this.activatedRoute.params.subscribe(async (params: any) => {
-        const user = await this.usersService.findByEmail(this.teacherForm.value.email);
-        let response: any;
-        let teacher = this.teacherForm.value;
-
-        if (!params.teacherId) {
-          if (user != null) {
-            alert("Error al registrar el usuario. El correo introducido ya existe")
-          } else {
-            if (this.userLatitude != undefined) {
-              teacher.latitude = this.userLatitude;
-              teacher.longitude = this.userLongitude;
-            }
-            try {
-              response = this.teachersService.createNewTeacher(teacher);
-              if (response.teachers_id) {
-                alert("El profesor se ha creado correctamente");
-              }
-              this.router.navigate(["/login"]);
-            } catch (error) {
-              console.log(error)
-            }
-          }
+  async getDataForm() {
+    let teacher = this.teacherForm.value;
+    if (teacher.id) {
+      /** Actualizo */
+      try {
+        let response = await this.teachersService.updateTeacher(teacher);
+        if (response.id) {
+          Swal.fire({
+            icon: 'success',
+            title: `The teacher ${response.first_name} ${response.last_name} has been successfully updated.`
+          })
+          this.router.navigate(['/home']);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Ops! It seems that there has been an error.',
+            text: "Try it again"
+          });
         }
-      })
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      /** Registro */
+      try {
+        let response = await this.teachersService.createNewTeacher(teacher);
+        if (response.id) {
+          Swal.fire({
+            icon: 'success',
+            title: `The teacher ${response.first_name} ${response.last_name} has been successfully created.`
+          });
+          this.router.navigate(['/home']);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Ops! It seems that there has been an error.',
+            text: "Try it again"
+          });
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
-  
+
+  checkControl(pControlName: string, pError: string): boolean {
+    if (this.teacherForm.get(pControlName)?.hasError(pError) && this.teacherForm.get(pControlName)?.touched) {
+      return true
+    }
+    return false;
   }
 
- 
+  checkPassword(pFormValue: AbstractControl) {
+    const password: string = pFormValue.get('password')?.value; // cojo el valor del password
+    const repitepassword: string = pFormValue.get('repitepassword')?.value;
 
-  
+    if (password !== repitepassword) {
+      return { 'checkpassword': true }
+    }
+    return null;
+  }
+
+  checkValidControl(controlName: string): boolean {
+    let valid = true
+    if (this.teacherForm.get(controlName)?.status === "INVALID" && this.teacherForm.get(controlName)?.touched) {
+      valid = false
+    }
+    return valid;
+  }
 
 
-
+}
