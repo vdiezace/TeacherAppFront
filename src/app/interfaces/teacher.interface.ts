@@ -23,6 +23,4 @@ export interface Teacher {
   end_class_hour: number,
   category_title?: string,
   teacher_id?: number
-
-  
 }
