@@ -137,13 +137,11 @@ export class RegistroStudentComponent implements OnInit {
   }
 
   async getDataForm() {
-
     let student = this.studentForm.value;
     if (student.id) {
       /** Actualizo */
       try {
         let response = await this.studentsService.updateStudent(student);
-        //console.log(response);
         if (response.id) {
           Swal.fire({
             icon: 'success',
@@ -166,7 +164,6 @@ export class RegistroStudentComponent implements OnInit {
         /** CREACION DE UN NUEVO ESTUDIANTE */
         /** Estudiante guardado */
         let response = await this.studentsService.createNewStudent(student);
-        //console.log(response);
         if (response.id) {
           Swal.fire({
             icon: 'success',
