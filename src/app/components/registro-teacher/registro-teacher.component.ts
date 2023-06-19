@@ -97,7 +97,7 @@ export class RegistroTeacherComponent implements OnInit {
             phone: new FormControl(teacher?.phone, []),
             address: new FormControl(teacher?.address, []),
             avatar: new FormControl(teacher?.avatar, []),
-            province_id: new FormControl(teacher?.province, []),
+            province_id: new FormControl(teacher?.province_id, []),
             city_id: new FormControl(teacher?.city_id, []),
             price_hour: new FormControl(teacher?.price_hour, []),
             category_id: new FormControl(teacher?.category_id, []),

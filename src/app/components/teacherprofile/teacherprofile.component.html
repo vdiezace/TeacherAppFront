@@ -1,35 +1,34 @@
 <app-teacher-header></app-teacher-header>
 
-<h1 class="text-center title mt-5">{{teacherData.first_name}}'s profile</h1>
+<h1 class="text-center title mt-5">{{teacherData?.first_name}}'s profile</h1>
 
 <div class="container mt-2 pt-3 mb-5 pb-3">
-    <div class="row d-flex justify-content-center">
-      <div class="col-lg-6 mt-3 ">
-        <div class="card border-1 m-auto" *ngIf="teacherData">
-          <div class="card-horizontal align-items-center">
-            <div class=""> 
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6 mt-3 ">
+      <div class="card border-1 m-auto" *ngIf="teacherData">
+        <div class="card-horizontal align-items-center">
+          <div class="">
             <div class="img-rounded-wrapper d-flex justify-content-center">
-              <img class=" rounded-5 mt-3" [src]="teacherData.avatar" alt="Card image cap">
+              <img class=" rounded-5 mt-3" [src]="teacherData?.avatar" alt="Card image cap">
             </div>
-            </div>
-            <div class="vr"></div>
-            <div class="card-body d-flex justify-content-center flex-column">
-              <p class="card-text shadow border-1 p-2 rounded-1">Name: {{teacherData.first_name}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Surname: {{teacherData.last_name}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Phone: {{teacherData.phone}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Email: {{teacherData.email}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Address: {{teacherData.address}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">Province: {{teacherData.province}}</p>
-              <p class="card-text shadow border-1 p-2 rounded-1">City: {{teacherData.city}}</p>
-              <img src="" alt="">
-              <div class="d-flex justify-content-center">       
-                <button class="titulo-btn btn btn-outline-primary rounded-5 mt-3 mb-3" routerLink="/teachers/profile/edit/{{teacherData.teacher_id}}">Edit</button>
-              </div>
+          </div>
+          <div class="vr"></div>
+          <div class="card-body d-flex justify-content-center flex-column">
+            <p class="card-text shadow border-1 p-2 rounded-1">Name: {{teacherData?.first_name}}</p>
+            <p class="card-text shadow border-1 p-2 rounded-1">Surname: {{teacherData?.last_name}}</p>
+            <p class="card-text shadow border-1 p-2 rounded-1">Phone: {{teacherData?.phone}}</p>
+            <p class="card-text shadow border-1 p-2 rounded-1">Email: {{teacherData?.email}}</p>
+            <p class="card-text shadow border-1 p-2 rounded-1">Address: {{teacherData?.address}}</p>
+            <p class="card-text shadow border-1 p-2 rounded-1">Province: {{teacherData?.province}}</p>
+            <p class="card-text shadow border-1 p-2 rounded-1">City: {{teacherData?.city}}</p>
+            <img src="" alt="">
+            <div class="d-flex justify-content-center">
+              <button class="titulo-btn btn btn-outline-primary rounded-5 mt-3 mb-3"
+                [routerLink]="['/teachers/profile', teacherData?.id]">Edit</button>
             </div>
           </div>
         </div>
-    </div>
       </div>
     </div>
-
-  
+  </div>
+</div>
