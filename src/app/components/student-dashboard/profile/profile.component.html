@@ -19,7 +19,7 @@
                         <p>City: {{userData.city}}</p>
                         <img src="" alt="">
                         <div class="d-flex justify-content-start edit-btn">       
-                            <button class="btn btn-info">Edit</button>
+                            <button class="btn btn-info" [routerLink]="['/student/profile/edit/'+userData.id]">Edit</button>
                         </div>
                     </div>
                 </div>

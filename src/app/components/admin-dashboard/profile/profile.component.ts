@@ -20,6 +20,7 @@ export class ProfileComponentAdmin {
     const response = await this.AdminService.getAdminById(this.loginTokenService.getId());
     console.log(response);
     this.adminData= response;
+    
     if (this.adminData){
     console.log(this.adminData.avatar);
     }
