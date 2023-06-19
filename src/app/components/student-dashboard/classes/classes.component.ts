@@ -12,7 +12,7 @@ export class ClassesComponent {
 
   classes: any[];
 
-  constructor( private classesService: ClassesService,
+  constructor(private classesService: ClassesService,
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     this.classes = [];
@@ -26,18 +26,18 @@ export class ClassesComponent {
   }
 
 
-  async deleteClass(pClassId: number){
+  async deleteClass(pClassId: number) {
     const response = await this.classesService.deleteClassById(pClassId);
-    if (response.id){
+    if (response.id) {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-      this.router.navigate(["student/classes"]).then(()=>{
-        Swal.fire({
-          title: 'Canceled!',
-          text: 'Your class has been canceled.',
-          icon: 'success',
-          timer: 3000
-        });
-      })
+        this.router.navigate(["student/classes"]).then(() => {
+          Swal.fire({
+            title: 'Canceled!',
+            text: 'Your class has been canceled.',
+            icon: 'success',
+            timer: 3000
+          });
+        })
       );
     }
   }
@@ -52,9 +52,9 @@ export class ClassesComponent {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result: any) => {
-      if(result.isConfirmed) {
+      if (result.isConfirmed) {
         this.deleteClass(pClassId);
       }
     });
-  } 
+  }
 }
