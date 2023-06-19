@@ -1,6 +1,6 @@
 <app-main-header></app-main-header>
 <section class="container mt-5 footer-position">
-    <h1>Formulario de profesores</h1>
+    <h1>{{title}} teacher</h1>
     <form novalidate [formGroup]="teacherForm" (ngSubmit)="getDataForm()">
         <input type="hidden" id="role_id" formControlName="role_id" [value]="teacher_role_id">
         <div class="row mb-5">

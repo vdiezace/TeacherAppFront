@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/interfaces/category.interface';
 import { City } from 'src/app/interfaces/city.interface';
@@ -7,6 +7,7 @@ import { Province } from 'src/app/interfaces/province.interface';
 import { Teacher } from 'src/app/interfaces/teacher.interface';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { LocationsService } from 'src/app/services/locations.service';
+import { LoginTokenService } from 'src/app/services/login-token.service';
 import { TeachersService } from 'src/app/services/teachers.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -25,7 +26,8 @@ export class RegistroTeacherComponent implements OnInit {
   timeStampList: any[] = [];
   userLatitude: number | undefined = undefined;
   userLongitude: number | undefined = undefined;
-  action: string = "Registrar";
+  action: string = "Register";
+  title: string = "Register";
 
   constructor(
     private categoriesService: CategoriesService,
@@ -33,7 +35,8 @@ export class RegistroTeacherComponent implements OnInit {
     private usersService: UsersService,
     private teachersService: TeachersService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loginTokenService: LoginTokenService
   ) {
     this.teacherForm = new FormGroup({
       role_id: new FormControl(this.teacher_role_id, []),
@@ -72,11 +75,12 @@ export class RegistroTeacherComponent implements OnInit {
       })
       this.activatedRoute.params.subscribe(async (params: any) => {
         //console.log(params.teacherId);
-        let id = parseInt(params.teacherId)
+        let id = parseInt(params.teacherid)
         if (id) {
-          this.action = "Actualizar";
-          const response = this.usersService.getById(id);
-          //console.log(response)
+          this.title = "Update";
+          this.action = "Update";
+          const response = this.teachersService.getTeacherById(id);
+          console.log(response)
 
           this.teacherForm = new FormGroup({
             id: new FormControl(id, []),
@@ -156,4 +160,31 @@ export class RegistroTeacherComponent implements OnInit {
 
 
   }
+
+  checkControl(pControlName: string, pError: string): boolean {
+    if (this.teacherForm.get(pControlName)?.hasError(pError) && this.teacherForm.get(pControlName)?.touched) {
+      return true
+    }
+    return false;
+  }
+
+  checkPassword(pFormValue: AbstractControl) {
+    const password: string = pFormValue.get('password')?.value; // cojo el valor del password
+    const repitepassword: string = pFormValue.get('repitepassword')?.value;
+
+    if (password !== repitepassword) {
+      return { 'checkpassword': true }
+    }
+    return null;
+  }
+
+  checkValidControl(controlName: string): boolean {
+    let valid = true
+    if (this.teacherForm.get(controlName)?.status === "INVALID" && this.teacherForm.get(controlName)?.touched) {
+      valid = false
+    }
+    return valid;
+  }
+
+
 }

@@ -12,17 +12,17 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class TeacherprofileComponent implements OnInit {
 
-  public teacherData : any;
-  constructor( private TeachersService: TeachersService,
+  teacherData: any;
+  constructor(private TeachersService: TeachersService,
     private loginTokenService: LoginTokenService) {
   }
 
   async ngOnInit() {
     const response = await this.TeachersService.getTeacherById(this.loginTokenService.getId());
-    console.log(response);
-    this.teacherData= response;
-    if (this.teacherData){
-    console.log(this.teacherData.avatar);
+    //console.log(response);
+    this.teacherData = response;
+    if (this.teacherData) {
+      console.log(this.teacherData.avatar);
     }
   }
 }
