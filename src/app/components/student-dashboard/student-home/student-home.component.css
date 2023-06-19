@@ -44,3 +44,7 @@
 .option-box {
     background-color: #D9D9D9;
 }
+
+.star-rating {
+    vertical-align: text-top;
+}
