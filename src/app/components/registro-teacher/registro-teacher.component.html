@@ -1,6 +1,8 @@
+<app-main-header></app-main-header>
 <section class="container mt-5 footer-position">
     <h1>Formulario de profesores</h1>
-    <form [formGroup]="teacherForm" (ngSubmit)="getDataForm()">
+    <form novalidate [formGroup]="teacherForm" (ngSubmit)="getDataForm()">
+        <input type="hidden" id="role_id" formControlName="role_id" [value]="teacher_role_id">
         <div class="row mb-5">
             <div class="mb-2 m-2 col-lg-5">
                 <label for="first_name" class="form-label">First Name</label>
@@ -105,7 +107,7 @@
                 conditions</label>
         </div>
 
-        <div class="button-container">
+        <div class="button-container  mb-5">
             <input type="submit" [value]="action" class="mt-2 btn btn-dark form-button">
         </div>
     </form>

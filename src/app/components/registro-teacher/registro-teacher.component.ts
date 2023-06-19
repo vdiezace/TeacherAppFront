@@ -31,30 +31,30 @@ export class RegistroTeacherComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private locationsService: LocationsService,
-    private usersSercive: UsersService,
+    private usersService: UsersService,
     private teachersService: TeachersService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
     this.teacherForm = new FormGroup({
       role_id: new FormControl(this.teacher_role_id, []),
-      first_name: new FormControl(),
-      last_name: new FormControl(),
-      username: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl(),
-      repitePassword: new FormControl(),
-      phone: new FormControl(),
-      address: new FormControl(),
-      avatar: new FormControl(),
-      province_id: new FormControl(),
-      city_id: new FormControl(),
-      price_hour: new FormControl(),
-      category_id: new FormControl(),
-      subject: new FormControl(),
-      experience: new FormControl(),
-      start_class_hour: new FormControl(),
-      end_class_hour: new FormControl()
+      first_name: new FormControl("", []),
+      last_name: new FormControl("", []),
+      username: new FormControl("", []),
+      email: new FormControl("", []),
+      password: new FormControl("", []),
+      repitePassword: new FormControl("", []),
+      phone: new FormControl("", []),
+      address: new FormControl("", []),
+      avatar: new FormControl("", []),
+      province_id: new FormControl("", []),
+      city_id: new FormControl("", []),
+      price_hour: new FormControl("", []),
+      category_id: new FormControl("", []),
+      subject: new FormControl("", []),
+      experience: new FormControl("", []),
+      start_class_hour: new FormControl("", []),
+      end_class_hour: new FormControl("", [])
     }, []);
   }
 
@@ -76,29 +76,29 @@ export class RegistroTeacherComponent implements OnInit {
         let id = parseInt(params.teacherId)
         if (id) {
           this.action = "Actualizar";
-          const response = this.usersSercive.getById(id);
+          const response = this.usersService.getById(id);
           //console.log(response)
 
           this.teacherForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.teacher_role_id, []),
-            first_name: new FormControl(),
-            last_name: new FormControl(),
-            username: new FormControl(),
-            email: new FormControl(),
-            password: new FormControl(),
-            repitePassword: new FormControl(),
-            phone: new FormControl(),
-            address: new FormControl(),
-            avatar: new FormControl(),
-            province_id: new FormControl(),
-            city_id: new FormControl(),
-            price_hour: new FormControl(),
-            category_id: new FormControl(),
-            subject: new FormControl(),
-            experience: new FormControl(),
-            start_class_hour: new FormControl(),
-            end_class_hour: new FormControl()
+            first_name: new FormControl("", []),
+            last_name: new FormControl("", []),
+            username: new FormControl("", []),
+            email: new FormControl("", []),
+            password: new FormControl("", []),
+            repitePassword: new FormControl("", []),
+            phone: new FormControl("", []),
+            address: new FormControl("", []),
+            avatar: new FormControl("", []),
+            province_id: new FormControl("", []),
+            city_id: new FormControl("", []),
+            price_hour: new FormControl("", []),
+            category_id: new FormControl("", []),
+            subject: new FormControl("", []),
+            experience: new FormControl("", []),
+            start_class_hour: new FormControl("", []),
+            end_class_hour: new FormControl("", [])
           }, []);
         }
       })
@@ -129,7 +129,7 @@ export class RegistroTeacherComponent implements OnInit {
     //console.log(this.teacherFormulario.value);
     if (this.teacherForm.status === "VALID") {
       this.activatedRoute.params.subscribe(async (params: any) => {
-        const user = await this.usersSercive.findByEmail(this.teacherForm.value.email);
+        const user = await this.usersService.findByEmail(this.teacherForm.value.email);
         let response: any;
         let teacher = this.teacherForm.value;
 
