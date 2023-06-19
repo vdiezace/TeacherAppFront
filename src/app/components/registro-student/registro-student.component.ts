@@ -92,18 +92,38 @@ export class RegistroStudentComponent implements OnInit {
           this.studentForm = new FormGroup({
             id: new FormControl(id, []),
             role_id: new FormControl(this.student_role_id, []),
-            first_name: new FormControl(student?.first_name, []),
-            last_name: new FormControl(student?.last_name, []),
-            username: new FormControl(student?.username, []),
-            email: new FormControl(student?.email, []),
-            password: new FormControl(student?.password, []),
-            repitePassword: new FormControl(student?.password, []),
-            phone: new FormControl(student?.phone, []),
-            address: new FormControl(student?.address, []),
-            avatar: new FormControl(student?.avatar, []),
-            province_id: new FormControl(student?.province_id, []),
-            city_id: new FormControl(student?.city_id, [])
-          }, []);
+            first_name: new FormControl("", [
+              Validators.required,
+              Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
+            ]),
+            last_name: new FormControl("", [
+              Validators.required,
+              Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
+            ]),
+            username: new FormControl("", [
+              Validators.required,
+            ]),
+            email: new FormControl("", [
+              Validators.required,
+              Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
+            ]),
+            password: new FormControl("", [
+              Validators.required,
+              Validators.minLength(8)
+            ]),
+            repitePassword: new FormControl("", [
+              Validators.required
+            ]),
+            phone: new FormControl("", [
+              Validators.required,
+              Validators.pattern(/^[+][0-9]+$/),
+              Validators.maxLength(13),
+              Validators.minLength(11)]),
+            address: new FormControl("", []),
+            avatar: new FormControl("", []),
+            province_id: new FormControl("", [Validators.required]),
+            city_id: new FormControl("", [Validators.required])
+          }, [this.checkPassword]);
         }
       })
     } catch (error) {
