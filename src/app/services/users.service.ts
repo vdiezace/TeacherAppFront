@@ -22,8 +22,6 @@ export class UsersService {
     )
   }
 
-  teacherRegister(values: {}) { }
-
   findByEmail(pEmail: string) {
     return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/${pEmail}`))
   }
