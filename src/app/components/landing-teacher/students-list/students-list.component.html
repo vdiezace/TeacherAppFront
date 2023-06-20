@@ -16,11 +16,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let student of myStudents">
-        <td class="text-center">{{ student.first_name }}</td>
-        <td class="text-center">{{ student.last_name }}</td>
-        <td class="text-center">{{ student.email}}</td>
+        <td class="text-center">{{ student?.first_name }}</td>
+        <td class="text-center">{{ student?.last_name }}</td>
+        <td class="text-center">{{ student?.email}}</td>
         <td class="text-center">
-          <a [href]="'mailto:' + student.email">
+          <a [href]="'mailto:' + student?.email">
             <button class="titulo-btn btn btn-outline-primary rounded-5">Send Email</button>
           </a>
         </td>
