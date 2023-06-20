@@ -41,4 +41,8 @@ export class UsersService {
   saveLocation(pUser: User, pLocation: any): Promise<any> {
     return firstValueFrom(this.httpClient.put<any>(`${this.apiUrl}/location/${pUser.users_id}`, pLocation));
   }
+
+  isLogged(): boolean {
+    return localStorage.getItem("token") ? true : false;
+  }
 }
