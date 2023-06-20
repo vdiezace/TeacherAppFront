@@ -40,7 +40,6 @@ import { TeacherprofileComponent } from './components/teacherprofile/teacherprof
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
-import { EditComponent } from './components/teacherprofile/edit/edit.component';
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
 import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
@@ -81,7 +80,6 @@ import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-
     TeacherClassesComponent,
     StudentsListComponent,
     TimeFormatPipe,
-    EditComponent,
     RegistroTeacherComponent,
     RegistroStudentComponent,
     ReviewsTeachersComponent,
