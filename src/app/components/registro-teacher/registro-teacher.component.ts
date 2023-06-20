@@ -29,8 +29,8 @@ export class RegistroTeacherComponent implements OnInit {
   userLongitude: number | undefined = undefined;
   action: string = "Registrar";
 
-  teacherId= 0;
-  isEdition= false;
+  teacherId = 0;
+  isEdition = false;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -79,33 +79,33 @@ export class RegistroTeacherComponent implements OnInit {
         //console.log(params.teacherId);
         let id = parseInt(params.teacherid)
         if (id) {
-          this.action= "Actualizar";
-          this.teacherId= id;
-this.isEdition= true;
+          this.action = "Actualizar";
+          this.teacherId = id;
+          this.isEdition = true;
           // const response = this.usersService.getById(id);
           //console.log(response)
           this.loadTeacherData();
-/*           this.teacherForm = new FormGroup({
-            id: new FormControl(id, []),
-            role_id: new FormControl(this.teacher_role_id, []),
-            first_name: new FormControl("", []),
-            last_name: new FormControl("", []),
-            username: new FormControl("", []),
-            email: new FormControl("", []),
-            password: new FormControl("", []),
-            repitePassword: new FormControl("", []),
-            phone: new FormControl("", []),
-            address: new FormControl("", []),
-            avatar: new FormControl("", []),
-            province_id: new FormControl("", []),
-            city_id: new FormControl("", []),
-            price_hour: new FormControl("", []),
-            category_id: new FormControl("", []),
-            subject: new FormControl("", []),
-            experience: new FormControl("", []),
-            start_class_hour: new FormControl("", []),
-            end_class_hour: new FormControl("", [])
-          }, []); */
+          /*           this.teacherForm = new FormGroup({
+                      id: new FormControl(id, []),
+                      role_id: new FormControl(this.teacher_role_id, []),
+                      first_name: new FormControl("", []),
+                      last_name: new FormControl("", []),
+                      username: new FormControl("", []),
+                      email: new FormControl("", []),
+                      password: new FormControl("", []),
+                      repitePassword: new FormControl("", []),
+                      phone: new FormControl("", []),
+                      address: new FormControl("", []),
+                      avatar: new FormControl("", []),
+                      province_id: new FormControl("", []),
+                      city_id: new FormControl("", []),
+                      price_hour: new FormControl("", []),
+                      category_id: new FormControl("", []),
+                      subject: new FormControl("", []),
+                      experience: new FormControl("", []),
+                      start_class_hour: new FormControl("", []),
+                      end_class_hour: new FormControl("", [])
+                    }, []); */
         }
       })
     } catch (error) {
@@ -131,15 +131,15 @@ this.isEdition= true;
     }
   }
 
-  async loadTeacherData(){
-    const response= await this.teachersService.getTeacherById(this.teacherId);
-    const response1= await this.usersService.getById(response.users_id);
+  async loadTeacherData() {
+    const response = await this.teachersService.getTeacherById(this.teacherId);
+    const response1 = await this.usersService.getById(response.users_id);
     if (response.users_id) {
       this.teacherForm = new FormGroup({
         users_id: new FormControl(response.users_id, []),
         user_id: new FormControl(response.users_id, []),
         id: new FormControl(response.users_id, [])
-,
+        ,
         role_id: new FormControl(response.role_id, []),
         first_name: new FormControl(response.first_name, []),
         last_name: new FormControl(response.last_name, []),
@@ -167,39 +167,39 @@ this.isEdition= true;
     //console.log(this.teacherFormulario.value);
     if (this.teacherForm.status === "VALID") {
 
-      if (this.isEdition){
+      if (this.isEdition) {
         console.log(this.teacherForm.value);
         this.teachersService.updateTeacher(this.teacherId, this.teacherForm.value);
       } else {
 
-      console.log("click?");
-      this.activatedRoute.params.subscribe(async (params: any) => {
-        const user = await this.usersService.findByEmail(this.teacherForm.value.email);
-        let response: any;
-        let teacher = this.teacherForm.value;
+        console.log("click?");
+        this.activatedRoute.params.subscribe(async (params: any) => {
+          const user = await this.usersService.findByEmail(this.teacherForm.value.email);
+          let response: any;
+          let teacher = this.teacherForm.value;
 
-        if (!params.teacherId) {
-          if (user != null) {
-            alert("Error al registrar el usuario. El correo introducido ya existe")
-          } else {
-            if (this.userLatitude != undefined) {
-              teacher.latitude = this.userLatitude;
-              teacher.longitude = this.userLongitude;
-            }
-            try {
-              response = this.teachersService.createNewTeacher(teacher);
-              if (response.teachers_id) {
-                alert("El profesor se ha creado correctamente");
+          if (!params.teacherId) {
+            if (user != null) {
+              alert("Error al registrar el usuario. El correo introducido ya existe")
+            } else {
+              if (this.userLatitude != undefined) {
+                teacher.latitude = this.userLatitude;
+                teacher.longitude = this.userLongitude;
               }
-              this.router.navigate(["/login"]);
-            } catch (error) {
-              console.log(error)
+              try {
+                response = this.teachersService.createNewTeacher(teacher);
+                if (response.teachers_id) {
+                  alert("El profesor se ha creado correctamente");
+                }
+                this.router.navigate(["/login"]);
+              } catch (error) {
+                console.log(error)
+              }
             }
           }
-        }
-      })
+        })
+      }
     }
-  }
 
   }
 }

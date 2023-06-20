@@ -24,9 +24,9 @@ export class RegistroStudentComponent implements OnInit {
   action: string = "Registrar";
 
   studentId: number;
-  isEdition= false;
-/* 
-  studentId: any; */
+  isEdition = false;
+  /* 
+    studentId: any; */
 
   constructor(
     private router: Router,
@@ -35,7 +35,7 @@ export class RegistroStudentComponent implements OnInit {
     private usersService: UsersService,
     private activatedRoute: ActivatedRoute
   ) {
-    this.studentId=0;
+    this.studentId = 0;
     this.studentForm = new FormGroup({
       role_id: new FormControl(this.student_role_id, []),
       first_name: new FormControl("", []),
@@ -67,7 +67,7 @@ export class RegistroStudentComponent implements OnInit {
         this.studentId = parseInt(params.studentid)
         if (this.studentId) {
           console.log("id", this.studentId);
-this.isEdition= true;         this.loadUserData();
+          this.isEdition = true; this.loadUserData();
         }
 
       })
@@ -80,31 +80,31 @@ this.isEdition= true;         this.loadUserData();
     console.log(this.studentForm.value)
   }
 
-  async loadUserData(){
-    const response= await this.studentsService.getStudentById(this.studentId);
-    const response1= await this.usersService.getById(response.user_id);
+  async loadUserData() {
+    const response = await this.studentsService.getStudentById(this.studentId);
+    const response1 = await this.usersService.getById(response.user_id);
     console.log(response);
-    if (response.user_id){
+    if (response.user_id) {
       console.log(response);
       console.log(response1);
- 
-let provinceSelected= 0;
-this.province.forEach(
-  province =>{
-    if (province.name==response.province){
-      provinceSelected= province.id;
-    }
-  }
-)
 
-let citySelected= 0;
-this.city.forEach(
-  city =>{
-    if (city.name==response.city){
-      citySelected= city.id;
-    }
-  }
-)
+      let provinceSelected = 0;
+      this.province.forEach(
+        province => {
+          if (province.name == response.province) {
+            provinceSelected = province.id;
+          }
+        }
+      )
+
+      let citySelected = 0;
+      this.city.forEach(
+        city => {
+          if (city.name == response.city) {
+            citySelected = city.id;
+          }
+        }
+      )
 
       this.studentForm = new FormGroup({
         users_id: new FormControl(response.user_id, []),
@@ -133,8 +133,8 @@ this.city.forEach(
     }
   }
 
-  onSubmit(){
-    if (!this.isEdition){
+  onSubmit() {
+    if (!this.isEdition) {
       this.studentsService.createNewStudent(this.studentForm.value);
     } else {
       this.studentsService.updateStudent(this.studentId, this.studentForm.value);
