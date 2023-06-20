@@ -12,7 +12,7 @@
             <p>Phone number: <a href="tel: {{teacher.phone}}">{{teacher?.phone}}</a></p>
             <p>Email: <a href="mailto:{{teacher?.email}}">{{teacher?.email}}</a></p>
             <div class="review-button">
-                <button class="btn btn-info" routerLink="/student/teachers-reviews/{{teacher?.id}}">Reviews</button>
+                <button class="btn btn-info" [routerLink]="['/reviews', 'teachers']">Reviews</button>
             </div>
         </div>
     </div>

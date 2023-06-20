@@ -18,8 +18,8 @@ export class TeachersService {
     this.baseUrlClasses = 'http://localhost:3000/api/teachers-classes';
   }
 
-  
-  
+
+
   getAllTeachers() {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -29,8 +29,8 @@ export class TeachersService {
     return firstValueFrom(
       this.httpClient.get<any[]>(`${this.baseUrl}`, httpOptions)
     )
-  } 
-  
+  }
+
   getTeacherClassesByStudentId(pStudentId: number) {
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrlClasses}/${pStudentId}`))
@@ -60,7 +60,7 @@ export class TeachersService {
 
   createNewTeacher(newTeacher: Teacher) {
     return firstValueFrom(
-      this.httpClient.post<Teacher>(`${this.baseUrl}`, newTeacher)
+      this.httpClient.post<Teacher>(`${this.baseUrl}`, newTeacher, this.loginTokenService.getTokenHeader())
     );
   }
 

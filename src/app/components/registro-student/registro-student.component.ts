@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { City } from 'src/app/interfaces/city.interface';
 import { Province } from 'src/app/interfaces/province.interface';
 import { LocationsService } from 'src/app/services/locations.service';
 import { StudentsService } from 'src/app/services/students.service';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-student',
@@ -21,22 +22,18 @@ export class RegistroStudentComponent implements OnInit {
   citiesByProvince: City[] = [];
   userLatitude: number | undefined = undefined;
   userLongitude: number | undefined = undefined;
-  // action: string = "Registrar";
   title: string = "register"
-  studentId: number;
+  action: string = "Register"
   isEdition = false;
-  /* 
-    studentId: any; */
   usersService = inject(UsersService)
+  studentStored: any;
 
   constructor(
     private router: Router,
     private studentsService: StudentsService,
     private locationsService: LocationsService,
-    // private usersService: UsersService,
     private activatedRoute: ActivatedRoute
   ) {
-    this.studentId = 0;
     this.studentForm = new FormGroup({
       role_id: new FormControl(this.student_role_id, []),
       first_name: new FormControl("", []),
@@ -54,75 +51,90 @@ export class RegistroStudentComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    try {
-      this.province = await this.locationsService.getAllProvinces();
-      this.city = await this.locationsService.getAllCities();
-      navigator.geolocation.getCurrentPosition(position => {
-        const { latitude, longitude } = position.coords;
-        this.userLatitude = latitude,
-          this.userLongitude = longitude
-      })
 
+    this.province = await this.locationsService.getAllProvinces();
+    this.city = await this.locationsService.getAllCities();
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      this.userLatitude = latitude,
+        this.userLongitude = longitude
+    })
 
-      this.activatedRoute.params.subscribe(async (params: any) => {
-        this.studentId = parseInt(params.studentid)
-        if (this.studentId) {
-          console.log("id", this.studentId);
-          this.isEdition = true; this.loadUserData();
-        }
+    this.activatedRoute.params.subscribe(async (params: any) => {
+      console.log(params);
+      let id = parseInt(params.studentid)
+      if (id) {
+        this.title = "update";
+        this.action = "Update"
+        this.studentStored = await this.studentsService.getStudentById(id);
+        this.citiesByProvince = this.city.filter(c => c.province_id == parseInt(this.studentStored.province_id));
 
-      })
-    } catch (error) {
-      console.log(error)
-    }
+        this.studentForm = new FormGroup({
+          user_id: new FormControl(this.studentStored.user_id, []),
+          role_id: new FormControl(this.student_role_id, []),
+          first_name: new FormControl(this.studentStored.first_name, []),
+          last_name: new FormControl(this.studentStored.last_name, []),
+          username: new FormControl(this.studentStored.username, []),
+          email: new FormControl(this.studentStored.email, []),
+          password: new FormControl(this.studentStored.password, []),
+          repitePassword: new FormControl(this.studentStored.password, []),
+          phone: new FormControl(this.studentStored.phone, []),
+          address: new FormControl(this.studentStored.address, []),
+          avatar: new FormControl(this.studentStored.avatar, []),
+          province_id: new FormControl(this.studentStored.province_id, []),
+          city_id: new FormControl(this.studentStored.city_id, [])
+        }, [])
+      }
+    })
   }
 
-  getDataForm() {
+  async getDataForm(): Promise<void> {
     console.log(this.studentForm.value)
-  }
-
-  async loadUserData() {
-    const response = await this.studentsService.getStudentById(this.studentId);
-    const response1 = await this.usersService.getById(response.user_id);
-    //console.log(response);
-    if (response.user_id) {
-      // console.log(response);
-      // console.log(response1);
-      this.title = "update";
-      let provinceSelected = 0;
-      this.province.forEach(
-        province => {
-          if (province.name == response.province) {
-            provinceSelected = province.id;
-          }
+    let student = this.studentForm.value;
+    //console.log(student.user_id)
+    if (student.user_id) {
+      try {
+        /** Actualizamos */
+        let response = await this.studentsService.updateStudent(student);
+        console.log(response)
+        if (response.users_id) {
+          Swal.fire({
+            icon: 'success',
+            title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
+          })
+          this.router.navigate(['/home']);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops! There seems to have been an error.',
+            text: "Try again"
+          });
         }
-      )
+      } catch (error) {
+        console.log(error)
+      }
 
-      let citySelected = 0;
-      this.city.forEach(
-        city => {
-          if (city.name == response.city) {
-            citySelected = city.id;
-          }
+    } else {
+      /** Registrando un nuevo estudiante */
+      try {
+        let response = await this.studentsService.createNewStudent(student);
+        //console.log(response);
+        if (response.id) {
+          Swal.fire({
+            icon: 'success',
+            title: `The student ${response.first_name} ${response.last_name} has been successfully created.`
+          });
+          this.router.navigate(['/home']);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops! There seems to have been an error.',
+            text: "Try again"
+          });
         }
-      )
-
-      this.studentForm = new FormGroup({
-        users_id: new FormControl(response.user_id, []),
-        role_id: new FormControl(response1.role_id, []),
-        first_name: new FormControl(response.first_name, []),
-        last_name: new FormControl(response.last_name, []),
-        username: new FormControl(response.username, []),
-        email: new FormControl(response.email, []),
-        password: new FormControl(response.password, []),
-        repitePassword: new FormControl(response.password, []),
-        phone: new FormControl(response.phone, []),
-        address: new FormControl(response.address, []),
-        avatar: new FormControl(response.avatar, []),
-        province_id: new FormControl(provinceSelected, []),
-        city_id: new FormControl(citySelected, [])
-      }, [])
-
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
@@ -134,12 +146,20 @@ export class RegistroStudentComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    if (!this.isEdition) {
-      this.studentsService.createNewStudent(this.studentForm.value);
-    } else {
-      this.studentsService.updateStudent(this.studentId, this.studentForm.value);
+  checkControl(pControlName: string, pError: string): boolean {
+    if (this.studentForm.get(pControlName)?.hasError(pError) && this.studentForm.get(pControlName)?.touched) {
+      return true
     }
+    return false;
+  }
+
+  checkPassword(pFormValue: AbstractControl) {
+    const password: string = pFormValue.get('password')?.value;
+    const repitepassword: string = pFormValue.get('repitepassword')?.value;
+
+    if (password !== repitepassword) {
+      return { 'checkpassword': true }
+    }
+    return null;
   }
 }
-

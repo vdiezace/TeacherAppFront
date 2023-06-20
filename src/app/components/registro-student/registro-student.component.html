@@ -64,8 +64,7 @@
             </div>
 
             <div class="button-container">
-                <button type="submit" (click)="onSubmit()"
-                    class="mt-2 btn btn-dark form-button">{{isEdition?'Update':'Send'}}</button>
+                <input type="submit" [value]="action" class="mt-2 btn btn-dark form-button">
             </div>
 
         </div>

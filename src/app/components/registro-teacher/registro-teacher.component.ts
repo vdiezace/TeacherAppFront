@@ -29,7 +29,7 @@ export class RegistroTeacherComponent implements OnInit {
   userLongitude: number | undefined = undefined;
   action: string = "Register";
   title: string = "register"
-  teacherId = 0;
+  teacherId: number;
   isEdition = false;
   usersService = inject(UsersService);
 
@@ -41,6 +41,7 @@ export class RegistroTeacherComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
+    this.teacherId = 0;
     this.teacherForm = new FormGroup({
       role_id: new FormControl(this.teacher_role_id, []),
       first_name: new FormControl("", []),
@@ -77,11 +78,11 @@ export class RegistroTeacherComponent implements OnInit {
           this.userLongitude = longitude
       })
       this.activatedRoute.params.subscribe(async (params: any) => {
-        //console.log(params.teacherId);
-        let id = parseInt(params.teacherid)
-        if (id) {
+        //console.log(params);
+        this.teacherId = parseInt(params.teacherid)
+        if (this.teacherId) {
           //this.action = "Actualizar";
-          this.teacherId = id;
+          //this.teacherId = id;
           this.isEdition = true;
           // const response = this.usersService.getById(id);
           //console.log(response)
@@ -170,16 +171,15 @@ export class RegistroTeacherComponent implements OnInit {
     if (this.teacherForm.status === "VALID") {
 
       if (this.isEdition) {
-        console.log(this.teacherForm.value);
+        //console.log(this.teacherForm.value);
         this.teachersService.updateTeacher(this.teacherId, this.teacherForm.value);
       } else {
-
-        console.log("click?");
+        //console.log("click?");
         this.activatedRoute.params.subscribe(async (params: any) => {
+          console.log(params)
           const user = await this.usersService.findByEmail(this.teacherForm.value.email);
           let response: any;
           let teacher = this.teacherForm.value;
-
           if (!params.teacherId) {
             if (user != null) {
               alert("Error al registrar el usuario. El correo introducido ya existe")

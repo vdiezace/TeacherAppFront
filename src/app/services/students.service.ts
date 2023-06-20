@@ -36,7 +36,7 @@ export class StudentsService {
     )
   }
 
-  getStudentById(pStudentId: number) {
+  getStudentById(pStudentId: number): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')!
@@ -47,15 +47,15 @@ export class StudentsService {
     );
   }
 
-  createNewStudent(pStudent: Student): Promise<Student> {
+  createNewStudent(pStudent: Student): Promise<any> {
     return firstValueFrom(
-      this.httpClient.post<Student>(`${this.baseUrl}`, pStudent)
+      this.httpClient.post<Student>(this.baseUrl, pStudent, this.loginTokenService.getTokenHeader())
     );
   }
 
-  updateStudent(pStudentId: number, studentData: any) {
+  updateStudent(pStudent: any): Promise<any> {
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/${pStudentId}`, studentData, this.loginTokenService.getTokenHeader())
+      this.httpClient.put<any>(`${this.baseUrl}/${pStudent.users_id}`, pStudent, this.loginTokenService.getTokenHeader())
     );
   }
 
