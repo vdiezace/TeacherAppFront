@@ -5,7 +5,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { ChatComponent } from './components/student-dashboard/chat/chat.component';
 import { ClassesComponent } from './components/student-dashboard/classes/classes.component';
 import { ProfileComponent } from './components/student-dashboard/profile/profile.component';
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
@@ -24,7 +23,6 @@ import { TeachersReviewsComponent } from './components/student-dashboard/teacher
 import { StudentHomeComponent } from './components/student-dashboard/student-home/student-home.component';
 import { TeacherClassesComponent } from './components/landing-teacher/teacher-classes/teacher-classes.component';
 import { StudentsListComponent } from './components/landing-teacher/students-list/students-list.component';
-
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 import { StudentGuard } from './guards/student.guard';
@@ -36,7 +34,6 @@ const routes: Routes = [
   { path: "about-us", component: AboutUsComponent },
   { path: "login", component: LoginComponent },
   { path: "contact", component: ContactComponent },
-  { path: "student/chat", component: ChatComponent },
   { path: "student", component: StudentHomeComponent, canActivate: [StudentGuard] },
   { path: "student/classes", component: ClassesComponent },
   { path: "student/profile", component: ProfileComponent },

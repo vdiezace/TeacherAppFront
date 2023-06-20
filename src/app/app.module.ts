@@ -25,7 +25,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ProfileComponent } from './components/student-dashboard/profile/profile.component';
 import { ClassesComponent } from './components/student-dashboard/classes/classes.component';
 import { TeachersComponent } from './components/student-dashboard/teachers/teachers.component';
-import { ChatComponent } from './components/student-dashboard/chat/chat.component';
 import { ReviewsComponent } from './components/student-dashboard/reviews/reviews.component';
 import { TeachersDetailsComponent } from './components/student-dashboard/teachers-details/teachers-details.component';
 import { RegistroComponent } from './components/registro/registro.component';
@@ -61,7 +60,6 @@ import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-
     ProfileComponent,
     ClassesComponent,
     TeachersComponent,
-    ChatComponent,
     ReviewsComponent,
     TeachersDetailsComponent,
     RegistroComponent,
