@@ -1,0 +1,17 @@
+<app-main-header *ngIf="!usersService.isLogged()"></app-main-header>
+<app-teacher-header *ngIf="usersService.isLogged()"></app-teacher-header>
+<div class="container mt-5 d-flex justify-content-center align-items-center footer-position">
+    <div class="row">
+        <div class="col">
+            <p class="h3 text-dark fw-bold">
+                <i class="fa fa-face-frown fa-regular"></i> Ops! Page Not Found
+            </p>
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-secondary text-bg-light" [routerLink]="['/teachers']"> <i class="fa fa-home"></i>
+                Home
+            </button>
+        </div>
+    </div>
+</div>

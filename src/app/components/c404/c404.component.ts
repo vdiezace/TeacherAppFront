@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-c404',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class C404Component {
 
+  usersService = inject(UsersService);
 }
