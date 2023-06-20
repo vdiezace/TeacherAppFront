@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: "student/reviews", component: ReviewsComponent },
   { path: "student/teachers", component: TeachersComponent },
   { path: "student/teachers-details/:teacherid", component: TeachersDetailsComponent },
-  { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent },
+  { path: "reviews/:teacherid", component: TeachersReviewsComponent },
   { path: "register", component: RegistroComponent },
   { path: "register/student", component: RegistroStudentComponent },
   { path: "register/teacher", component: RegistroTeacherComponent },
@@ -61,7 +61,7 @@ const routes: Routes = [
   { path: "student/home", pathMatch: 'full', redirectTo: 'student' },
 
   { path: "admin/profile", component: ProfileComponentAdmin },
- 
+
 
   { path: "**", component: C404Component }
 ];
