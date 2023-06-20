@@ -1,4 +1,5 @@
-<app-student-header></app-student-header>
+<app-main-header *ngIf="!usersService.isLogged()"></app-main-header>
+<app-student-header *ngIf="usersService.isLogged()"></app-student-header>
 <section class="container mt-5 footer-position">
     <h1>Student {{title}}</h1>
     <form novalidate [formGroup]="studentForm" (ngSubmit)="getDataForm()">

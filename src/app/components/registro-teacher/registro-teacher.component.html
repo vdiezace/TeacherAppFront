@@ -1,5 +1,6 @@
-<app-main-header></app-main-header>
-<section class="container mt-5 footer-position">
+<app-main-header *ngIf="!usersService.isLogged()"></app-main-header>
+<app-teacher-header *ngIf="usersService.isLogged()"></app-teacher-header>
+<section class=" container mt-5 footer-position">
     <h1>Teacher {{title}} </h1>
     <form novalidate [formGroup]="teacherForm" (ngSubmit)="getDataForm()">
         <input type="hidden" id="role_id" formControlName="role_id" [value]="teacher_role_id">

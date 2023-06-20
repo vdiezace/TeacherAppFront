@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/interfaces/category.interface';
@@ -31,11 +31,12 @@ export class RegistroTeacherComponent implements OnInit {
   title: string = "register"
   teacherId = 0;
   isEdition = false;
+  usersService = inject(UsersService);
 
   constructor(
     private categoriesService: CategoriesService,
     private locationsService: LocationsService,
-    private usersService: UsersService,
+    // private usersService: UsersService,
     private teachersService: TeachersService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -135,8 +136,8 @@ export class RegistroTeacherComponent implements OnInit {
     const response = await this.teachersService.getTeacherById(this.teacherId);
     const response1 = await this.usersService.getById(response.users_id);
     if (response.users_id) {
-      this.title = "Update";
-      this.action = "update";
+      this.title = "update";
+      this.action = "Update";
       this.teacherForm = new FormGroup({
         users_id: new FormControl(response.users_id, []),
         user_id: new FormControl(response.users_id, []),
