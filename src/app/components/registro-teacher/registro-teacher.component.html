@@ -1,6 +1,6 @@
 <app-main-header></app-main-header>
 <section class="container mt-5 footer-position">
-    <h1>Formulario de profesores</h1>
+    <h1>Teacher {{title}} </h1>
     <form novalidate [formGroup]="teacherForm" (ngSubmit)="getDataForm()">
         <input type="hidden" id="role_id" formControlName="role_id" [value]="teacher_role_id">
         <div class="row mb-5">
@@ -87,7 +87,7 @@
                 <select class="form-select" name="start_class_hour" id="start_class_hour"
                     formControlName="start_class_hour">
                     <option default>Select an start class hour</option>
-                    <option *ngFor="let timestamp of timeStampList" [value]="timestamp.value">{{timestamp.hour}}
+                    <option *ngFor="let timestamp of timeStampList" [value]="timestamp?.value">{{timestamp.hour}}
                     </option>
                 </select>
 
@@ -96,7 +96,7 @@
                 <label class="form-label" for="end_class_hour">End Class Hour</label>
                 <select class="form-select" name="end_class_hour" id="end_class_hour" formControlName="end_class_hour">
                     <option default>Select an end class hour</option>
-                    <option *ngFor="let timestamp of timeStampList" [value]="timestamp.value">{{timestamp.hour}}
+                    <option *ngFor="let timestamp of timeStampList" [value]="timestamp?.value">{{timestamp.hour}}
                     </option>
                 </select>
             </div>

@@ -1,6 +1,6 @@
 <app-student-header></app-student-header>
 <section class="container mt-5 footer-position">
-    <h1>Formulario de estudiante</h1>
+    <h1>Student {{title}}</h1>
     <form novalidate [formGroup]="studentForm" (ngSubmit)="getDataForm()">
         <input type="hidden" id="role_id" formControlName="role_id" [value]="student_role_id">
         <div class="row mb-5">
@@ -63,7 +63,8 @@
             </div>
 
             <div class="button-container">
-                <button type="submit" (click)="onSubmit()" class="mt-2 btn btn-dark form-button">{{isEdition?'Update':'Send'}}</button>
+                <button type="submit" (click)="onSubmit()"
+                    class="mt-2 btn btn-dark form-button">{{isEdition?'Update':'Send'}}</button>
             </div>
 
         </div>

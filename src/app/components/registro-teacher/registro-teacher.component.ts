@@ -27,8 +27,8 @@ export class RegistroTeacherComponent implements OnInit {
   timeStampList: any[] = [];
   userLatitude: number | undefined = undefined;
   userLongitude: number | undefined = undefined;
-  action: string = "Registrar";
-
+  action: string = "Register";
+  title: string = "register"
   teacherId = 0;
   isEdition = false;
 
@@ -79,7 +79,7 @@ export class RegistroTeacherComponent implements OnInit {
         //console.log(params.teacherId);
         let id = parseInt(params.teacherid)
         if (id) {
-          this.action = "Actualizar";
+          //this.action = "Actualizar";
           this.teacherId = id;
           this.isEdition = true;
           // const response = this.usersService.getById(id);
@@ -135,11 +135,12 @@ export class RegistroTeacherComponent implements OnInit {
     const response = await this.teachersService.getTeacherById(this.teacherId);
     const response1 = await this.usersService.getById(response.users_id);
     if (response.users_id) {
+      this.title = "Update";
+      this.action = "update";
       this.teacherForm = new FormGroup({
         users_id: new FormControl(response.users_id, []),
         user_id: new FormControl(response.users_id, []),
-        id: new FormControl(response.users_id, [])
-        ,
+        id: new FormControl(response.users_id, []),
         role_id: new FormControl(response.role_id, []),
         first_name: new FormControl(response.first_name, []),
         last_name: new FormControl(response.last_name, []),

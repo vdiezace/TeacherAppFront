@@ -21,8 +21,8 @@ export class RegistroStudentComponent implements OnInit {
   citiesByProvince: City[] = [];
   userLatitude: number | undefined = undefined;
   userLongitude: number | undefined = undefined;
-  action: string = "Registrar";
-
+  // action: string = "Registrar";
+  title: string = "register"
   studentId: number;
   isEdition = false;
   /* 
@@ -83,11 +83,11 @@ export class RegistroStudentComponent implements OnInit {
   async loadUserData() {
     const response = await this.studentsService.getStudentById(this.studentId);
     const response1 = await this.usersService.getById(response.user_id);
-    console.log(response);
+    //console.log(response);
     if (response.user_id) {
-      console.log(response);
-      console.log(response1);
-
+      // console.log(response);
+      // console.log(response1);
+      this.title = "update";
       let provinceSelected = 0;
       this.province.forEach(
         province => {
