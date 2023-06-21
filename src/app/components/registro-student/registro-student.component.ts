@@ -97,8 +97,8 @@ export class RegistroStudentComponent implements OnInit {
       try {
         /** Actualizamos */
         let response = await this.studentsService.updateStudent(student);
-        //console.log(response)
-        if (response.user_id) {
+        console.log(response)
+        if (response.users_id) {
           Swal.fire({
             icon: 'success',
             title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
@@ -120,7 +120,7 @@ export class RegistroStudentComponent implements OnInit {
       try {
         let response = await this.studentsService.createNewStudent(student);
         //console.log(response);
-        if (response[0].user_id) {
+        if (response[0].users_id) {
           Swal.fire({
             icon: 'success',
             title: `The student ${response[0].first_name} ${response[0].last_name} has been successfully created.`
