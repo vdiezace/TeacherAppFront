@@ -120,10 +120,10 @@ export class RegistroStudentComponent implements OnInit {
       try {
         let response = await this.studentsService.createNewStudent(student);
         //console.log(response);
-        if (response.user_id) {
+        if (response[0].user_id) {
           Swal.fire({
             icon: 'success',
-            title: `The student ${response.first_name} ${response.last_name} has been successfully created.`
+            title: `The student ${response[0].first_name} ${response[0].last_name} has been successfully created.`
           });
           this.router.navigate(['/login']);
         } else {
