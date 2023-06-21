@@ -225,7 +225,7 @@ export class RegistroTeacherComponent implements OnInit {
       /** Creamos un nuevo teacher */
       try {
         let response = await this.teachersService.createNewTeacher(teacher);
-        console.log(response)
+        //console.log(response)
         if (response.user_id) {
           Swal.fire({
             icon: 'success',
