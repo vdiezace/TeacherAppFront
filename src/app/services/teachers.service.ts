@@ -58,16 +58,16 @@ export class TeachersService {
     );
   }
 
-  createNewTeacher(newTeacher: Teacher) {
+  createNewTeacher(newTeacher: Teacher): Promise<any> {
     return firstValueFrom(
       this.httpClient.post<Teacher>(`${this.baseUrl}`, newTeacher, this.loginTokenService.getTokenHeader())
     );
   }
 
-  updateTeacher(pTeacherId: number, teacherData: any) {
-    console.log(teacherData);
+  updateTeacher(pTeacherId: any): Promise<any> {
+    // console.log(teacherData);
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/${pTeacherId}`, teacherData, this.loginTokenService.getTokenHeader())
+      this.httpClient.put<any>(`${this.baseUrl}/${pTeacherId.id}`, pTeacherId, this.loginTokenService.getTokenHeader())
     );
   }
 

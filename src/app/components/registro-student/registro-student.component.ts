@@ -97,7 +97,7 @@ export class RegistroStudentComponent implements OnInit {
       try {
         /** Actualizamos */
         let response = await this.studentsService.updateStudent(student);
-        console.log(response)
+        //console.log(response)
         if (response.users_id) {
           Swal.fire({
             icon: 'success',
