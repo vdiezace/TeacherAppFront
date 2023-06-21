@@ -55,7 +55,7 @@ export class StudentsService {
 
   updateStudent(pStudent: any): Promise<any> {
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/${pStudent.users_id}`, pStudent, this.loginTokenService.getTokenHeader())
+      this.httpClient.put<any>(`${this.baseUrl}/${pStudent.id}`, pStudent, this.loginTokenService.getTokenHeader())
     );
   }
 

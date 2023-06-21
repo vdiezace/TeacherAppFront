@@ -61,7 +61,7 @@ export class RegistroStudentComponent implements OnInit {
     })
 
     this.activatedRoute.params.subscribe(async (params: any) => {
-      console.log(params);
+      //console.log(params);
       let id = parseInt(params.studentid)
       if (id) {
         this.title = "update";
@@ -70,6 +70,7 @@ export class RegistroStudentComponent implements OnInit {
         this.citiesByProvince = this.city.filter(c => c.province_id == parseInt(this.studentStored.province_id));
 
         this.studentForm = new FormGroup({
+          id: new FormControl(id, []),
           user_id: new FormControl(this.studentStored.user_id, []),
           role_id: new FormControl(this.student_role_id, []),
           first_name: new FormControl(this.studentStored.first_name, []),
@@ -89,20 +90,20 @@ export class RegistroStudentComponent implements OnInit {
   }
 
   async getDataForm(): Promise<void> {
-    console.log(this.studentForm.value)
+    //console.log(this.studentForm.value)
     let student = this.studentForm.value;
-    //console.log(student.user_id)
-    if (student.user_id) {
+    //console.log(student)
+    if (student.id) {
       try {
         /** Actualizamos */
         let response = await this.studentsService.updateStudent(student);
-        console.log(response)
-        if (response.users_id) {
+        //console.log(response)
+        if (response.user_id) {
           Swal.fire({
             icon: 'success',
             title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
           })
-          this.router.navigate(['/home']);
+          this.router.navigate(['/student']);
         } else {
           Swal.fire({
             icon: 'error',
@@ -119,12 +120,12 @@ export class RegistroStudentComponent implements OnInit {
       try {
         let response = await this.studentsService.createNewStudent(student);
         //console.log(response);
-        if (response.id) {
+        if (response.user_id) {
           Swal.fire({
             icon: 'success',
             title: `The student ${response.first_name} ${response.last_name} has been successfully created.`
           });
-          this.router.navigate(['/home']);
+          this.router.navigate(['/login']);
         } else {
           Swal.fire({
             icon: 'error',
