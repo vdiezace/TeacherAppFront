@@ -10,22 +10,24 @@ import { StudentsService } from 'src/app/services/students.service';
 export class StudentsComponent {
 
 students:any=[];
-  /*students = [
-    { first_name: 'Juan', last_name: 'Pérez',email:'juan@gmail.com', phone:650650650, address: 'Madrid' },
-    { first_name: 'María', last_name: 'López', email:'Maria@gmail.com',  phone:650650651, address: 'Barcelona'},
-    { first_name: 'Pedro', last_name: 'Gómez', email:'Pedro@gmail.com',  phone:650650652, address: 'Valencia' },];
-*/
-  public userData : any;
 
-  constructor( private studentsservice: StudentsService) {
+  constructor( private studentsService: StudentsService) {
   }
 
   async ngOnInit() {
-    const response = await this.studentsservice.getAllStudents();
-    console.log(response);
-    this.userData= response;
-    if (this.userData){
-    console.log(this.userData.name);
+    this.students = await this.studentsService.getAllStudents();
+  }
+
+  async approve(pStudentId: number) {
+    try {
+      const response = await this.studentsService.activateStudent(pStudentId);
+      console.log(response);
+      if(!response.fatal) {
+        this.students = await this.studentsService.getAllStudents();
+      }  
+    }
+    catch(error) {
+      console.log(error)
     }
   }
 

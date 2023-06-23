@@ -1,25 +1,29 @@
 <app-admin-header></app-admin-header>
 
-
-
-  <table>
+<div class="container">
+  <table class="table mt-5 pt-5 table-hover table-bordered">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Email</th>
-        <th>Phone number</th>
-        <th>Location</th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Category</th>
+        <th scope="col">Email</th>
+        <th scope="col">Status</th>
+        <th scope="col">Admin</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="fila" *ngFor="let teacher of teachers">
-        <td>{{ teacher.first_name }}</td>
-        <td>{{ teacher.last_name }}</td>
-        <td>{{ teacher.email }}</td>
-        <td>{{ teacher.phone }}</td>
-        <td>{{ teacher.address }}</td>
+      <tr *ngFor="let teacher of teachers ;let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{teacher.first_name}}</td>
+        <td>{{teacher.last_name}}</td>
+        <td>{{teacher.category_title}}</td>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.is_approved}}</td>
+        <td><button class="btn btn-success" *ngIf="!teacher.is_approved" (click)="approve(teacher.teacher_id)">Approve</button></td>
       </tr>
     </tbody>
-  </table>
 
+  </table>
+</div>

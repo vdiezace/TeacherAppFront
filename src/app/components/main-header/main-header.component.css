@@ -7,7 +7,7 @@
 .link-nav:hover{
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    color: #f08126;
+    color: black;
     border-color: #f08126;
     border: 1px;
 }
@@ -31,3 +31,7 @@
     transition: box-shadow .15s ease-in-out;
     margin-left: auto;
 }
+
+.link-selected {
+    color: black;
+  }

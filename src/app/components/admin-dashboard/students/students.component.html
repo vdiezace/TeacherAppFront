@@ -1,23 +1,34 @@
 <app-admin-header></app-admin-header>
 
-<table>
+<div class="container">
+  <table class="table mt-5 pt-5 table-hover table-bordered">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Email</th>
-        <th>Phone number</th>
-        <th>Location</th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">City</th>
+        <th scope="col">Email</th>
+        <th scope="col">Subscribed date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Admin</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="fila" *ngFor="let student of students">
-        <td>{{ student.first_name }}</td>
-        <td>{{ student.last_name }}</td>
-        <td>{{ student.email }}</td>
-        <td>{{ student.phone }}</td>
-        <td>{{ student.address }}</td>
+      <tr *ngFor="let student of students ;let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{student.first_name}}</td>
+        <td>{{student.last_name}}</td>
+        <td>{{student.phone}}</td>
+        <td>{{student.city}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.subscribed_date.substring(0,10)}}</td>
+        <td>{{student.is_active}}</td>
+        <td><button class="btn btn-success" *ngIf="!student.is_active" (click)="approve(student.id)">Approve</button></td>
       </tr>
     </tbody>
+
   </table>
-  
+</div>
+

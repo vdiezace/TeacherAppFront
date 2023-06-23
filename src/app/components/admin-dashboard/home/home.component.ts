@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class HomeComponentAdmin {
 
+  studentsService = inject( StudentsService )
+  diactiveStudents = [];
+
+  async ngOnInit() {
+    this.diactiveStudents = await this.studentsService.getStudentDiactiveStatus();
+  }
 }

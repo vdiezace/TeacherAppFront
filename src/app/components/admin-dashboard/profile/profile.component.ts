@@ -21,8 +21,5 @@ export class ProfileComponentAdmin {
     console.log(response);
     this.adminData= response;
     
-    if (this.adminData){
-    console.log(this.adminData.avatar);
-    }
   }
 }

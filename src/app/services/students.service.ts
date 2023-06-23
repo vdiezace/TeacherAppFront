@@ -74,13 +74,19 @@ export class StudentsService {
 
   getStudentDiactiveStatus(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/status/diactive`)
+      this.httpClient.get<any>(`${this.baseUrl}/status/deactive`)
     );
   }
 
   activateStudent(pStudentId: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+
     return firstValueFrom(
-      this.httpClient.put<any>(`${this.baseUrl}/${pStudentId}/active`, this.loginTokenService.getTokenHeader())
+      this.httpClient.put<any>(`${this.baseUrl}/${pStudentId}/active`, httpOptions)
     );
   }
 

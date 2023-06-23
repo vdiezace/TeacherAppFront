@@ -8,6 +8,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterLinkActive } from '@angular/router';
 
 
 /** Components */
@@ -90,6 +91,7 @@ import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterLinkActive,
     //AgmCoreModule.forRoot(environments.googleMaps)
   ],
   providers: [],
