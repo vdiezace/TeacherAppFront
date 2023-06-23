@@ -57,13 +57,13 @@
                 </select>
             </div>
             <div class="mb-2 m-2 col-lg-5">
-                <label class="form-label" for="price_hour">precio/hora</label>
+                <label class="form-label" for="price_hour">Price/Hour</label>
                 <input class="form-label" type="text" id="price_hour" class="form-control "
                     formControlName="price_hour">
             </div>
 
             <div class="mb-2 m-2 col-lg-5">
-                <label class="form-label" for="category">Categoría</label>
+                <label class="form-label" for="category">Category</label>
                 <select class="form-select" name="category" id="category" formControlName="category_id">
                     <option default>Select a category</option>
                     <option *ngFor="let category of categories" [value]="category?.id">{{category?.title}}</option>

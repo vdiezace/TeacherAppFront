@@ -61,7 +61,6 @@ export class RegistroStudentComponent implements OnInit {
     })
 
     this.activatedRoute.params.subscribe(async (params: any) => {
-      //console.log(params);
       let id = parseInt(params.studentid)
       if (id) {
         this.title = "update";
@@ -90,54 +89,119 @@ export class RegistroStudentComponent implements OnInit {
   }
 
   async getDataForm(): Promise<void> {
-    //console.log(this.studentForm.value)
-    let student = this.studentForm.value;
-    //console.log(student)
-    if (student.id) {
-      try {
-        /** Actualizamos */
-        let response = await this.studentsService.updateStudent(student);
-        //console.log(response)
-        if (response.users_id) {
-          Swal.fire({
-            icon: 'success',
-            title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
-          })
-          this.router.navigate(['/student']);
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops! There seems to have been an error.',
-            text: "Try again"
-          });
-        }
-      } catch (error) {
-        console.log(error)
-      }
+    if (this.studentForm.status === "VALID") {
+      if ('gelocation' in navigator) {
 
-    } else {
-      /** Registrando un nuevo estudiante */
-      try {
-        let response = await this.studentsService.createNewStudent(student);
-        //console.log(response);
-        if (response[0].users_id) {
-          Swal.fire({
-            icon: 'success',
-            title: `The student ${response[0].first_name} ${response[0].last_name} has been successfully created.`
-          });
-          this.router.navigate(['/login']);
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops! There seems to have been an error.',
-            text: "Try again"
-          });
-        }
-      } catch (error) {
-        console.log(error);
       }
+      this.activatedRoute.params.subscribe(async (params: any) => {
+        const user = await this.usersService.findByEmail(this.studentForm.value.email);
+        let response: any;
+        let student = this.studentForm.value;
+        let id = parseInt(params.studentid);
+        if (!id) {
+          if (user != null) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error registering the user.',
+              text: "The email address already exists"
+            });
+          } else {
+            if (this.userLatitude != undefined) {
+              student.latitude = this.userLatitude;
+              student.longitude = this.userLongitude;
+            }
+            try {
+              response = await this.studentsService.createNewStudent(student);
+              if (response[0].users_id) {
+                Swal.fire({
+                  icon: 'success',
+                  title: `The student ${response[0].first_name} ${response[0].last_name} has been successfully created.`
+                });
+                this.router.navigate(['/login']);
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops! There seems to have been an error.',
+                  text: "Try again"
+                });
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        } else {
+          if (this.userLatitude != undefined) {
+            student.latitude = this.userLatitude;
+            student.longitude = this.userLongitude;
+          }
+          try {
+            /** Actualizamos */
+            const response = await this.studentsService.updateStudent(student);
+            if (response.users_id) {
+              Swal.fire({
+                icon: 'success',
+                title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
+              })
+              this.router.navigate(['/student']);
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops! There seems to have been an error.',
+                text: "Try again"
+              });
+            }
+          } catch (error) {
+            console.log(error)
+          }
+        }
+      })
     }
   }
+  // let student = this.studentForm.value;
+
+  // if (student.id) {
+  //   try {
+  //     /** Actualizamos */
+  //     let response = await this.studentsService.updateStudent(student);
+  //     if (response.users_id) {
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
+  //       })
+  //       this.router.navigate(['/student']);
+  //     } else {
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops! There seems to have been an error.',
+  //         text: "Try again"
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+
+  // } else {
+  //   /** Registrando un nuevo estudiante */
+  //   try {
+  //     let response = await this.studentsService.createNewStudent(student);
+  //     //console.log(response);
+  //     if (response[0].users_id) {
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: `The student ${response[0].first_name} ${response[0].last_name} has been successfully created.`
+  //       });
+  //       this.router.navigate(['/login']);
+  //     } else {
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops! There seems to have been an error.',
+  //         text: "Try again"
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   onSelected(e: any) {
     try {
