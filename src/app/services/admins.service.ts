@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginTokenService } from './login-token.service';
 import { firstValueFrom } from 'rxjs';
@@ -22,7 +22,12 @@ export class AdminsService {
   }
 
   getAdminById(pId: number) {
-    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/${pId}`, this.loginTokenService.getTokenHeader()));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.get<any>(`${this.baseUrl}/${pId}`, httpOptions));
   }
 
   createAdmin(pAdmin: Admin) {
@@ -34,7 +39,12 @@ export class AdminsService {
   }
 
   validateTeacherById(pId: number) {
-    return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/validate/${pId}`, this.loginTokenService.getTokenHeader()));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/validate/${pId}`, {isApproved: 1}, httpOptions));
   }
 
   deleteAdminById(pId: number) {
