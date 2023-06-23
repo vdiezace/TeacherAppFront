@@ -74,7 +74,7 @@ export class StudentsService {
 
   getStudentDiactiveStatus(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/status/diactive`)
+      this.httpClient.get<any>(`${this.baseUrl}/status/deactive`)
     );
   }
 

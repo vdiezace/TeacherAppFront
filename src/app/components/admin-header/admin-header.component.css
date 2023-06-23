@@ -1,3 +1,21 @@
 .img-logo {
     width: 200px;
 }
+
+.link-nav{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: #f08126;
+}
+
+.link-nav:hover{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    color: black;
+    border-color: #f08126;
+    border: 1px;
+}
+
+.link-selected {
+    color: black;
+  }
