@@ -30,7 +30,6 @@ export class RegistroTeacherComponent implements OnInit {
   userLongitude: number | undefined = undefined;
   action: string = "Register";
   title: string = "register"
-  // teacherId: number;
   isEdition = false;
   usersService = inject(UsersService);
   teacherStored: any;
@@ -38,7 +37,6 @@ export class RegistroTeacherComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private locationsService: LocationsService,
-    // private usersService: UsersService,
     private teachersService: TeachersService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -59,6 +57,7 @@ export class RegistroTeacherComponent implements OnInit {
       price_hour: new FormControl("", []),
       category_id: new FormControl("", []),
       subject: new FormControl("", []),
+      is_approved: new FormControl(0, []),
       experience: new FormControl("", []),
       start_class_hour: new FormControl("", []),
       end_class_hour: new FormControl("", [])
@@ -79,7 +78,6 @@ export class RegistroTeacherComponent implements OnInit {
         this.userLongitude = longitude
     })
     this.activatedRoute.params.subscribe(async (params: any) => {
-      //console.log(params);
       let id = parseInt(params.teacherid);
       if (id) {
         this.title = "update";
@@ -109,39 +107,6 @@ export class RegistroTeacherComponent implements OnInit {
           start_class_hour: new FormControl(this.teacherStored.start_class_hour, []),
           end_class_hour: new FormControl(this.teacherStored.end_class_hour, [])
         })
-        //this.teacherId = parseInt(params.teacherid)
-        // if (this.teacherId) {
-        //this.action = "Actualizar";
-        //this.teacherId = id;
-        //this.isEdition = true;
-        // const response = this.usersService.getById(id);
-        //console.log(response)
-        //this.loadTeacherData();
-        /*           this.teacherForm = new FormGroup({
-                    id: new FormControl(id, []),
-                    role_id: new FormControl(this.teacher_role_id, []),
-                    first_name: new FormControl("", []),
-                    last_name: new FormControl("", []),
-                    username: new FormControl("", []),
-                    email: new FormControl("", []),
-                    password: new FormControl("", []),
-                    repitePassword: new FormControl("", []),
-                    phone: new FormControl("", []),
-                    address: new FormControl("", []),
-                    avatar: new FormControl("", []),
-                    province_id: new FormControl("", []),
-                    city_id: new FormControl("", []),
-                    price_hour: new FormControl("", []),
-                    category_id: new FormControl("", []),
-                    subject: new FormControl("", []),
-                    experience: new FormControl("", []),
-                    start_class_hour: new FormControl("", []),
-                    end_class_hour: new FormControl("", [])
-                  }, []); */
-        //}
-        //})
-        // } catch (error) {
-        //   console.log(error);
       }
     })
   }
@@ -164,85 +129,119 @@ export class RegistroTeacherComponent implements OnInit {
     }
   }
 
-  // async loadTeacherData() {
-  //   const response = await this.teachersService.getTeacherById(this.teacherId);
-  //   const response1 = await this.usersService.getById(response.users_id);
-  //   if (response.users_id) {
-  //     this.title = "update";
-  //     this.action = "Update";
-  //     this.teacherForm = new FormGroup({
-  //       user_id: new FormControl(response.users_id, []),
-  //       id: new FormControl(response.users_id, []),
-  //       role_id: new FormControl(response.role_id, []),
-  //       first_name: new FormControl(response.first_name, []),
-  //       last_name: new FormControl(response.last_name, []),
-  //       username: new FormControl(response1.username, []),
-  //       email: new FormControl(response.email, []),
-  //       password: new FormControl(response.password, []),
-  //       repitePassword: new FormControl(response.password, []),
-  //       phone: new FormControl(response.phone, []),
-  //       address: new FormControl(response.address, []),
-  //       avatar: new FormControl(response.avatar, []),
-  //       province_id: new FormControl(response.province_id, []),
-  //       city_id: new FormControl(response.city_id, []),
-  //       price_hour: new FormControl(response.price_hour, []),
-  //       category_id: new FormControl(response.categories_id, []),
-  //       subject: new FormControl(response.subject, []),
-  //       experience: new FormControl(response.experience, []),
-  //       start_class_hour: new FormControl(response.start_class_hour, []),
-  //       end_class_hour: new FormControl(response.end_class_hour, [])
-  //     }, []);
-  //   }
-  // }
-
-
   async getDataForm() {
-    //console.log(this.teacherForm.value);
-    let teacher = this.teacherForm.value;
-    if (teacher.id) {
-      try {
-        /** Actualizamos */
-        let response = await this.teachersService.updateTeacher(teacher);
-        // console.log(response);
-        // console.log(response.user_id);
-        if (response.user_id) {
-          Swal.fire({
-            icon: 'success',
-            title: `The teacher ${response.first_name} ${response.last_name} has been successfully updated.`
-          })
-          this.router.navigate(['/teachers']);
+    if (this.teacherForm.status === "VALID") {
+      this.activatedRoute.params.subscribe(async (params: any) => {
+        const user = await this.usersService.findByEmail(this.teacherForm.value.email);
+        let response: any;
+        let teacher = this.teacherForm.value;
+        let id = parseInt(params.teacherid);
+        if (!id) {
+          if (user != null) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error registering the user.',
+              text: "The email address already exists"
+            });
+          } else {
+            if (this.userLatitude != undefined) {
+              teacher.latitude = this.userLatitude;
+              teacher.longitude = this.userLongitude;
+            }
+            try {
+              response = await this.teachersService.createNewTeacher(teacher);
+              if (response.user_id) {
+                Swal.fire({
+                  icon: 'success',
+                  title: `The teacher ${response.first_name} ${response.last_name} has been successfully created.`
+                });
+                this.router.navigate(['/login']);
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops! There seems to have been an error.',
+                  text: "Try again"
+                });
+              }
+            } catch (error) {
+              console.log(error)
+            }
+          }
         } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops! There seems to have been an error.',
-            text: "Try again"
-          });
+          if (this.userLatitude != undefined) {
+            teacher.latitude = this.userLatitude;
+            teacher.longitude = this.userLongitude;
+          } try {
+            const response = await this.teachersService.updateTeacher(teacher);
+            if (response.user_id) {
+              Swal.fire({
+                icon: 'success',
+                title: `The teacher ${response.first_name} ${response.last_name} has been successfully updated.`
+              })
+              this.router.navigate(['/teachers']);
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops! There seems to have been an error.',
+                text: "Try again"
+              });
+            }
+          } catch (error) {
+            console.log(error);
+          }
         }
-      } catch (error) {
-        console.log(error)
-      }
+      })
     } else {
-      /** Creamos un nuevo teacher */
-      try {
-        let response = await this.teachersService.createNewTeacher(teacher);
-        //console.log(response)
-        if (response.user_id) {
-          Swal.fire({
-            icon: 'success',
-            title: `The teacher ${response.first_name} ${response.last_name} has been successfully created.`
-          });
-          this.router.navigate(['/login']);
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops! There seems to have been an error.',
-            text: "Try again"
-          });
-        }
-      } catch (error) {
-        console.log(error)
-      }
+      Swal.fire({
+        icon: 'error',
+        title: "The data entered is incorrect. Please check the information you have entered"
+      })
     }
+    // let teacher = this.teacherForm.value;
+    // if (teacher.id) {
+    //   try {
+    //     /** Actualizamos */
+    //     let response = await this.teachersService.updateTeacher(teacher);
+    //     // console.log(response);
+    //     // console.log(response.user_id);
+    //     if (response.user_id) {
+    //       Swal.fire({
+    //         icon: 'success',
+    //         title: `The teacher ${response.first_name} ${response.last_name} has been successfully updated.`
+    //       })
+    //       this.router.navigate(['/teachers']);
+    //     } else {
+    //       Swal.fire({
+    //         icon: 'error',
+    //         title: 'Oops! There seems to have been an error.',
+    //         text: "Try again"
+    //       });
+    //     }
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // } else {
+    //   /** Creamos un nuevo teacher */
+    //   try {
+    //     let response = await this.teachersService.createNewTeacher(teacher);
+    //     //console.log(response)
+    //     if (response.user_id) {
+    //       Swal.fire({
+    //         icon: 'success',
+    //         title: `The teacher ${response.first_name} ${response.last_name} has been successfully created.`
+    //       });
+    //       this.router.navigate(['/login']);
+    //     } else {
+    //       Swal.fire({
+    //         icon: 'error',
+    //         title: 'Oops! There seems to have been an error.',
+    //         text: "Try again"
+    //       });
+    //     }
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
   }
 
   checkControl(pControlName: string, pError: string): boolean {
