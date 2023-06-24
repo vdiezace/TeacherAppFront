@@ -9,13 +9,30 @@ import { StudentsService } from 'src/app/services/students.service';
 })
 export class StudentsComponent {
 
-students:any=[];
+students:any[]=[];
+
+thisPage = 0;
+resultsPerPage = 10;
+numberOfPages = 0;
 
   constructor( private studentsService: StudentsService) {
   }
 
+  nextPage(){
+    if (this.thisPage + 1 < this.students.length / this.resultsPerPage) {
+      this.thisPage++;
+    } 
+  }
+
+  previousPage(){
+    if (this.thisPage!==0){
+      this.thisPage--;
+    }
+  }
+
   async ngOnInit() {
     this.students = await this.studentsService.getAllStudents();
+    this.numberOfPages= Math.floor(this.students.length / this.resultsPerPage);
   }
 
   async approve(pStudentId: number) {

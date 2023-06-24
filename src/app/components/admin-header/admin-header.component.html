@@ -7,7 +7,8 @@
       <div class="collapse navbar-collapse navbar-mobile" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-4">
           <li class="nav-item">
-            <a class="nav-link link-nav" aria-current="page" routerLinkActive="link-selected" [routerLink]="['/admin']">Home</a>
+            <a class="nav-link link-nav" aria-current="page" routerLinkActive="link-selected" [routerLink]="['/admin']"       [routerLinkActiveOptions]="{ exact: true }">
+              Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link link-nav" routerLinkActive="link-selected" [routerLink]="['/admin/teachers']">Teachers</a>

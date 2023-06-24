@@ -4,7 +4,7 @@
 </div>
 <div class="container">
     <div class="card container-card" [routerLink]="['/admin/teachers']">
-        <h5 class="card-title">Teachers <button class="btn btn-danger"></button> </h5>
+        <h5 class="card-title">Teachers <button class="btn btn-danger">{{diactiveTeachers.length}}</button> </h5>
     </div>
     <div class="card container-card" [routerLink]="['/admin/students']">
         <h5 class="card-title">Students <button class="btn btn-danger">{{diactiveStudents.length}}</button> </h5>

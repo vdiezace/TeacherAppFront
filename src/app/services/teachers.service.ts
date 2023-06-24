@@ -58,6 +58,12 @@ export class TeachersService {
     );
   }
 
+  getDeactiveTeachers() {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/status/deactive`)
+    );
+  }
+
   createNewTeacher(newTeacher: Teacher): Promise<any> {
     return firstValueFrom(
       this.httpClient.post<Teacher>(`${this.baseUrl}`, newTeacher, this.loginTokenService.getTokenHeader())
