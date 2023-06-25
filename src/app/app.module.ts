@@ -43,6 +43,7 @@ import { StudentsListComponent } from './components/landing-teacher/students-lis
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 import { RegistroStudentComponent } from './components/registro-student/registro-student.component';
 import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
+import { RegistroAdminComponent } from './components/registro-admin/registro-admin.component';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-
     RegistroTeacherComponent,
     RegistroStudentComponent,
     ReviewsTeachersComponent,
+    RegistroAdminComponent,
     //NewMapComponent
 
   ],

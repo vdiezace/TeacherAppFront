@@ -34,8 +34,13 @@ export class AdminsService {
     return firstValueFrom(this.httpClient.post<Admin>(this.baseUrl, pAdmin, this.loginTokenService.getTokenHeader()));
   }
 
-  updateAdminById(pId: number) {
-    return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/${pId}`, this.loginTokenService.getTokenHeader()));
+  updateAdminById(pId: number, newData: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/${pId}`, newData, httpOptions));
   }
 
   validateTeacherById(pId: number) {

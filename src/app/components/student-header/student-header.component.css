@@ -12,3 +12,7 @@
 .clickable {
     cursor: pointer;
 }
+
+.link-selected {
+    color: black;
+}

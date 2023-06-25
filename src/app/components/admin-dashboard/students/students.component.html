@@ -1,7 +1,12 @@
 <app-admin-header></app-admin-header>
 
 <div class="container">
-  <table class="table mt-5 pt-5 table-hover table-bordered">
+  <div class="btn-page">
+    <button class="btn btn-info" (click)="previousPage()" [disabled]="thisPage===0">Previous</button>
+    <button class="btn btn-info" (click)="nextPage()" [disabled]="thisPage+1>students.length/resultsPerPage">Next</button>
+  </div>
+
+  <table class="table mt-5 pt-5 table-hover table-bordered" style="max-width:100%">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -16,8 +21,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let student of students ;let i = index">
-        <th scope="row">{{i + 1}}</th>
+      <tr *ngFor="let student of students | slice:thisPage*resultsPerPage:(thisPage+1)*resultsPerPage; let i = index">
+        <th scope="row">{{i + 1 + thisPage*resultsPerPage}}</th>
         <td>{{student.first_name}}</td>
         <td>{{student.last_name}}</td>
         <td>{{student.phone}}</td>

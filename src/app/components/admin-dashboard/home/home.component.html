@@ -2,14 +2,14 @@
 <div class="titulo-admin">
     <h1>Bienvenido Administrador</h1>
 </div>
-<div class="container">
+<div class="container footer-position">
     <div class="card container-card" [routerLink]="['/admin/teachers']">
-        <h5 class="card-title">Teachers <button class="btn btn-danger"></button> </h5>
+        <h5 class="card-title">Teachers <button class="btn btn-danger">{{diactiveTeachers.length}}</button> </h5>
     </div>
     <div class="card container-card" [routerLink]="['/admin/students']">
         <h5 class="card-title">Students <button class="btn btn-danger">{{diactiveStudents.length}}</button> </h5>
     </div>
-    <div class="card container-card" [routerLink]="['/admin/1']">
+    <div class="card container-card" [routerLink]="['/admin/profile']">
         <h5 class="card-title">My Profile</h5>
     </div>
 </div>

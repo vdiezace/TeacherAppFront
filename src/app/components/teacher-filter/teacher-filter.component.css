@@ -97,3 +97,21 @@
 .hr{
   border-bottom: 0.2px solid #999999;
 }
+
+.list-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  padding-top: 16px;
+  margin-top: 12px;
+}
+
+.filter-options {
+  display: flex;
+  gap: 16px;
+}
+
+.option-box {
+  background-color: #D9D9D9;
+}
