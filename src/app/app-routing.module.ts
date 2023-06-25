@@ -27,6 +27,8 @@ import { RegistroStudentComponent } from './components/registro-student/registro
 import { RegistroTeacherComponent } from './components/registro-teacher/registro-teacher.component';
 import { StudentGuard } from './guards/student.guard';
 import { ReviewsTeachersComponent } from './components/reviews-teachers/reviews-teachers.component';
+import { RegistroAdminComponent } from './components/registro-admin/registro-admin.component';
+
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
@@ -52,6 +54,7 @@ const routes: Routes = [
   { path: "teachers/profile/:teacherid", component: RegistroTeacherComponent },
   { path: "teachers/reviews", component: ReviewsTeachersComponent },
   { path: "admin", component: HomeComponentAdmin, canActivate: [AdminGuard] },
+  { path: "admin/profile/edit", component: RegistroAdminComponent},
   { path: "admin/students", component: StudentsComponent },
   { path: "admin/teachers", component: TeachersComponentAdmin },
   { path: "admin/:adminid", component: ProfileComponentAdmin },

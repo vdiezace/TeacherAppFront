@@ -8,22 +8,22 @@
     <div class="collapse navbar-collapse navbar-mobile" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-4">
         <li class="nav-item">
-          <a class="nav-link link-nav" aria-current="page" [routerLink]="['/student/home']">Home</a>
+          <a class="nav-link link-nav" aria-current="page" routerLinkActive="link-selected" [routerLink]="['/student']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav width-nav" [routerLink]="['/student/reviews']">Reviews</a>
+          <a class="nav-link link-nav width-nav" routerLinkActive="link-selected" [routerLink]="['/student/reviews']">Reviews</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav" [routerLink]="['/student/teachers']">My Teachers</a>
+          <a class="nav-link link-nav" routerLinkActive="link-selected" [routerLink]="['/student/teachers']">My Teachers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav" [routerLink]="['/student/classes']">Classes</a>
+          <a class="nav-link link-nav" routerLinkActive="link-selected" [routerLink]="['/student/classes']">Classes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav" [routerLink]="['/student/profile']">My profile</a>
+          <a class="nav-link link-nav" routerLinkActive="link-selected" [routerLink]="['/student/profile']">My profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-nav clickable container-fluid" (click)="onClickLogout()">Log out</a>
+          <a class="nav-link link-nav clickable container-fluid" routerLinkActive="link-selected" (click)="onClickLogout()">Log out</a>
       </li>
       </ul>
     </div>

@@ -98,6 +98,7 @@ export class StudentHomeComponent {
   ratingSelected: number;
   experienceSelected: number;
   userData: any;
+  cardsPerPage = 6;
 
   constructor(private teachersService: TeachersService,
     private studentService: StudentsService,
@@ -112,32 +113,23 @@ export class StudentHomeComponent {
   }
 
   filterTeachers() {
-    try {
-      this.filteredTeachers = this.teachers.filter(teacher =>
-        teacher.province.includes(this.provinceSelected) &&  (!teacher.category_title || teacher.category_title.includes(this.categorySelected))  &&  (+teacher.avg_rating) >= (+this.ratingSelected) && teacher.experience >= this.experienceSelected);
-      console.log(this.teachers);   
-    }
-    catch(error) {
-      return error;
-    }
+    this.filteredTeachers = this.teachers.filter(teacher =>
+      teacher.province.includes(this.provinceSelected) &&  (!teacher.category_title || teacher.category_title.includes(this.categorySelected))  &&  (+teacher.avg_rating) >= (+this.ratingSelected) && teacher.experience >= this.experienceSelected);
+    console.log(this.teachers);   
   }
 
   async ngOnInit() {
-    console.log("student home");
-    try {
-      const response = await this.teachersService.getAllTeachers();
-      console.log(response);
-      this.teachers= response;
-      this.filterTeachers();
+    const response = await this.teachersService.getAllTeachers();
+    console.log(response);
+    this.teachers= response;
+    this.filterTeachers();
+
+    this.userData = await this.studentService.getStudentById(this.logintTokenService.getId());
+    console.log(this.userData);
   
-      this.userData = await this.studentService.getStudentById(this.logintTokenService.getId());
-      console.log(this.userData);
-  
-    }
-    catch(error) {
-      return error;
-    }
   }
 
-
+  showMoreCards() {
+    this.cardsPerPage += 6;
+  }
 }

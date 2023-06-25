@@ -1,0 +1,29 @@
+<app-main-header *ngIf="!usersService.isLogged()"></app-main-header>
+<app-admin-header *ngIf="usersService.isLogged()"></app-admin-header>
+<section class="container mt-5">
+    <h1>Admin</h1>
+    <form novalidate [formGroup]="adminForm" (ngSubmit)="getDataForm()">
+        <input type="hidden" id="role_id" formControlName="role_id" [value]="admin_role_id">
+        <div class="row mb-5">
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first_name" formControlName="first_name">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last_name" formControlName="last_name">
+            </div>
+            <div class="mb-2 m-2 col-lg-5">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" formControlName="email">
+            </div>
+<!--             <div class="mb-2 m-2 col-lg-5">
+                <label for="role" class="form-label">Role</label>
+                <input type="text" class="form-control" id="role" formControlName="role">
+            </div>
+ -->            <div class="button-container">
+                <input type="submit" [value]="action" class="mt-2 btn btn-info form-button">
+            </div>
+        </div>
+    </form>
+</section>
