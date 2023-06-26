@@ -11,38 +11,36 @@ import { TeachersService } from 'src/app/services/teachers.service';
 export class ReviewsTeachersComponent {
   teacher: any;
   reviews: any;
-  public teacherData : any ;
+  public teacherData: any;
   public reviewData: any;
- 
-  
 
-constructor(private teachersService: TeachersService,
-  private reviewsService: ReviewsService,
-  private loginTokenService: LoginTokenService) {
-  this.teacher = [];
-  
- 
 
-}
-async ngOnInit() {
-  this.getTeacherById(this.loginTokenService.getId());
 
-  const response = await this.reviewsService.getReviewsByTeacherId(this.loginTokenService.getId());
-  console.log(response);
-  this.reviewData= response;
-  if (this.reviewData){
-  console.log(this.reviewData.comment);
+  constructor(private teachersService: TeachersService,
+    private reviewsService: ReviewsService,
+    private loginTokenService: LoginTokenService) {
+    this.teacher = [];
+
+
+
   }
-}
+  async ngOnInit() {
+    this.getTeacherById(this.loginTokenService.getId());
 
-async getTeacherById(teacherId: number) {
-  try {
-    const response = await this.teachersService.getTeacherById(teacherId);
-    this.teacher = response;
-    this.teacherData = this.teacher;
-  } catch (error) {
-    console.log(error);
+    const response = await this.reviewsService.getReviewsByTeacherId(this.loginTokenService.getId());
+    this.reviewData = response;
+    if (this.reviewData) {
+    }
   }
-}
+
+  async getTeacherById(teacherId: number) {
+    try {
+      const response = await this.teachersService.getTeacherById(teacherId);
+      this.teacher = response;
+      this.teacherData = this.teacher;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 }

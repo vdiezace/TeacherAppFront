@@ -11,15 +11,14 @@ import { LoginTokenService } from 'src/app/services/login-token.service';
 export class ProfileComponentAdmin {
 
 
-  public adminData : any;
-  constructor( private AdminService: AdminsService,
+  public adminData: any;
+  constructor(private AdminService: AdminsService,
     private loginTokenService: LoginTokenService) {
   }
 
   async ngOnInit() {
     const response = await this.AdminService.getAdminById(this.loginTokenService.getId());
-    console.log(response);
-    this.adminData= response;
-    
+    this.adminData = response;
+
   }
 }

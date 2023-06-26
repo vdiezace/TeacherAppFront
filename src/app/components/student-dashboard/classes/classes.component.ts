@@ -21,7 +21,6 @@ export class ClassesComponent {
   async ngOnInit() {
 
     const response = await this.classesService.getLoggedStudentClasses();
-    console.log(response);
     this.classes = response;
   }
 
@@ -40,9 +39,9 @@ export class ClassesComponent {
             });
           })
         );
-      }  
+      }
     }
-    catch(error) {
+    catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',

@@ -19,7 +19,6 @@ export class ProfileComponent {
   async ngOnInit() {
     try {
       const response = await this.studentService.getStudentById(this.loginTokenService.getId());
-      //console.log(response);
       this.userData = response;
       if (this.userData) {
         console.log(this.userData.avatar);
