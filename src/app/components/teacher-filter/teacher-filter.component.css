@@ -110,8 +110,11 @@
 .filter-options {
   display: flex;
   gap: 16px;
+  @media(max-width: 960px) {
+    flex-wrap: wrap;
+  }
 }
 
 .option-box {
-  background-color: #D9D9D9;
+  border-color: #D9D9D9;
 }

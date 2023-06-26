@@ -142,7 +142,7 @@ export class RegistroStudentComponent implements OnInit {
                 icon: 'success',
                 title: `The student ${response.first_name} ${response.last_name} has been successfully updated.`
               })
-              this.router.navigate(['/student']);
+              this.router.navigate(['/student/profile']);
             } else {
               Swal.fire({
                 icon: 'error',

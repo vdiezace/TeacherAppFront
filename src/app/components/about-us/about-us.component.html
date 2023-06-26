@@ -6,17 +6,20 @@
             alt="color de fondo de about-us">
     </div>
 </div>
-<div class="container mt-5 pt-5 footer-position">
-    <div class="row col-4">
+<div class="container mt-5 pt-5 pb-4 mb-4">
+    <div class="row col-lg-4 col-md-12">
         <h1 class="pb-2 mb-2">Elevate your learning</h1>
         <p>Welcome to TeacherApp, your gateway to personalized education! We are a team of passionate and experienced
             teachers dedicated to empowering learners like you to reach new heights of knowledge. With our app, you have
             the freedom to choose from a diverse group of expert teachers, each specializing in their unique subject
             areas.</p>
+        <img class=" img-alumna d-none d-lg-block"
+            src="https://res.cloudinary.com/dqi1rszmn/image/upload/v1684786057/foto-landing-home_tqkn8p.png"
+            alt="imagen alumna banner">
     </div>
 </div>
 <div class="container mt-5 pt-5 steps">
-    <h2 class="pt-5 mt-5">How to get started learning</h2>
+    <h2 class="pt-1 mt-1">How to get started learning</h2>
     <ng-container *ngFor="let step of arrSteps; let i = index">
         <div class="row g-2 mt-5 pt-5 mb-1 pb-3 about-us" *ngIf="currentStep === i">
             <div class="col-md-6">
@@ -24,7 +27,7 @@
                 <p>{{step.title2}}</p>
             </div>
             <div class="col-md-6 about-us-foto">
-                <img class="img-fluid img-thumbnail about-us-foto" src="{{step.image}}" alt="signup-form">
+                <img class="img-fluid img-thumbnail h-100 img-steps" src="{{step.image}}" alt="signup-form">
             </div>
         </div>
         <div class="prev-steps-arrow">

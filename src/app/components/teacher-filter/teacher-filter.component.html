@@ -66,28 +66,28 @@
     <div class="filter-options">
         <div class="d-flex flex-column gap-2">
             <label for="province">Province</label>
-            <select class="option-box" (change)="filterTeachers()" [(ngModel)]="provinceSelected" id="province">
+            <select class="form-select option-box" (change)="filterTeachers()" [(ngModel)]="provinceSelected" id="province">
                 <option value="">Province</option>
                 <option *ngFor="let province of provinces" value="{{province}}">{{province}}</option>
             </select>    
         </div>
         <div class="d-flex flex-column gap-2">
             <label for="category">Category</label>
-            <select class="option-box" (change)="filterTeachers()" [(ngModel)]="categorySelected" id="category">
+            <select class="form-select option-box" (change)="filterTeachers()" [(ngModel)]="categorySelected" id="category">
                 <option value="">Category</option>
                 <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
             </select>    
         </div>
         <div class="d-flex flex-column gap-2">
             <label for="rating">Rating</label>
-            <select class="option-box" (change)="filterTeachers()" [(ngModel)]="ratingSelected" id="rating">
+            <select class="form-select option-box" (change)="filterTeachers()" [(ngModel)]="ratingSelected" id="rating">
                 <option value="0">Any rating</option>
                 <option *ngFor="let rating of ratings" value="{{rating}}">More than {{rating}}</option>
             </select>    
         </div>
         <div class="d-flex flex-column gap-2">
             <label for="experience">Experience</label>
-            <select class="option-box" (change)="filterTeachers()" [(ngModel)]="experienceSelected" id="experience">
+            <select class="form-select option-box" (change)="filterTeachers()" [(ngModel)]="experienceSelected" id="experience">
                 <option value="0">Any experience</option>
                 <option *ngFor="let experience of experiences" value={{experience}}>More than {{experience}}</option>
             </select>        
@@ -132,7 +132,7 @@
 <div class="container">
   <div class="row g-3">
     <div class="col-12 col-md-6 col-lg-4" *ngFor="let teacher of filteredTeachers; let i = index">
-      <div class="card" *ngIf="i < 3">
+      <div class="card h-100" *ngIf="i < 3">
         <img src="{{teacher?.avatar}}">
         <div class="card-body">
           <h5 class="card-title">{{teacher?.first_name | uppercase}} {{teacher?.last_name | uppercase}}</h5>

@@ -98,7 +98,7 @@ export class StudentHomeComponent {
   ratingSelected: number;
   experienceSelected: number;
   userData: any;
-  cardsPerPage = 6;
+  cardsPerPage = 4;
 
   constructor(private teachersService: TeachersService,
     private studentService: StudentsService,
@@ -130,6 +130,6 @@ export class StudentHomeComponent {
   }
 
   showMoreCards() {
-    this.cardsPerPage += 6;
+    this.cardsPerPage += 4;
   }
 }

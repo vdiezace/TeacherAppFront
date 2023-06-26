@@ -36,7 +36,8 @@ export class TeachersReviewsComponent {
    async ngOnInit() {
     this.teacherId= +this.activatedRoute.snapshot.paramMap.get("teacherid")!;
 
-    const response= await this.reviewsService.getReviewByTeacherIdAndStudentId(this.teacherId, this.loginTokenService.getId());
+    const [response]= await this.reviewsService.getReviewByTeacherIdAndStudentId(this.teacherId, this.loginTokenService.getId());
+    console.log(response);
     if (response.id){
       this.isEdition= true;
       this.comment= response.comment;
