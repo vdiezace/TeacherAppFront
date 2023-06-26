@@ -3,7 +3,8 @@
 <div class="container">
   <div class="btn-page">
     <button class="btn btn-info" (click)="previousPage()" [disabled]="thisPage===0">Previous</button>
-    <button class="btn btn-info" (click)="nextPage()" [disabled]="thisPage+1>students.length/resultsPerPage">Next</button>
+    <button class="btn btn-info" (click)="nextPage()"
+      [disabled]="thisPage+1>students.length/resultsPerPage">Next</button>
   </div>
 
   <table class="table mt-5 pt-5 table-hover table-bordered" style="max-width:100%">
@@ -30,10 +31,10 @@
         <td>{{student.email}}</td>
         <td>{{student.subscribed_date.substring(0,10)}}</td>
         <td>{{student.is_active}}</td>
-        <td><button class="btn btn-success" *ngIf="!student.is_active" (click)="approve(student.id)">Approve</button></td>
+        <td><button class="btn btn-danger" *ngIf="student.is_active" (click)="deactive(student.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
 
   </table>
 </div>
-

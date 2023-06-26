@@ -49,7 +49,16 @@ export class AdminsService {
         'Authorization': localStorage.getItem('token')!
       })
     }
-    return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/validate/${pId}`, {isApproved: 1}, httpOptions));
+    return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/validate/${pId}`, { isApproved: 1 }, httpOptions));
+  }
+
+  deactiveStudentById(pId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    }
+    return firstValueFrom(this.httpClient.put<any>(`${this.baseUrl}/deactive/${pId}`, { isActive: 0 }, httpOptions));
   }
 
   deleteAdminById(pId: number) {

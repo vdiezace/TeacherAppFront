@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AdminsService } from 'src/app/services/admins.service';
 import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
@@ -15,7 +16,10 @@ export class StudentsComponent {
   resultsPerPage = 10;
   numberOfPages = 0;
 
-  constructor(private studentsService: StudentsService) {
+  constructor(
+    private studentsService: StudentsService,
+    private adminService: AdminsService
+  ) {
   }
 
   nextPage() {
@@ -35,9 +39,9 @@ export class StudentsComponent {
     this.numberOfPages = Math.floor(this.students.length / this.resultsPerPage);
   }
 
-  async approve(pStudentId: number) {
+  async deactive(pStudentId: number) {
     try {
-      const response = await this.studentsService.activateStudent(pStudentId);
+      const response = await this.adminService.deactiveStudentById(pStudentId);
       if (!response.fatal) {
         this.students = await this.studentsService.getAllStudents();
       }
