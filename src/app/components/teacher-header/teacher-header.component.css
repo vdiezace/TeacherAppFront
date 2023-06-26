@@ -31,3 +31,7 @@
     transition: box-shadow .15s ease-in-out;
     margin-left: auto;
 }
+
+.link-selected {
+    color: black;
+  }
