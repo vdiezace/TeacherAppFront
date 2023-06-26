@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: "student/reviews", component: ReviewsComponent },
   { path: "student/teachers", component: TeachersComponent },
   { path: "student/teachers-details/:teacherid", component: TeachersDetailsComponent },
-  { path: "reviews/:teacherid", component: TeachersReviewsComponent },
+  { path: "student/teachers-reviews/:teacherid", component: TeachersReviewsComponent },
   { path: "register", component: RegistroComponent },
   { path: "register/student", component: RegistroStudentComponent },
   { path: "register/teacher", component: RegistroTeacherComponent },

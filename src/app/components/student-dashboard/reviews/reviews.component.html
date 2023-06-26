@@ -6,7 +6,7 @@
     <p>You don't have any reviews yet...</p>
     <button class="btn btn-info" routerLink="/student/teachers">Back to My Teachers</button>
   </div>
-  <div class="card mb-3" style="max-width: 540px;" *ngFor="let review of myReviews">
+  <div class="card w-50 mb-3" *ngFor="let review of myReviews">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="{{review.teacherData?.avatar}}" class="img-fluid rounded-start" alt="image">
@@ -21,7 +21,7 @@
                 [ngClass]="{greyscale:round(review.rating)<i+1}" src="/assets/reviews/star.svg" alt="star"></p>
           </div>
           <div class="upd-button">
-            <button class="btn btn-info" [routerLink]="['/reviews', 'teacher']">Update</button>
+            <button class="btn btn-info"  routerLink="/student/teachers-reviews/{{review.teacherData?.teacher_id}}">Update</button>
           </div>
         </div>
       </div>
