@@ -8,10 +8,9 @@ export interface Student {
     password: string,
     phone: number,
     avatar?: string,
-    latitude?: string,
-    longitude?: string,
-    city_id?: number,
-    province_id?: number,
+    latitude?: number,
+    longitude?: number,
+    city_id: number,
     address: string,
     is_active?: number,
     subscribed?: string;

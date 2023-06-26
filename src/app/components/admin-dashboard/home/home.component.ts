@@ -9,7 +9,7 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class HomeComponentAdmin {
 
-  studentsService = inject( StudentsService );
+  studentsService = inject(StudentsService);
   teachersService = inject(TeachersService);
   diactiveStudents = [];
   diactiveTeachers = [];
@@ -17,6 +17,5 @@ export class HomeComponentAdmin {
   async ngOnInit() {
     this.diactiveStudents = await this.studentsService.getStudentDiactiveStatus();
     this.diactiveTeachers = await this.teachersService.getDeactiveTeachers();
-    console.log(this.diactiveTeachers);
   }
 }

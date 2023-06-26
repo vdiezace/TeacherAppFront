@@ -29,16 +29,13 @@ export class StudentsListComponent implements OnInit {
 
   async ngOnInit() {
     this.students = await this.studentsService.getAllStudents();
-    console.log(this.students);
 
     this.myClasses = await this.classesService.getTeacherClasses(this.loginTokenService.getId());
-    console.log(this.myClasses);
 
     this.myStudents = this.students.filter((student) => {
       return this.myClasses.some((cl) => {
         return cl.students_id === student.id;
       });
     });
-    console.log(this.myStudents);
   }
 }

@@ -7,31 +7,59 @@
         <div class="row mb-5">
             <div class="mb-2 m-2 col-lg-5">
                 <label for="first_name" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="first_name" formControlName="first_name">
+                <input type="text" class="form-control" id="first_name" formControlName="first_name"
+                    [ngClass]="{'border-red': !checkValidControl('first_name')}">
+                <p class="error" *ngIf="checkControl('first_name', 'required')">The field is required</p>
+                <p class="error" *ngIf="checkControl('first_name', 'pattern')">The first name cannot be shorter than
+                    three letters.</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
                 <label for="last_name" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="last_name" formControlName="last_name">
+                <input type="text" class="form-control" id="last_name" formControlName="last_name"
+                    [ngClass]="{'border-red': !checkValidControl('last_name')}">
+                <p class="error" *ngIf="checkControl('last_name', 'required')">The field is required</p>
+                <p class="error" *ngIf="checkControl('last_name', 'pattern')">The last name cannot be shorter than
+                    three letters.</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" formControlName="username">
+                <input type="text" class="form-control" id="username" formControlName="username"
+                    [ngClass]="{'border-red': !checkValidControl('username')}">
+                <p class="error" *ngIf="checkControl('username', 'required')">The field is required</p>
+                <p class="error" *ngIf="checkControl('username', 'pattern')">The username cannot be shorter than
+                    three letters.</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="Email" formControlName="email">
+                <input type="email" class="form-control" id="Email" formControlName="email"
+                    [ngClass]="{'border-red': !checkValidControl('email')}">
+                <p class="error" *ngIf="checkControl('email', 'required')">The field is required</p>
+                <p class="error" *ngIf="checkControl('email', 'pattern')">The email address must be valid</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" formControlName="password">
+                <input type="password" class="form-control" id="password" formControlName="password"
+                    [ngClass]="{'border-red': !checkValidControl('password')}">
+                <p class="error" *ngIf="checkControl('password', 'required')">The field is required</p>
+                <p class="error" *ngIf="checkControl('password', 'minlength')">Password must be at least 8 characters in
+                    length</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
                 <label for="repitePassword" class="form-label">Repeat Password</label>
-                <input type="password" class="form-control" id="repitePassword" formControlName="repitePassword">
+                <input type="password" class="form-control" id="repitePassword" formControlName="repitePassword"
+                    [ngClass]="{'border-red': !checkValidControl('repitePassword')}">
+                <p class="error" *ngIf="checkControl('repitePassword', 'required')">The field is required</p>
+                <p class="error" *ngIf="studentForm.hasError('checkpassword')">Password fields do not match</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone" formControlName="phone">
+                <input type="text" class="form-control" id="phone" formControlName="phone"
+                    [ngClass]="{'border-red': !checkValidControl('phone')}">
+                <p class="error" *ngIf="checkControl('phone', 'required')">The field is required</p>
+                <p class="error" *ngIf="checkControl('phone', 'minlength')">The phone number must be at least 9
+                    numbers in length</p>
+                <p class="error" *ngIf="checkControl('phone', 'pattern')">Incorrect format. Please enter numeric
+                    characters only</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
                 <label for="address" class="form-label">Address</label>
@@ -42,20 +70,21 @@
                 <input type="text" class="form-control" id="avatar" formControlName="avatar">
             </div>
             <div class="mb-2 m-2 col-lg-5">
-                <label for="province" class="form-label">Province</label>
-                <select name="province" (change)="onSelected($event)" class="form-select" id="province"
+                <label for="province-selector" class="form-label">Province</label>
+                <select name="province" (change)="onSelected($event)" class="form-select" id="province-selector"
                     formControlName="province_id">
                     <option default>Select a province</option>
                     <option *ngFor="let province of province" [value]="province?.id">{{province?.name}}</option>
                 </select>
+                <p class="error" *ngIf="checkControl('province', 'required')">The field is required</p>
             </div>
             <div class="mb-2 m-2 col-lg-5">
-                <label for="city" class="form-label">City</label>
-                <select name="city" class="form-select" id="city" formControlName="city_id">
+                <label for="city-select" class="form-label">City</label>
+                <select name="city" class="form-select" id="city-select" formControlName="city_id">
                     <option defaul>Select a city</option>
-                    <option *ngFor="let city of city" [value]="city?.id">{{city?.name}}</option>
+                    <option *ngFor="let city of citiesByProvince" [value]="city?.id">{{city?.name}}</option>
                 </select>
-
+                <p class="error" *ngIf="checkControl('city', 'required')">The field is required</p>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="Check1">
@@ -64,7 +93,8 @@
             </div>
 
             <div class="button-container">
-                <input type="submit" [value]="action" class="mt-2 btn btn-dark form-button">
+                <input type="submit" [value]="action" class="mt-2 btn btn-dark form-button"
+                    [disabled]="!studentForm.valid">
             </div>
 
         </div>

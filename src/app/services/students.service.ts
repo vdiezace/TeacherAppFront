@@ -47,9 +47,9 @@ export class StudentsService {
     );
   }
 
-  createNewStudent(pStudent: Student): Promise<any> {
+  createNewStudent(pStudent: Student): Promise<Student> {
     return firstValueFrom(
-      this.httpClient.post<Student>(this.baseUrl, pStudent, this.loginTokenService.getTokenHeader())
+      this.httpClient.post<Student>(this.baseUrl, pStudent)
     );
   }
 
