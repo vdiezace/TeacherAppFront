@@ -2,10 +2,11 @@
 
 <div class="container footer-position">
   <h3 class="reviews-title">My reviews</h3>
-  <div class="no-review" *ngIf="myReviews.length === 0">
+  <div class="no-review" *ngIf="!myReviews[0]">
     <p>You don't have any reviews yet...</p>
     <button class="btn btn-info" routerLink="/student/teachers">Back to My Teachers</button>
   </div>
+  <ng-container *ngIf="myReviews[0]">
   <div class="card w-50 mb-3" *ngFor="let review of myReviews">
     <div class="row g-0">
       <div class="col-md-4">
@@ -27,4 +28,5 @@
       </div>
     </div>
   </div>
+</ng-container>
 </div>

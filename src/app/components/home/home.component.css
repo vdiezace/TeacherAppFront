@@ -40,9 +40,6 @@ position: relative;
     position: relative;
 }
 
-@media (min-width: 768px) {
-
-}
 .titulo-btn {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
@@ -70,12 +67,13 @@ position: relative;
     font-weight: 800;
     width: 25%;
     border-radius: 50%;
-    @media(max-width: 1024px) {
-        .img-alumna {
-            display: none;
-        }    
-    }    
 }
+
+@media(max-width: 1024px) {
+    .img-alumna {
+        display: none;
+    }    
+}    
 
 
 

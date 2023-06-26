@@ -33,6 +33,9 @@ export class ReviewsComponent {
     try {
       const response = await this.reviewsService.getReviewByStudent(this.loginTokenService.getId());
       this.myReviews = response;
+      if (response.message){
+        // alert (response.message);
+      } else {
       this.teachers = await this.teacherService.getAllTeachers();
       this.myReviews.forEach((review) => {
         for (let i = 0; i < this.teachers.length; i++) {
@@ -40,8 +43,9 @@ export class ReviewsComponent {
             review.teacherData = this.teachers[i];
             break;
           }
-        }
+        }   
       });
+    }
     } catch (err) {
       Swal.fire({
         icon: 'error',
