@@ -10,7 +10,7 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class TeachersComponentAdmin {
 
-  teachers :any = [] 
+  teachers: any = []
   currentIndex: number = 0;
   teacherId: number;
 
@@ -23,14 +23,12 @@ export class TeachersComponentAdmin {
 
   async ngOnInit() {
     this.teachers = await this.teacherService.getAllTeachers();
-    console.log(this.teachers);
-    
+
   }
 
   async approve(pTeacherId: number) {
     const response = await this.adminService.validateTeacherById(pTeacherId);
-    console.log(response)
-    if(!response.fatal) {
+    if (!response.fatal) {
       this.teachers = await this.teacherService.getAllTeachers();
     }
   }

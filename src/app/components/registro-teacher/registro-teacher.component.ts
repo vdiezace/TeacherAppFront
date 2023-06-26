@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs';
 import { Component, OnInit, inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/interfaces/category.interface';
 import { City } from 'src/app/interfaces/city.interface';
@@ -43,24 +43,24 @@ export class RegistroTeacherComponent implements OnInit {
   ) {
     this.teacherForm = new FormGroup({
       role_id: new FormControl(this.teacher_role_id, []),
-      first_name: new FormControl("", []),
-      last_name: new FormControl("", []),
-      username: new FormControl("", []),
-      email: new FormControl("", []),
-      password: new FormControl("", []),
-      repitePassword: new FormControl("", []),
-      phone: new FormControl("", []),
+      first_name: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      last_name: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      username: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      email: new FormControl("", [Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)]),
+      password: new FormControl("", [Validators.required, Validators.minLength(8)]),
+      repitePassword: new FormControl("", [Validators.required, this.checkPassword]),
+      phone: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.minLength(9)]),
       address: new FormControl("", []),
       avatar: new FormControl("", []),
-      province_id: new FormControl("", []),
-      city_id: new FormControl("", []),
-      price_hour: new FormControl("", []),
-      category_id: new FormControl("", []),
-      subject: new FormControl("", []),
-      is_approved: new FormControl(0, []),
-      experience: new FormControl("", []),
-      start_class_hour: new FormControl("", []),
-      end_class_hour: new FormControl("", [])
+      province_id: new FormControl("", [Validators.required]),
+      city_id: new FormControl("", [Validators.required]),
+      price_hour: new FormControl("", [Validators.required]),
+      category_id: new FormControl("", [Validators.required]),
+      subject: new FormControl("", [Validators.required]),
+      is_approved: new FormControl(0, [Validators.required]),
+      experience: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      start_class_hour: new FormControl("", [Validators.required]),
+      end_class_hour: new FormControl("", [Validators.required])
     }, []);
   }
 
@@ -89,23 +89,23 @@ export class RegistroTeacherComponent implements OnInit {
           id: new FormControl(id, []),
           user_id: new FormControl(this.teacherStored.user_id, []),
           role_id: new FormControl(this.teacher_role_id, []),
-          first_name: new FormControl(this.teacherStored.first_name, []),
-          last_name: new FormControl(this.teacherStored.last_name, []),
-          username: new FormControl(this.teacherStored.username, []),
-          email: new FormControl(this.teacherStored.email, []),
-          password: new FormControl(this.teacherStored.password, []),
-          repitePassword: new FormControl(this.teacherStored.password, []),
-          phone: new FormControl(this.teacherStored.phone, []),
+          first_name: new FormControl(this.teacherStored.first_name, [Validators.required, Validators.minLength(3)]),
+          last_name: new FormControl(this.teacherStored.last_name, [Validators.required, Validators.minLength(3)]),
+          username: new FormControl(this.teacherStored.username, [Validators.required, Validators.minLength(3)]),
+          email: new FormControl(this.teacherStored.email, [Validators.required, Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)]),
+          password: new FormControl(this.teacherStored.password, [Validators.required, Validators.minLength(8)]),
+          repitePassword: new FormControl(this.teacherStored.password, [Validators.required, this.checkPassword]),
+          phone: new FormControl(this.teacherStored.phone, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.minLength(9)]),
           address: new FormControl(this.teacherStored.address, []),
           avatar: new FormControl(this.teacherStored.avatar, []),
-          province_id: new FormControl(this.teacherStored.province_id, []),
-          city_id: new FormControl(this.teacherStored.city_id, []),
-          price_hour: new FormControl(this.teacherStored.price_hour, []),
-          category_id: new FormControl(this.teacherStored.category_id, []),
-          subject: new FormControl(this.teacherStored.subject, []),
-          experience: new FormControl(this.teacherStored.experience, []),
-          start_class_hour: new FormControl(this.teacherStored.start_class_hour, []),
-          end_class_hour: new FormControl(this.teacherStored.end_class_hour, [])
+          province_id: new FormControl(this.teacherStored.province_id, [Validators.required]),
+          city_id: new FormControl(this.teacherStored.city_id, [Validators.required]),
+          price_hour: new FormControl(this.teacherStored.price_hour, [Validators.required]),
+          category_id: new FormControl(this.teacherStored.category_id, [Validators.required]),
+          subject: new FormControl(this.teacherStored.subject, [Validators.required]),
+          experience: new FormControl(this.teacherStored.experience, [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+          start_class_hour: new FormControl(this.teacherStored.start_class_hour, [Validators.required]),
+          end_class_hour: new FormControl(this.teacherStored.end_class_hour, [Validators.required])
         })
       }
     })
@@ -197,51 +197,6 @@ export class RegistroTeacherComponent implements OnInit {
         title: "The data entered is incorrect. Please check the information you have entered"
       })
     }
-    // let teacher = this.teacherForm.value;
-    // if (teacher.id) {
-    //   try {
-    //     /** Actualizamos */
-    //     let response = await this.teachersService.updateTeacher(teacher);
-    //     // console.log(response);
-    //     // console.log(response.user_id);
-    //     if (response.user_id) {
-    //       Swal.fire({
-    //         icon: 'success',
-    //         title: `The teacher ${response.first_name} ${response.last_name} has been successfully updated.`
-    //       })
-    //       this.router.navigate(['/teachers']);
-    //     } else {
-    //       Swal.fire({
-    //         icon: 'error',
-    //         title: 'Oops! There seems to have been an error.',
-    //         text: "Try again"
-    //       });
-    //     }
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // } else {
-    //   /** Creamos un nuevo teacher */
-    //   try {
-    //     let response = await this.teachersService.createNewTeacher(teacher);
-    //     //console.log(response)
-    //     if (response.user_id) {
-    //       Swal.fire({
-    //         icon: 'success',
-    //         title: `The teacher ${response.first_name} ${response.last_name} has been successfully created.`
-    //       });
-    //       this.router.navigate(['/login']);
-    //     } else {
-    //       Swal.fire({
-    //         icon: 'error',
-    //         title: 'Oops! There seems to have been an error.',
-    //         text: "Try again"
-    //       });
-    //     }
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
   }
 
   checkControl(pControlName: string, pError: string): boolean {
@@ -257,6 +212,22 @@ export class RegistroTeacherComponent implements OnInit {
 
     if (password !== repitepassword) {
       return { 'checkpassword': true }
+    }
+    return null;
+  }
+
+  checkValidControl(pControlName: string): boolean {
+    if (this.teacherForm.get(pControlName)?.status === "INVALID" && this.teacherForm.get(pControlName)?.touched) {
+      return false;
+    }
+    return true;
+  }
+
+  checkScheduleTime(pFormValue: AbstractControl) {
+    const start_class_hour = parseInt(pFormValue.get('start_class_hour')?.value);
+    const end_class_hour = parseInt(pFormValue.get('end_class_hour')?.value);
+    if (start_class_hour >= end_class_hour) {
+      return { 'checkscheduletime': true }
     }
     return null;
   }

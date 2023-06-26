@@ -20,7 +20,6 @@ export class TeacherprofileComponent implements OnInit {
   async ngOnInit() {
     try {
       const response = await this.teachersService.getTeacherById(this.loginTokenService.getId());
-      console.log(response);
       this.teacherData = response;
       if (this.teacherData) {
         console.log(this.teacherData.avatar);

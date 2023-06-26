@@ -78,7 +78,6 @@ export class TeachersDetailsComponent {
         students_id: this.loginTokenService.getId(),
         cancel_date: ""
        });
-       console.log(response);   
        if(response) {
         this.router.navigate(["student/home"]).then(()=>{
           Swal.fire({
@@ -102,7 +101,6 @@ export class TeachersDetailsComponent {
   async ngOnInit() {
     this.teacherId = +this.activatedRoute.snapshot.paramMap.get("teacherid")!;
     this.teacher = await this.teacherService.getTeacherById(this.teacherId);
-    console.log(this.teacher);
   }
 
 }

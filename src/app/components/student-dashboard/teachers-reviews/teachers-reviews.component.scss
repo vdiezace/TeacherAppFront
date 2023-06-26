@@ -1,14 +1,31 @@
 .encuesta {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 16px 0;
     margin-top: 16px;
     margin-bottom: 16px;
+    @media(min-width: 960px) {
+      flex-direction: row;
+    }
+}
+
+.img-teacher {
+  width: 100%;
+  text-align: center;
+  @media(min-width: 960px) {
+    width: 50%;
+  }
 }
 
 .teachers-foto {
   width: 100%;
+  padding: 24px;
+  max-width: 400px;
+}
+
+.questions {
   padding: 24px;
 }
 
