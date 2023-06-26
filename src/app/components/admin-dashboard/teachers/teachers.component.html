@@ -1,6 +1,12 @@
 <app-admin-header></app-admin-header>
 
 <div class="container">
+  <div class="btn-page">
+    <button class="btn btn-info" (click)="previousPage()" [disabled]="thisPage===0">Previous</button>
+    <button class="btn btn-info" (click)="nextPage()"
+      [disabled]="thisPage+1>teachers.length/resultsPerPage">Next</button>
+  </div>
+
   <table class="table mt-5 pt-5 table-hover table-bordered">
     <thead>
       <tr>
@@ -14,14 +20,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let teacher of teachers ;let i = index">
-        <th scope="row">{{i + 1}}</th>
+      <tr *ngFor="let teacher of teachers| slice:thisPage*resultsPerPage:(thisPage+1)*resultsPerPage ;let i = index">
+        <th scope="row">{{i + 1 + thisPage*resultsPerPage}}</th>
         <td>{{teacher.first_name}}</td>
         <td>{{teacher.last_name}}</td>
         <td>{{teacher.category_title}}</td>
         <td>{{teacher.email}}</td>
         <td>{{teacher.is_approved}}</td>
-        <td><button class="btn btn-success" *ngIf="!teacher.is_approved" (click)="approve(teacher.teacher_id)">Approve</button></td>
+        <td><button class="btn btn-success" *ngIf="!teacher.is_approved"
+            (click)="approve(teacher.teacher_id)">Approve</button></td>
       </tr>
     </tbody>
 

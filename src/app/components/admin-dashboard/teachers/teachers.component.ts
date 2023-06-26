@@ -10,9 +10,14 @@ import { TeachersService } from 'src/app/services/teachers.service';
 })
 export class TeachersComponentAdmin {
 
-  teachers: any = []
+  teachers: any[] = []
+
   currentIndex: number = 0;
   teacherId: number;
+
+  thisPage = 0;
+  resultsPerPage = 10;
+  numberOfPages = 0;
 
   constructor(private teacherService: TeachersService,
     private adminService: AdminsService,
@@ -21,8 +26,21 @@ export class TeachersComponentAdmin {
     this.teacherId = 0;
   }
 
+  nextPage() {
+    if (this.thisPage + 1 < this.teachers.length / this.resultsPerPage) {
+      this.thisPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.thisPage !== 0) {
+      this.thisPage--;
+    }
+  }
+
   async ngOnInit() {
     this.teachers = await this.teacherService.getAllTeachers();
+    this.numberOfPages = Math.floor(this.teachers.length / this.resultsPerPage);
 
   }
 
