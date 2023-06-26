@@ -26,8 +26,13 @@ export class TeachersComponent {
   async ngOnInit() {
     this.teachers = await this.teacherService.getAllTeachers();
 
-    this.myClasses = await this.classesService.getStudentClasses(this.loginTokenService.getId());
+    const response = await this.classesService.getStudentClasses(this.loginTokenService.getId());
 
+    if (response.message){
+
+    } else {
+
+      this.myClasses= response;
 
     this.myTeachers = this.teachers.filter((teacher) => {
       return this.myClasses.some((cl) => {
@@ -35,6 +40,7 @@ export class TeachersComponent {
       });
     });
 
+  }
   }
 
 
