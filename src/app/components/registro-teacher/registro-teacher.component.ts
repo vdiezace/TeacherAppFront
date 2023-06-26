@@ -133,7 +133,7 @@ export class RegistroTeacherComponent implements OnInit {
     if (this.teacherForm.status === "VALID") {
       this.activatedRoute.params.subscribe(async (params: any) => {
         const user = await this.usersService.findByEmail(this.teacherForm.value.email);
-        let response: any;
+        let response: Teacher | any;
         let teacher = this.teacherForm.value;
         let id = parseInt(params.teacherid);
         if (!id) {
