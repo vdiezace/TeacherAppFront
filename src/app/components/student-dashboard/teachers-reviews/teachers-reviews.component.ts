@@ -35,18 +35,22 @@ export class TeachersReviewsComponent {
 
    async ngOnInit() {
     this.teacherId= +this.activatedRoute.snapshot.paramMap.get("teacherid")!;
-
-    const [response]= await this.reviewsService.getReviewByTeacherIdAndStudentId(this.teacherId, this.loginTokenService.getId());
+    const response= await this.reviewsService.getReviewByTeacherIdAndStudentId(this.teacherId, this.loginTokenService.getId());
+    if (!response.message){
     console.log(response);
-    if (response.id){
+    const result= response[0];
+    console.log(result);
+    if (result.id){
+      console.log("tiene id");
       this.isEdition= true;
-      this.comment= response.comment;
-      this.editionId= response.id;
+      this.comment= result.comment;
+      this.editionId= result.id;
     }
-
+  } 
     this.teacherData= await this.teachersService.getTeacherById(this.teacherId);
     console.log(this.teacherData);
-  }
+  
+}
 
   async onSubmit(formulario: any) {
     console.log(formulario.value);
